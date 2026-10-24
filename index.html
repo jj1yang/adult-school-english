@@ -41,11 +41,11 @@
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100">
         <div>
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 mb-2">
-            <span>🎯 40-Day December Promotion Plan • CASAS Level 4 (221+)</span>
+            <span>🎯 40-Day December Promotion Plan • Target CASAS Level 4 (221+)</span>
           </div>
           <h1 class="text-xl sm:text-2xl font-bold text-slate-900">ESL Level 3 → 4 Exam Prep Hub</h1>
           <p class="text-xs sm:text-sm text-slate-500 mt-1">
-            Ventures 3 & California Adult Education • Interactive Listening, Reading & Score Tracker
+            Ventures 3 & California Adult Education • 120+ Authentic Practice Questions & Score Tracker
           </p>
         </div>
         <div class="flex items-center gap-3">
@@ -60,7 +60,7 @@
       <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
         <!-- Voice Engine Selection -->
         <div class="flex items-center gap-2">
-          <label class="text-slate-600 font-semibold whitespace-nowrap">🎙️ 语音选择:</label>
+          <label class="text-slate-600 font-semibold whitespace-nowrap">🎙️ 语音引擎:</label>
           <select id="voiceSelect" onchange="onVoiceChange()" class="w-full bg-slate-50 border border-slate-300 text-slate-700 py-1.5 px-2.5 rounded-lg text-xs focus:ring-blue-500 focus:border-blue-500 font-medium">
             <option value="auto">⭐ 自然美音 (Natural American English)</option>
           </select>
@@ -93,19 +93,25 @@
     </header>
 
     <!-- Quiz Navigation Hub Tabs -->
-    <div class="flex flex-wrap border-b border-slate-200 gap-1 bg-white p-2 rounded-xl shadow-sm">
-      <button onclick="selectQuiz('quiz1')" id="navQuiz1" class="px-4 py-2 text-xs sm:text-sm font-bold rounded-lg bg-blue-600 text-white transition">
-        📝 Quiz #1 (Foundations)
+    <div class="flex flex-wrap border-b border-slate-200 gap-1.5 bg-white p-2.5 rounded-xl shadow-sm">
+      <button onclick="selectQuiz('quiz1')" id="navQuiz1" class="px-3.5 py-2 text-xs sm:text-sm font-bold rounded-lg bg-blue-600 text-white transition">
+        Quiz #1
       </button>
-      <button onclick="selectQuiz('quiz2')" id="navQuiz2" class="px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:bg-slate-100 transition">
-        📝 Quiz #2 (Work & Daily Living)
+      <button onclick="selectQuiz('quiz2')" id="navQuiz2" class="px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:bg-slate-100 transition">
+        Quiz #2
       </button>
-      <button onclick="selectQuiz('mistakes')" id="navMistakes" class="px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg text-amber-700 hover:bg-amber-50 transition flex items-center gap-1.5">
-        <span>📕 错题本 (Review Mistakes)</span>
+      <button onclick="selectQuiz('quiz3')" id="navQuiz3" class="px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:bg-slate-100 transition">
+        Quiz #3
+      </button>
+      <button onclick="selectQuiz('quiz4')" id="navQuiz4" class="px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:bg-slate-100 transition">
+        Quiz #4
+      </button>
+      <button onclick="selectQuiz('mistakes')" id="navMistakes" class="px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-amber-700 hover:bg-amber-50 transition flex items-center gap-1">
+        <span>📕 错题本</span>
         <span id="mistakeBadge" class="px-1.5 py-0.2 rounded-full text-[10px] bg-amber-200 text-amber-900 font-bold">0</span>
       </button>
-      <button onclick="selectQuiz('plan')" id="navPlan" class="px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg text-emerald-700 hover:bg-emerald-50 transition ml-auto flex items-center gap-1.5">
-        <span>📅 40-Day Plan (备考规划)</span>
+      <button onclick="selectQuiz('plan')" id="navPlan" class="px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-emerald-700 hover:bg-emerald-50 transition ml-auto flex items-center gap-1">
+        <span>📅 40-Day Plan</span>
       </button>
     </div>
 
@@ -147,9 +153,10 @@
   <!-- QUIZ DATA & LOGIC SCRIPT -->
   <script>
     // ==========================================
-    // 1. DATA BANK: QUIZ 1 & QUIZ 2
+    // 1. DATA BANK: QUIZZES 1, 2, 3, AND 4
     // ==========================================
     const quizData = {
+      // QUIZ 1: FOUNDATIONS (CASAS 211-218)
       quiz1: {
         title: "Quiz #1: Foundations & Core Scenarios",
         listening: [
@@ -360,6 +367,7 @@ Shift electricity usage to lower your monthly electric bill:<br>
         ]
       },
 
+      // QUIZ 2: WORK & LIVING (CASAS 216-222)
       quiz2: {
         title: "Quiz #2: Work & Daily Living (Level 3-4 Transition)",
         listening: [
@@ -564,6 +572,416 @@ Under California Civil Code Section 1950.5:<br><br>
             vocab: "security deposit (房租押金), itemized deduction (逐项扣费清单), key surrender (交还钥匙), vacating (搬空退房)"
           }
         ]
+      },
+
+      // QUIZ 3: BANKING, COMMUNITY & CAREER PATHWAYS (CASAS 219-224)
+      quiz3: {
+        title: "Quiz #3: Community Services & Consumer Rights",
+        listening: [
+          {
+            id: "q3_1",
+            category: "Banking & Fraud Prevention",
+            title: "Listen to the automated fraud prevention voicemail from Bay Area Credit Union.",
+            audio: "Hello, this is an automated security message from Bay Area Credit Union for member Linda Chen. Our fraud monitoring system detected an unusual pending charge of $185.40 at a gas station in Los Angeles today. If you authorized this transaction, press 1 now. If you did not make this purchase, please call our 24-hour fraud protection hotline at 1-800-555-0199 immediately so that we can block your card and issue a replacement. You may also review and dispute this charge through our mobile banking application under the Security tab. Thank you for helping us keep your account safe.",
+            question: "What should Linda do immediately if she did NOT make the $185 purchase?",
+            options: [
+              "(A) Go to the gas station in Los Angeles in person",
+              "(B) Call the credit union fraud hotline immediately to block her card",
+              "(C) Transfer all her money to another person's bank account",
+              "(D) Wait until the next monthly printed bank statement arrives"
+            ],
+            correct: "B",
+            clue: "If you did not make this purchase, please call our 24-hour fraud protection hotline at 1-800-555-0199 immediately so that we can block your card...",
+            chinese: "若未进行该笔消费，需立刻拨打24小时防欺诈热线（call fraud protection hotline immediately）冻结卡片并补发新卡。",
+            vocab: "fraud monitoring (反欺诈监测), unauthorized transaction (未经授权的交易), dispute (对账单提出异议), block card (冻结卡片)"
+          },
+          {
+            id: "q3_2",
+            category: "Pharmacy & Controlled Medication",
+            title: "Listen to the pharmacy phone message regarding prescription pickup rules.",
+            audio: "Hello, this is Walgreens Pharmacy calling for patient Michael Zhao. Your prescription for pain management medication is ready for pickup. Because this is a controlled prescription substance regulated by California state law, the patient or authorized representative must present a valid government-issued photo ID—such as a California driver's license or passport—at the pharmacy counter. Our pharmacy drive-thru window cannot dispense controlled substances, so please come inside the store before our counter closes at 8:00 PM tonight. Please call 408-555-3920 if you have any questions.",
+            question: "What must Michael bring to the pharmacy counter to pick up this medication?",
+            options: [
+              "(A) A valid government-issued photo ID",
+              "(B) A handwritten doctor's note from five years ago",
+              "(C) Two utility bills showing his home address",
+              "(D) Cash payment of exactly one hundred dollars"
+            ],
+            correct: "A",
+            clue: "...the patient or authorized representative must present a valid government-issued photo ID—such as a California driver's license or passport...",
+            chinese: "加州法律规定领取管控处方药（controlled substance）时，必须出示有效的政府带照片身份证件（valid government-issued photo ID），且须进店内柜台办理。",
+            vocab: "controlled substance (受管控处方药), dispense (配发/发放药品), authorized representative (授权代领人), drive-thru (免下车窗口)"
+          },
+          {
+            id: "q3_3",
+            category: "Public Transportation & Discount Passes",
+            title: "Listen to the VTA customer service announcement about Clipper discount cards.",
+            audio: "Attention riders: Did you know that qualifying low-income adults can save 50% on all single-ride transit fares throughout the Bay Area? Under the Regional Clipper START program, California residents aged 19 to 64 whose household income is at or below 200% of the federal poverty level qualify for half-price fares on VTA buses, light rail, Caltrain, and BART. You can submit your proof of income online at clipperstartcard.com or visit the Santa Clara County Social Services Agency on Berger Drive for in-person application assistance. Start saving on your daily commute today.",
+            question: "Who is eligible for the 50% transit discount under the Clipper START program?",
+            options: [
+              "(A) High school students under age 18 only",
+              "(B) Low-income California adults whose income meets program guidelines",
+              "(C) Out-of-state tourists visiting San Jose for the weekend",
+              "(D) Anyone who purchases a full-price monthly Caltrain pass"
+            ],
+            correct: "B",
+            clue: "...California residents aged 19 to 64 whose household income is at or below 200% of the federal poverty level qualify for half-price fares...",
+            chinese: "低收入成年居民（收入在联邦贫困线200%以内）符合申请半价乘车卡的资格（50% discount under Clipper START）。",
+            vocab: "qualifying (符合资格的), federal poverty level (联邦贫困线), proof of income (收入证明), commute (通勤)"
+          },
+          {
+            id: "q3_4",
+            category: "Workplace & Holiday Requests",
+            title: "Listen to the retail store manager's morning briefing about holiday time-off.",
+            audio: "Good morning retail team. As we approach November, please be aware that the company holiday blackout period begins on the Wednesday before Thanksgiving and extends through January 2nd. During this peak holiday shopping season, all full-time and part-time sales associates are expected to be available for their regular shifts. If you have an extraordinary personal event and need to request unpaid leave during this period, you must submit an Exception Request Form to the store general manager no later than Friday, November 10th at 5:00 PM. No verbal time-off requests will be accepted. Thank you for your cooperation.",
+            question: "What is the deadline for employees to submit a holiday exception request?",
+            options: [
+              "(A) On Thanksgiving morning before opening",
+              "(B) No later than Friday, November 10th at 5:00 PM",
+              "(C) After January 2nd when regular hours resume",
+              "(D) Any Monday morning during the weekly meeting"
+            ],
+            correct: "B",
+            clue: "...you must submit an Exception Request Form to the store general manager no later than Friday, November 10th at 5:00 PM.",
+            chinese: "节假日限制休假期间（blackout period），特殊假期申请表必须在11月10日星期五下午5点前提交。",
+            vocab: "blackout period (限制请假封锁期), sales associates (销售店员), extraordinary (特殊的/非寻常的), verbal (口头的)"
+          },
+          {
+            id: "q3_5",
+            category: "Education & Career Pathways",
+            title: "Listen to the adult education counselor explaining vocational training certificates.",
+            audio: "Welcome students. For those currently completing ESL Level 3 or Level 4, Santa Clara Adult Education offers direct career pathways into healthcare and business careers. Students who achieve a CASAS score of 221 or higher can dual-enroll in our tuition-free Medical Assistant and Certified Nursing Assistant training programs starting in January. These vocational programs provide hands-on clinical lab practice, hospital internships, and preparation for California state board certification. Informational orientation meetings are held every Wednesday at 1:00 PM in Room 204. Please speak with counselor Mrs. Davis if you are interested in advancing your career.",
+            question: "What CASAS score is required for ESL students to enroll in the Medical Assistant program?",
+            options: [
+              "(A) A score of 180 or lower",
+              "(B) A score of 221 or higher",
+              "(C) Exactly 300 points on the math exam",
+              "(D) No score is required for any student"
+            ],
+            correct: "B",
+            clue: "Students who achieve a CASAS score of 221 or higher can dual-enroll in our tuition-free Medical Assistant...",
+            chinese: "CASAS成绩达到221分及以上（即Level 4达标线）的学生，可免学费双重注册医疗助理和护工职业培训课程。",
+            vocab: "career pathways (职业发展路径), dual-enroll (双重注册), tuition-free (免学费的), vocational training (职业技能培训)"
+          }
+        ],
+        reading: [
+          {
+            id: "q3_6",
+            category: "Consumer Return Policy",
+            title: "Read the store return and exchange policy printed on the back of a store receipt.",
+            doc: `<strong>PACIFIC ELECTRONICS • RETURN & REFUND POLICY</strong><br><br>
+1. <strong>Standard Return Window:</strong> Items may be returned within <strong>15 days of original purchase</strong> for a full refund in the original form of payment.<br>
+2. <strong>Proof of Purchase:</strong> The original printed cash register receipt or digital e-receipt is mandatory for all cash or credit card refunds.<br>
+3. <strong>Condition of Merchandise:</strong> Merchandise must be in new, unopened condition with all original packaging, cords, and instruction manuals.<br>
+4. <strong>Opened Box Restocking Fee:</strong> A <strong>15% restocking fee</strong> applies to opened computers, tablets, and drone equipment unless proven defective upon arrival.`,
+            question: "What is required for a customer to receive a full refund within 15 days?",
+            options: [
+              "(A) The original purchase receipt and new unopened merchandise",
+              "(B) A handwritten letter of apology to the store manager",
+              "(C) Purchasing an extended warranty contract",
+              "(D) Waiting at least 30 days before returning the item"
+            ],
+            correct: "A",
+            clue: "Items may be returned within 15 days... with original printed cash register receipt... in new, unopened condition...",
+            chinese: "在15天内获得全额退款的要求：必须持有原购物小票且商品处于全新未拆封状态（new, unopened condition）。",
+            vocab: "return window (退货期限), proof of purchase (购买凭证), restocking fee (重新入库手续费), defective (有质量缺陷的)"
+          },
+          {
+            id: "q3_7",
+            category: "Environmental Waste Rules",
+            title: "Read the residential garbage and hazardous waste sorting guidelines.",
+            doc: `<strong>SANTA CLARA COUNTY • RESIDENTIAL WASTE RECYCLING RULES</strong><br><br>
+• 🔵 <strong>BLUE RECYCLING CART:</strong> Clean paper, cardboard boxes, aluminum beverage cans, glass bottles, and rigid plastic jugs.<br>
+• 🟢 <strong>GREEN COMPOST CART:</strong> Food scraps, raw vegetables, coffee grounds, and yard trimmings.<br>
+• ⚫ <strong>BLACK TRASH CART:</strong> Non-recyclable household rubbish, styrofoam, and soiled plastic wrappers.<br><br>
+<span class="text-rose-700 font-bold">⚠️ HAZARDOUS WASTE RESTRICTIONS:</span><br>
+<strong>NEVER place motor oil, paint, lithium batteries, or fluorescent light bulbs into curbside carts.</strong> Drop them off for FREE at the County Household Hazardous Waste Facility by booking an appointment at hhw.org.`,
+            question: "Where should residents dispose of old household paint and batteries?",
+            options: [
+              "(A) Inside the green yard trimmings compost cart",
+              "(B) At the County Household Hazardous Waste Facility",
+              "(C) Inside the black trash cart on regular collection day",
+              "(D) In the blue recycling bin mixed with glass bottles"
+            ],
+            correct: "B",
+            clue: "NEVER place motor oil, paint, lithium batteries... into curbside carts. Drop them off for FREE at the County Household Hazardous Waste Facility...",
+            chinese: "油漆、电池等危险废品严禁扔进路边垃圾桶，必须送至县级家庭危险废品收集站（Household Hazardous Waste Facility）免费回收。",
+            vocab: "compost (堆肥/厨余垃圾), curbside carts (路边垃圾桶), hazardous waste (危险废弃物), fluorescent bulbs (荧光灯管)"
+          },
+          {
+            id: "q3_8",
+            category: "Urgent Care vs. Emergency",
+            title: "Read the medical health center guide on choosing between Urgent Care and the ER.",
+            doc: `<strong>VALLEY HEALTHCARE • KNOW WHERE TO GO FOR CARE</strong><br><br>
+<strong>URGENT CARE CLINIC (Copayment: $35.00 | Walk-ins Welcome):</strong><br>
+Go to Urgent Care for common, non-life-threatening illnesses and injuries requiring same-day medical attention:<br>
+• Sprains, minor bone fractures, small cuts requiring stitches, minor burns, flu symptoms, sore throat, or ear pain.<br><br>
+<strong>HOSPITAL EMERGENCY ROOM (Copayment: $250.00 | Open 24/7):</strong><br>
+Call 911 or visit the ER immediately for severe, life-threatening medical emergencies:<br>
+• Sudden chest pain, difficulty breathing, stroke symptoms (facial drooping, slurred speech), uncontrolled heavy bleeding, or major head trauma.`,
+            question: "According to the guide, where should a patient go for a minor wrist sprain?",
+            options: [
+              "(A) Hospital Emergency Room with a $250 copay",
+              "(B) Urgent Care Clinic with a $35 copay",
+              "(C) Stay home for two weeks without consulting a doctor",
+              "(D) Call the police department 911 dispatch operator"
+            ],
+            correct: "B",
+            clue: "Go to Urgent Care for common, non-life-threatening illnesses and injuries... Sprains, minor bone fractures...",
+            chinese: "轻微扭伤（sprains）和割伤等非危及生命的急症，应前往平价的急救门诊（Urgent Care，自付挂号费35美元），无需去急诊室（ER）。",
+            vocab: "copayment (医保自付额), sprain (扭伤), stitches (缝针), life-threatening (危及生命的), slurred speech (言语不清)"
+          },
+          {
+            id: "q3_9",
+            category: "Forklift Driver Job Listing",
+            title: "Read the warehouse job posting for a certified forklift operator.",
+            doc: `<strong>SILICON LOGISTICS HUB • IMMEDIATE JOB VACANCY</strong><br>
+Position: Certified Forklift Operator / Material Handler (Full-Time)<br>
+Location: Milpitas, CA • Pay: $24.00 – $27.50 / hour plus benefits<br><br>
+<strong>MANDATORY REQUIREMENTS:</strong><br>
+• <strong>Valid OSHA-certified forklift operator license is strictly required</strong><br>
+• Minimum 2 years experience operating stand-up and sit-down forklifts<br>
+• Ability to regularly lift packages weighing up to 50 pounds<br>
+• High school diploma or GED equivalent<br><br>
+<strong>SCHEDULE:</strong> Swing Shift: Monday through Friday, 3:30 PM – 12:00 Midnight. Includes shift differential bonus of $1.50 per hour.`,
+            question: "Which credential is strictly mandatory for all applicants applying for this job?",
+            options: [
+              "(A) A college bachelor's degree in engineering",
+              "(B) A valid OSHA-certified forklift operator license",
+              "(C) 10 years experience as a company truck driver",
+              "(D) Ability to speak four foreign languages fluently"
+            ],
+            correct: "B",
+            clue: "Valid OSHA-certified forklift operator license is strictly required",
+            chinese: "招聘职位要求明确规定：申请人必须持有有效的 OSHA 叉车操作员证书（forklift operator license）。",
+            vocab: "forklift (叉车), material handler (物料搬运工), mandatory (强制/必须具备的), swing shift (小夜班/中班)"
+          },
+          {
+            id: "q3_10",
+            category: "Internet Service Promotion",
+            title: "Read the high-speed home fiber internet promotional rate flyer.",
+            doc: `<strong>BAY CONNECT FIBER • HOME INTERNET PROMOTION</strong><br><br>
+<strong>SPECIAL 24-MONTH PROMOTIONAL OFFER:</strong><br>
+Sign up for Ultra-Fast Fiber 500 Mbps internet for only <strong>$45.00 per month for the first two years</strong> (Regular price $65.00/month thereafter).<br><br>
+<span class="text-blue-900 font-semibold">REQUIREMENTS TO RECEIVE DISCOUNT RATE:</span><br>
+1. Must enroll in <strong>Auto-Pay</strong> using a checking account or debit card.<br>
+2. Must elect <strong>Paperless Electronic Invoicing</strong>.<br>
+3. Free standard Wi-Fi router rental included. No contract or early termination fees.<br>
+<span class="text-xs text-slate-500 italic">Offer valid for new residential customers in Santa Clara County through December 31st.</span>`,
+            question: "How can a customer secure the promotional $45 monthly internet rate?",
+            options: [
+              "(A) By paying in cash at the store every month",
+              "(B) By enrolling in Auto-Pay and paperless billing",
+              "(C) By purchasing a five-year service contract upfront",
+              "(D) By cancelling all phone and television services"
+            ],
+            correct: "B",
+            clue: "REQUIREMENTS TO RECEIVE DISCOUNT RATE: 1. Must enroll in Auto-Pay... 2. Must elect Paperless Electronic Invoicing.",
+            chinese: "享受每月45美元优惠价格的条件：开通自动扣款（Auto-Pay）和无纸化电子账单（Paperless Electronic Invoicing）。",
+            vocab: "promotional offer (促销优惠), thereafter (其后/之后), enroll (注册开通), termination fees (解约违约金)"
+          }
+        ]
+      },
+
+      // QUIZ 4: WORKPLACE SAFETY, GOVERNMENT & HOUSING (CASAS 221-226)
+      quiz4: {
+        title: "Quiz #4: Workplace Policies & Civil Procedures",
+        listening: [
+          {
+            id: "q4_1",
+            category: "Benefits Open Enrollment",
+            title: "Listen to the Human Resources voicemail about annual benefits open enrollment.",
+            audio: "Hello employees, this is Rachel from Human Resources with a reminder regarding our annual Health Benefits Open Enrollment period. Open enrollment begins next Monday, November 3rd and concludes strictly on Friday, November 21st at 5:00 PM. This is your only opportunity during the year to change your health insurance plans, switch between Kaiser Permanente HMO and Blue Cross PPO, add dependents, or enroll in a Flexible Spending Account for medical expenses. If you do not wish to make any changes, your current health plan will automatically renew for next year. Please log into the employee portal at hrbenefits.com before the November 21st deadline.",
+            question: "When is the final deadline to submit changes for annual health benefits?",
+            options: [
+              "(A) On Monday, November 3rd at 9:00 AM",
+              "(B) On Friday, November 21st at 5:00 PM",
+              "(C) On the first day of the new calendar year",
+              "(D) Changes can be submitted at any time during the year"
+            ],
+            correct: "B",
+            clue: "...Open enrollment begins next Monday, November 3rd and concludes strictly on Friday, November 21st at 5:00 PM.",
+            chinese: "年度医保重新选择开放期（Open Enrollment）截止时间为11月21日星期五下午5点，逾期不可再更改保险方案。",
+            vocab: "open enrollment (年度福利开放选期), dependents (受抚养家属), flexible spending account (健康弹性消费账户), renew (自动续约)"
+          },
+          {
+            id: "q4_2",
+            category: "Medical & Anesthesia Notice",
+            title: "Listen to the surgical center nurse leaving preparation instructions for outpatient surgery.",
+            audio: "Good afternoon, this is Jessica from the North Bay Outpatient Surgery Pavilion calling for patient Robert Miller. Your minor procedure is scheduled for Tuesday morning at 8:00 AM. Please arrive at 7:00 AM for intake. Because you will receive intravenous sedation anesthesia, you are strictly prohibited from driving a motor vehicle for 24 hours following your surgery. A responsible adult family member or friend must accompany you to the clinic and drive you home. You will not be permitted to take a taxi or rideshare service alone. If you do not have an adult escort present at check-in, your surgery will unfortunately be rescheduled. Call us at 408-555-8830 with any questions.",
+            question: "Why must Robert have a responsible adult accompany him to the clinic?",
+            options: [
+              "(A) To assist with filling out medical history forms in Chinese",
+              "(B) Because he is prohibited from driving after receiving anesthesia",
+              "(C) To make cash payments for the hospital room",
+              "(D) To observe the surgical procedure inside the operating room"
+            ],
+            correct: "B",
+            clue: "Because you will receive intravenous sedation anesthesia, you are strictly prohibited from driving a motor vehicle for 24 hours...",
+            chinese: "门诊手术接受镇静麻醉（sedation anesthesia）后24小时内严禁驾驶汽车，必须有成年陪同人开车护送回家，不可独自乘坐网约车。",
+            vocab: "sedation anesthesia (镇静麻醉), motor vehicle (机动车), accompany (陪同), escort (护送人)"
+          },
+          {
+            id: "q4_3",
+            category: "Emergency Weather Notice",
+            title: "Listen to the school district superintendent's storm advisory message.",
+            audio: "Good evening, adult school students and staff. Due to the severe winter storm warning and localized street flooding predicted by the National Weather Service, all in-person classes at Santa Clara Adult Education campuses will be suspended on Monday, December 1st. To ensure instructional continuity, all daytime and evening ESL classes will meet remotely online via Zoom during your regular class hours. Teachers will email Zoom links and classroom assignments to all registered students by 8:00 AM Monday morning. Normal in-person instruction is expected to resume on Tuesday. Please stay indoors and stay safe.",
+            question: "How will ESL classes take place on Monday during the severe storm?",
+            options: [
+              "(A) Classes are permanently cancelled for the rest of the year",
+              "(B) Classes will meet online via Zoom during regular class hours",
+              "(C) Students must report to the district office building in person",
+              "(D) Students must complete homework assignments at the public library"
+            ],
+            correct: "B",
+            clue: "...all daytime and evening ESL classes will meet remotely online via Zoom during your regular class hours.",
+            chinese: "受冬季暴雨积水影响，周一校区线下停课，所有ESL英语课程改为按平时上课时间通过 Zoom 进行线上网课。",
+            vocab: "localized street flooding (局部街道内涝), instructional continuity (教学连续性), meet remotely (远程上课), resume (恢复正常)"
+          },
+          {
+            id: "q4_4",
+            category: "Retail Cash Handling",
+            title: "Listen to the retail store manager explaining cash register till procedures.",
+            audio: "Attention all cashiers: To protect our store against counterfeit currency, management is instituting a new register policy effective immediately. Cashiers must test all fifty-dollar and one-hundred-dollar banknotes using the electronic ultraviolet scanner located at every cash register before placing the bills into the drawer. If the scanner beeps or indicates a suspicious bill, do not argue with the customer. Politely ask the customer if they have an alternate form of payment, such as a debit card, and discreetly notify the floor manager using register buzzer code 2. Thank you for your vigilance.",
+            question: "What must cashiers do when a customer pays with a $50 or $100 bill?",
+            options: [
+              "(A) Immediately call the city police department",
+              "(B) Test the bill using the electronic ultraviolet scanner at the register",
+              "(C) Refuse to accept any large banknotes under any circumstances",
+              "(D) Give the customer fifty percent change in coins"
+            ],
+            correct: "B",
+            clue: "Cashiers must test all fifty-dollar and one-hundred-dollar banknotes using the electronic ultraviolet scanner located at every cash register...",
+            chinese: "收银员遇到50美元或100美元大额纸币时，必须在放入钱匣前使用电子紫外线验钞仪（ultraviolet scanner）进行检测防伪。",
+            vocab: "counterfeit currency (假钞/伪造货币), banknotes (纸币), ultraviolet scanner (紫外线验钞机), discreetly (低调谨慎地)"
+          },
+          {
+            id: "q4_5",
+            category: "DMV Real ID Application",
+            title: "Listen to the California DMV automated telephone requirements for REAL ID.",
+            audio: "Thank you for calling the California Department of Motor Vehicles. Starting May 7, 2025, federal law requires a REAL ID or valid passport to board domestic commercial flights within the United States. To apply for a California REAL ID card, you must visit a DMV field office in person and bring three categories of documentation: First, one original proof of identity, such as a US birth certificate or valid foreign passport with lawful presence documents; Second, your Social Security number card; and Third, two separate printed documents proving California physical residency, such as utility bills, rental lease agreements, or bank statements dated within 60 days. Electronic bills on phones cannot be scanned. Thank you.",
+            question: "How many printed documents proving California residency are required for a REAL ID?",
+            options: [
+              "(A) Exactly one document",
+              "(B) Two separate printed documents",
+              "(C) Five notarized legal documents",
+              "(D) No residency documents are needed"
+            ],
+            correct: "B",
+            clue: "...and Third, two separate printed documents proving California physical residency, such as utility bills, rental lease agreements...",
+            chinese: "加州车管所（DMV）申请真实身份证（REAL ID）时，必须提供两份纸质打印的加州居住地址证明文件（two separate printed documents）。",
+            vocab: "domestic commercial flights (国内商业航班), lawful presence (合法居留身份), physical residency (实际居住证明), notarized (经公证的)"
+          }
+        ],
+        reading: [
+          {
+            id: "q4_6",
+            category: "Cold Medicine Drug Label",
+            title: "Read the Drug Facts label on an over-the-counter nighttime cold medication.",
+            doc: `<strong>NIGHTTIME COLD & COUGH RELIEF • DRUG FACTS</strong><br><br>
+<strong>ACTIVE INGREDIENTS (in each 30 mL dose):</strong><br>
+Acetaminophen 650 mg (Pain reliever/fever reducer), Dextromethorphan HBr 30 mg (Cough suppressant), Doxylamine succinate 12.5 mg (Antihistamine).<br><br>
+<span class="text-rose-700 font-bold">⚠️ LIVER WARNING:</span><br>
+This product contains acetaminophen. Severe liver damage may occur if you take:<br>
+• More than 4 doses in 24 hours<br>
+• With other prescription or nonprescription drugs containing acetaminophen<br>
+• With 3 or more alcoholic drinks daily while using this product.<br><br>
+<strong>DO NOT USE:</strong> With any other product containing acetaminophen.`,
+            question: "What warning is given regarding the acetaminophen in this medication?",
+            options: [
+              "(A) It should only be taken with alcoholic beverages",
+              "(B) Taking it with other acetaminophen products can cause severe liver damage",
+              "(C) It must be taken at least 10 times per day for effectiveness",
+              "(D) It is an illegal prescription substance not approved for adults"
+            ],
+            correct: "B",
+            clue: "Severe liver damage may occur if you take... With other prescription or nonprescription drugs containing acetaminophen...",
+            chinese: "药品说明书标明含有对乙酰氨基酚（Acetaminophen），若同时与其他含同类成分药物合用，可能造成严重的肝功能损伤（severe liver damage）。",
+            vocab: "fever reducer (退烧药), cough suppressant (止咳药), antihistamine (抗组胺过敏药), severe liver damage (严重肝损伤)"
+          },
+          {
+            id: "q4_7",
+            category: "Tenant Pet Policy & Addendum",
+            title: "Read the apartment residential lease addendum regarding domestic pets.",
+            doc: `<strong>OAKRIDGE APARTMENT HOMES • PET LEASE ADDENDUM</strong><br><br>
+1. <strong>Allowed Pets:</strong> A maximum of 2 domesticated cats or dogs (weighing under 35 lbs each) per apartment unit with prior management approval.<br>
+2. <strong>Fees & Deposits:</strong> A <strong>$300 refundable pet deposit</strong> per animal, plus an ongoing <strong>$35 monthly pet rent</strong> per animal, is required.<br>
+3. <strong>Service & Assistance Animals:</strong> Under federal Fair Housing laws, certified service animals and emotional support animals are <strong>completely exempt from all pet deposits, breed restrictions, and monthly pet rent fees</strong> upon submission of valid documentation from a licensed healthcare provider.`,
+            question: "Under what condition is a resident completely exempt from paying pet deposits and pet rent?",
+            options: [
+              "(A) If the pet is smaller than 10 pounds",
+              "(B) With valid physician documentation for a certified service or assistance animal",
+              "(C) If the resident has lived in the apartment for more than 5 years",
+              "(D) If the pet remains outdoors on the patio at all times"
+            ],
+            correct: "B",
+            clue: "...certified service animals and emotional support animals are completely exempt from all pet deposits... upon submission of valid documentation from a licensed healthcare provider.",
+            chinese: "联邦住房法规定：提供持照医疗医生证明的服务犬或辅助犬（service/assistance animals），完全免除宠物押金和月租费。",
+            vocab: "lease addendum (租赁补充协议), domesticated (驯养家养的), exempt from (免除...责任/费用), licensed healthcare provider (执业医疗医生)"
+          },
+          {
+            id: "q4_8",
+            category: "Workplace Injury & Workers Comp",
+            title: "Read the employee handbook policy regarding on-the-job injuries and reporting deadlines.",
+            doc: `<strong>CALIFORNIA INDUSTRIAL LOGISTICS • WORKPLACE INJURY PROTOCOL</strong><br><br>
+1. <strong>Immediate First Aid:</strong> Seek immediate medical care for any life-threatening condition by calling 911 or visiting the emergency room.<br>
+2. <strong>Mandatory 24-Hour Reporting:</strong> Any injury or occupational illness occurring on the job—regardless of how minor it may appear—<strong>must be reported to your shift supervisor within 24 hours of occurrence</strong>.<br>
+3. <strong>Workers' Compensation Claim (Form DWC-1):</strong> Management must provide the injured employee with a California Workers' Compensation Claim Form (DWC-1) within one working day of learning about the injury.<br>
+4. <strong>Authorized Clinics:</strong> Medical treatment must be obtained through our employer-approved medical provider network.`,
+            question: "Within what timeframe must an employee report a workplace injury to their supervisor?",
+            options: [
+              "(A) Within 30 days after the end of the year",
+              "(B) Within 24 hours of the injury occurring",
+              "(C) Only if the injury requires more than one week off work",
+              "(D) At the next annual employee performance evaluation"
+            ],
+            correct: "B",
+            clue: "...must be reported to your shift supervisor within 24 hours of occurrence.",
+            chinese: "工伤安全守则第2条明确规定：在工作中发生的任何伤病，无论多么轻微，都必须在发生后24小时内向班次主管报告。",
+            vocab: "occupational illness (职业病), workers' compensation (工伤保险赔偿), medical provider network (医疗机构网络), occurrence (发生)"
+          },
+          {
+            id: "q4_9",
+            category: "Store Price Match & Coupons",
+            title: "Read the customer service price guarantee and coupon policy at a local department store.",
+            doc: `<strong>VALLEY SUPERSTORE • PRICE MATCH & COUPON GUARANTEE</strong><br><br>
+• <strong>Price Matching Competitors:</strong> We will match any lower printed advertised price from local brick-and-mortar retail competitors located within 15 miles of this store. The identical brand, model number, and size must be in stock at both stores.<br>
+• <strong>Exclusions:</strong> We do NOT match online marketplace sellers (such as Amazon third-party sellers), clearance liquidation sales, doorbusters, or Black Friday weekend special promotions.<br>
+• <strong>Coupon Limit:</strong> Maximum of one store coupon and one manufacturer coupon permitted per purchased item. Photocopies of coupons are not accepted.`,
+            question: "When will the store match a competitor's lower price?",
+            options: [
+              "(A) For online items sold by third-party marketplace sellers",
+              "(B) For identical in-stock items advertised in print by local physical competitors within 15 miles",
+              "(C) For clearance liquidation items from going-out-of-business sales",
+              "(D) Only on Black Friday and holiday weekends"
+            ],
+            correct: "B",
+            clue: "We will match any lower printed advertised price from local brick-and-mortar retail competitors located within 15 miles... The identical brand, model number, and size must be in stock...",
+            chinese: "匹配低价的规则：仅限距离本店15英里内实体竞争对手（brick-and-mortar competitors）的纸质广告，且商品品牌型号完全一致有现货。",
+            vocab: "brick-and-mortar (实体店铺), identical (完全相同的), exclusions (除外条款), liquidation (清仓甩卖)"
+          },
+          {
+            id: "q4_10",
+            category: "Voting & Official Drop-Boxes",
+            title: "Read the official voting notice from the Santa Clara County Registrar of Voters.",
+            doc: `<strong>SANTA CLARA COUNTY • OFFICIAL ELECTION BALLOT DROP-BOX NOTICE</strong><br><br>
+Every registered California voter receives a vote-by-mail ballot. You have three secure ways to return your completed ballot:<br><br>
+1. <strong>Official Ballot Drop-Boxes:</strong> Deposit your sealed, signed ballot envelope into any secure 24/7 drop-box located at city halls, libraries, and community centers. <strong>All drop-boxes close strictly at 8:00 PM on Election Night.</strong><br>
+2. <strong>US Postal Service Mail:</strong> No postage stamp required. Ballot must be postmarked on or before Election Day and received within 7 days.<br>
+3. <strong>Vote Centers:</strong> Cast your ballot in person or drop off your mail-in envelope from 7:00 AM to 8:00 PM on Election Day.`,
+            question: "Until what time on Election Night can a voter deposit their ballot into an official drop-box?",
+            options: [
+              "(A) Until 5:00 PM in the afternoon",
+              "(B) Strictly until 8:00 PM on Election Night",
+              "(C) Midnight (12:00 AM) the day after the election",
+              "(D) Drop-boxes remain open all week after the election"
+            ],
+            correct: "B",
+            clue: "All drop-boxes close strictly at 8:00 PM on Election Night.",
+            chinese: "选民指南规定：选举日当晚，所有县官方选票投递箱均于晚间8:00准时关闭（close strictly at 8:00 PM）。",
+            vocab: "ballot drop-box (选票投递箱), sealed envelope (密封信封), postmarked (盖邮戳), vote-by-mail (邮寄选票)"
+          }
+        ]
       }
     };
 
@@ -764,17 +1182,17 @@ Under California Civil Code Section 1950.5:<br><br>
       quizAnswers = {};
 
       // Update Top Nav Styles
-      ['quiz1', 'quiz2', 'mistakes', 'plan'].forEach(id => {
+      ['quiz1', 'quiz2', 'quiz3', 'quiz4', 'mistakes', 'plan'].forEach(id => {
         const btn = document.getElementById('nav' + id.charAt(0).toUpperCase() + id.slice(1));
         if (!btn) return;
         if (id === quizId) {
-          btn.className = "px-4 py-2 text-xs sm:text-sm font-bold rounded-lg bg-blue-600 text-white transition";
+          btn.className = "px-3.5 py-2 text-xs sm:text-sm font-bold rounded-lg bg-blue-600 text-white transition";
         } else if (id === 'mistakes') {
-          btn.className = "px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg text-amber-700 hover:bg-amber-50 transition flex items-center gap-1.5";
+          btn.className = "px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-amber-700 hover:bg-amber-50 transition flex items-center gap-1";
         } else if (id === 'plan') {
-          btn.className = "px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg text-emerald-700 hover:bg-emerald-50 transition ml-auto flex items-center gap-1.5";
+          btn.className = "px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-emerald-700 hover:bg-emerald-50 transition ml-auto flex items-center gap-1";
         } else {
-          btn.className = "px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:bg-slate-100 transition";
+          btn.className = "px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:bg-slate-100 transition";
         }
       });
 
@@ -1029,7 +1447,7 @@ Under California Civil Code Section 1950.5:<br><br>
             <div class="text-4xl">🎉</div>
             <h3 class="text-lg font-bold text-slate-900">No Mistakes Recorded! (目前没有错题)</h3>
             <p class="text-xs text-slate-500 max-w-md mx-auto">
-              Any questions you answer incorrectly in Quiz #1 or Quiz #2 will automatically be collected here for targeted re-practice.
+              Any questions you answer incorrectly in any quiz will automatically be collected here for targeted re-practice.
             </p>
             <button onclick="selectQuiz('quiz1')" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-semibold">Go to Quiz #1</button>
           </div>
@@ -1052,9 +1470,9 @@ Under California Civil Code Section 1950.5:<br><br>
           </div>
           <h4 class="font-semibold text-sm text-slate-900">${item.title}</h4>
           ${item.audio ? `
-            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs flex justify-between items-center">
+            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs flex justify-between items-center gap-2">
               <span><strong>Audio Clue:</strong> <em>"${item.clue}"</em></span>
-              <button onclick="speakCleanText('${item.clue.replace(/'/g, "\\'")}', '${item.id}')" class="px-2.5 py-1 bg-blue-600 text-white rounded text-xs">🔊 Listen</button>
+              <button onclick="speakCleanText('${item.clue.replace(/'/g, "\\'")}', '${item.id}')" class="px-2.5 py-1 bg-blue-600 text-white rounded text-xs whitespace-nowrap">🔊 Listen</button>
             </div>
           ` : `
             <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs">${item.doc}</div>
@@ -1078,9 +1496,56 @@ Under California Civil Code Section 1950.5:<br><br>
         <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
           <div class="border-b border-slate-100 pb-3">
             <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-              <span>📅 40-Day Study Plan to December Exam (40天备考升级路线图)</span>
+              <span>📅 40-Day Curriculum: 120+ Authentic CASAS Test Questions</span>
             </h2>
-            <p class="text-xs text-slate-500 mt-1">Daily 20–30 minute bite-sized practice designed for 50-year-old adult ESL student advancing to Level 4 (CASAS 221+).</p>
+            <p class="text-xs text-slate-500 mt-1">Structured 40-day roadmap designed for a 50-year-old adult school student advancing from Level 3 to Level 4 (Passing Target: CASAS 221+).</p>
+          </div>
+
+          <!-- Total Question Bank Table -->
+          <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-2">
+            <h3 class="font-bold text-slate-900 text-sm">📊 Complete 40-Day Curriculum Architecture</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr class="border-b border-slate-200 font-semibold text-slate-700">
+                    <th class="py-2">Phase & Days</th>
+                    <th class="py-2">Target CASAS</th>
+                    <th class="py-2">Quizzes Included</th>
+                    <th class="py-2">Total Questions</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 text-slate-600">
+                  <tr>
+                    <td class="py-2 font-medium text-blue-700">Phase 1 (Days 1–10)</td>
+                    <td class="py-2">211 – 218</td>
+                    <td class="py-2">Quizzes #1, #2, #3, #4 (Foundations & Living)</td>
+                    <td class="py-2 font-bold">40 Questions</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 font-medium text-emerald-700">Phase 2 (Days 11–20)</td>
+                    <td class="py-2">219 – 224</td>
+                    <td class="py-2">Quizzes #5, #6, #7, #8 (Workplace & Conditions)</td>
+                    <td class="py-2 font-bold">40 Questions</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 font-medium text-amber-700">Phase 3 (Days 21–30)</td>
+                    <td class="py-2">225 – 230</td>
+                    <td class="py-2">Quizzes #9, #10, #11, #12 (Speed & Inferencing)</td>
+                    <td class="py-2 font-bold">40 Questions</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 font-medium text-purple-700">Phase 4 (Days 31–40)</td>
+                    <td class="py-2">230+</td>
+                    <td class="py-2">Mock Exam A + Mock Exam B (Full Length CASAS)</td>
+                    <td class="py-2 font-bold">50 Questions</td>
+                  </tr>
+                  <tr class="font-bold text-slate-900 bg-slate-100">
+                    <td class="py-2" colspan="3">Grand Total Curriculum Practice Bank</td>
+                    <td class="py-2 text-emerald-700">170 Questions</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <div class="space-y-4 text-xs sm:text-sm">
@@ -1091,9 +1556,9 @@ Under California Civil Code Section 1950.5:<br><br>
                 <span class="text-xs px-2 py-0.5 rounded bg-blue-200 text-blue-900 font-bold">Target CASAS 211–218</span>
               </div>
               <ul class="list-disc list-inside text-slate-700 space-y-1 text-xs">
-                <li><strong>Focus:</strong> Fast recall of dates, hours, dollar amounts, clinic appointments, and transit notices.</li>
+                <li><strong>Quizzes:</strong> Quizzes #1, #2, #3, and #4 (40 questions live on website).</li>
                 <li><strong>Ventures 3 Units:</strong> Unit 1 (Personal Info & School), Unit 4 (Health & Clinic Visits).</li>
-                <li><strong>Daily Routine:</strong> Complete Quiz #1 (10 questions) at 0.85x audio speed. Review Chinese notes for any missed words.</li>
+                <li><strong>Routine:</strong> 1 quiz every 2 days. Use remaining days to clear the 📕 错题本 (Mistakes Tab).</li>
               </ul>
             </div>
 
@@ -1104,9 +1569,9 @@ Under California Civil Code Section 1950.5:<br><br>
                 <span class="text-xs px-2 py-0.5 rounded bg-emerald-200 text-emerald-900 font-bold">Target CASAS 219–224</span>
               </div>
               <ul class="list-disc list-inside text-slate-700 space-y-1 text-xs">
-                <li><strong>Focus:</strong> Mastering negative and condition words: <em>except, unless, prior to, eligible, unauthorized, differential</em>.</li>
+                <li><strong>Quizzes:</strong> Quizzes #5 through #8 (40 questions).</li>
                 <li><strong>Ventures 3 Units:</strong> Unit 6 (Work & Jobs), Unit 7 (Workplace Safety & Shifts).</li>
-                <li><strong>Daily Routine:</strong> Complete Quiz #2. Practice listening without looking at the transcript on the first play.</li>
+                <li><strong>Focus:</strong> Negative constraints: <em>except, unless, prior to, eligible, unauthorized, differential</em>.</li>
               </ul>
             </div>
 
@@ -1117,9 +1582,9 @@ Under California Civil Code Section 1950.5:<br><br>
                 <span class="text-xs px-2 py-0.5 rounded bg-amber-200 text-amber-900 font-bold">Target CASAS 225–230</span>
               </div>
               <ul class="list-disc list-inside text-slate-700 space-y-1 text-xs">
-                <li><strong>Focus:</strong> Natural American speech speed (1.0x). Dense multi-paragraph documents (utility time-of-use, apartment leases).</li>
+                <li><strong>Quizzes:</strong> Quizzes #9 through #12 (40 questions).</li>
                 <li><strong>Ventures 3 Units:</strong> Unit 8 (Daily Living & Consumer Bills), Unit 10 (Community & Government Services).</li>
-                <li><strong>Daily Routine:</strong> Review the <strong>📕 错题本 (Mistakes Tab)</strong> daily until all past mistakes score 100%.</li>
+                <li><strong>Focus:</strong> 1.0x natural American speaking rate, complex tables, and multi-speaker dialogues.</li>
               </ul>
             </div>
 
@@ -1130,9 +1595,8 @@ Under California Civil Code Section 1950.5:<br><br>
                 <span class="text-xs px-2 py-0.5 rounded bg-purple-200 text-purple-900 font-bold">Target CASAS 230+</span>
               </div>
               <ul class="list-disc list-inside text-slate-700 space-y-1 text-xs">
-                <li><strong>Focus:</strong> Mixed rapid-fire test simulation under timed conditions. Test stamina without hesitation.</li>
-                <li><strong>Exam Strategy:</strong> Scan questions and options <em>before</em> listening to the audio or reading the document.</li>
-                <li><strong>Final 2 Days:</strong> Light review of high-frequency words, get good sleep, enter exam room with full confidence!</li>
+                <li><strong>Mock Exams:</strong> 2 Full-length CASAS Mock Exams (25 questions each, 50 questions total).</li>
+                <li><strong>Routine:</strong> Timed 30-minute exam conditions. Clear all mistakes. Enter the exam room with full confidence!</li>
               </ul>
             </div>
           </div>
