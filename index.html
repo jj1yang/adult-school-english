@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESL Level 3 → Level 4 Practice Exam (Extended)</title>
+  <!-- Tailwind CSS: Fallback for both GitHub Pages and local/Antigravity previews -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    .audio-wave {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      height: 16px;
+    }
+    .audio-bar {
+      width: 3px;
+      height: 100%;
+      background-color: currentColor;
+      border-radius: 9999px;
+      animation: pulse 1s infinite ease-in-out;
+    }
+    .audio-bar:nth-child(2) { animation-delay: 0.2s; height: 70%; }
+    .audio-bar:nth-child(3) { animation-delay: 0.4s; height: 40%; }
+    @keyframes pulse {
+      0%, 100% { transform: scaleY(0.4); }
+      50% { transform: scaleY(1); }
+    }
+    .option-label:has(input:checked) {
+      border-color: #2563eb;
+      background-color: rgba(37, 99, 235, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased p-3 sm:p-6 md:p-8 min-h-screen">
+  <div class="max-w-3xl mx-auto space-y-6">
+
+    <!-- Top Navigation / Banner -->
+    <header class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 mb-2">
+            <span>🎯 Target: Santa Clara Adult School Level 4 Promotion (CASAS 221+)</span>
+          </div>
+          <h1 class="text-xl sm:text-2xl font-bold text-slate-900">ESL Level 3 → 4 Practice Exam (Extended)</h1>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">
+            10 Authentic Scenarios (5 Listening + 5 Reading) • Aligned with <strong class="text-slate-700">Ventures 3</strong> & CASAS Life & Work
+          </p>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-right">
+            <div class="text-[11px] font-medium text-slate-500 uppercase tracking-wider">Score / 分数</div>
+            <div id="scoreDisplay" class="text-xl font-bold text-blue-600">0 / 10</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls & Progress -->
+      <div class="mt-4 flex flex-wrap items-center justify-between gap-4 text-xs">
+        <!-- Audio Speed -->
+        <div class="flex items-center gap-2">
+          <span class="text-slate-500 font-medium">听力语速 (Audio Speed):</span>
+          <button id="speedNormal" onclick="setSpeed(1.0)" class="px-2.5 py-1 rounded-lg border font-medium bg-blue-50 text-blue-700 border-blue-300">1.0x 标准</button>
+          <button id="speedSlow" onclick="setSpeed(0.8)" class="px-2.5 py-1 rounded-lg border border-slate-200 font-medium text-slate-600 hover:bg-slate-100">0.8x 慢速</button>
+        </div>
+
+        <!-- Chinese Helper Toggle -->
+        <div class="flex items-center gap-2">
+          <label class="flex items-center gap-2 cursor-pointer select-none text-slate-700 font-medium">
+            <input type="checkbox" id="toggleCn" onchange="toggleChineseHints()" class="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+            <span>显示中文解析与生词 (Show Chinese Notes)</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="mt-4">
+        <div class="flex justify-between text-xs text-slate-500 mb-1">
+          <span id="progressText">Progress: 0 of 10 completed</span>
+          <span id="progressPercent">0%</span>
+        </div>
+        <div class="w-full bg-slate-100 rounded-full h-2">
+          <div id="progressBar" class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Section Navigation Tabs -->
+    <div class="flex border-b border-slate-200 gap-2">
+      <button onclick="switchTab('listening')" id="tabListening" class="px-5 py-2.5 text-sm font-semibold border-b-2 border-blue-600 text-blue-600 flex items-center gap-2 transition">
+        <span>🎧 Part 1: Listening (5 Extended Passages)</span>
+      </button>
+      <button onclick="switchTab('reading')" id="tabReading" class="px-5 py-2.5 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2 transition">
+        <span>📖 Part 2: Reading (5 Extended Real Documents)</span>
+      </button>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PART 1: LISTENING (QUESTIONS 1-5)         -->
+    <!-- ========================================== -->
+    <div id="listeningSection" class="space-y-6">
+
+      <!-- Q1: Healthcare Referral & Ultrasound Instructions -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4" id="q1-card">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">Q1 • Healthcare & Specialist Referral</span>
+            <h3 class="text-base font-semibold text-slate-900 mt-1">Listen to the medical imaging coordinator calling patient Susan Lee.</h3>
+          </div>
+          <span id="badge-q1" class="text-xs px-2.5 py-0.5 rounded-full font-medium hidden"></span>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <button onclick="playAudio('audio1')" id="btn-audio1" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm rounded-lg flex items-center gap-2 shadow-sm transition">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <span>Play Audio (播放完整录音)</span>
+            </button>
+            <div id="playing-indicator-audio1" class="hidden text-blue-600 items-center gap-2 text-xs font-medium">
+              <div class="audio-wave"><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div></div>
+              <span>Playing... (建议反复听2遍)</span>
+            </div>
+          </div>
+          <button onclick="toggleTranscript('trans1')" class="text-xs text-blue-600 underline hover:text-blue-800">
+            Show Audio Script (看听力原文)
+          </button>
+        </div>
+
+        <div id="trans1" class="hidden bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs leading-relaxed text-amber-900">
+          <strong>Audio Script (原文录音):</strong><br>
+          "Good morning, this is Brenda calling from Valley Medical Imaging for patient Susan Lee. Dr. Patel has referred you for an abdominal ultrasound examination scheduled for Wednesday, December 10th at 10:15 AM. Our imaging clinic is located in Building B on the second floor, Suite 210. Because this is an abdominal scan, you must fast—which means no food or drinks other than water—for at least six hours before your exam. In addition, please drink two full glasses of water exactly one hour prior to arriving, and do not empty your bladder so that the technician can capture clear images. Please remember to bring your photo ID and insurance card. If you need to cancel or reschedule, please notify our office at least 48 hours in advance at 408-555-0144. Thank you, and we look forward to seeing you."
+        </div>
+
+        <p class="font-medium text-sm text-slate-900">What is Susan instructed to do exactly one hour before her examination?</p>
+
+        <div class="space-y-2">
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q1" value="A" class="mr-3 text-blue-600">
+            <span>(A) Eat a light breakfast without dairy products</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q1" value="B" class="mr-3 text-blue-600">
+            <span>(B) Drink two glasses of water and not empty her bladder</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q1" value="C" class="mr-3 text-blue-600">
+            <span>(C) Check in at the first floor reception in Building A</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q1" value="D" class="mr-3 text-blue-600">
+            <span>(D) Call her insurance company to request pre-authorization</span>
+          </label>
+        </div>
+
+        <button onclick="checkQuestion('q1', 'B')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700 transition">
+          Check Answer (确认答案)
+        </button>
+
+        <div id="feedback-q1" class="hidden p-4 rounded-xl border text-sm space-y-2">
+          <div id="feedback-q1-title" class="font-bold"></div>
+          <div class="text-xs leading-relaxed text-slate-700">
+            <strong>Key Clue:</strong> <em>"In addition, please drink two full glasses of water exactly one hour prior to arriving, and do not empty your bladder..."</em>
+          </div>
+          <div class="cn-hint hidden text-xs bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1 text-slate-600">
+            <p><strong>【中文解析】：</strong>录音中提到检查前6小时禁食（fast for six hours），但在“到达前正好1小时（one hour prior to arriving）”，要求喝两整杯水且不要排尿（drink two full glasses of water and do not empty your bladder），以便B超显影。正确答案是 <strong>(B)</strong>。</p>
+            <p><strong>【CASAS 4级生词】：</strong><code>referred</code> (转诊), <code>ultrasound</code> (B超/超声波检查), <code>fast</code> (禁食/空腹), <code>bladder</code> (膀胱), <code>reschedule</code> (改期), <code>in advance</code> (提前)。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q2: Public Transportation & Bus Bridge Shuttle -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4" id="q2-card">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">Q2 • Public Transit & Disruption Notice</span>
+            <h3 class="text-base font-semibold text-slate-900 mt-1">Listen to the Santa Clara VTA light rail station emergency announcement.</h3>
+          </div>
+          <span id="badge-q2" class="text-xs px-2.5 py-0.5 rounded-full font-medium hidden"></span>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <button onclick="playAudio('audio2')" id="btn-audio2" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm rounded-lg flex items-center gap-2 shadow-sm transition">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <span>Play Audio (播放完整录音)</span>
+            </button>
+            <div id="playing-indicator-audio2" class="hidden text-blue-600 items-center gap-2 text-xs font-medium">
+              <div class="audio-wave"><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div></div>
+              <span>Playing... (建议反复听2遍)</span>
+            </div>
+          </div>
+          <button onclick="toggleTranscript('trans2')" class="text-xs text-blue-600 underline hover:text-blue-800">
+            Show Audio Script (看听力原文)
+          </button>
+        </div>
+
+        <div id="trans2" class="hidden bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs leading-relaxed text-amber-900">
+          <strong>Audio Script (原文录音):</strong><br>
+          "Attention all VTA light rail passengers traveling on the Mountain View to Winchester line: Due to urgent overhead power line repairs between Civic Center and Gish stations, all train service between these two stations is temporarily suspended until further notice. A free express bus shuttle, marked 'Bus Bridge', is operating every ten minutes to transport passengers directly between Civic Center and Gish. If you are continuing southbound toward downtown San Jose or Winchester, please exit through the north turnstiles and board the shuttle bus at Bay 4 on First Street. Normal train connections will resume at Gish station. We sincerely apologize for this inconvenience and thank you for your patience."
+        </div>
+
+        <p class="font-medium text-sm text-slate-900">How should passengers continue their journey between Civic Center and Gish stations?</p>
+
+        <div class="space-y-2">
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q2" value="A" class="mr-3 text-blue-600">
+            <span>(A) Purchase a special rapid transit ticket at the ticket machine</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q2" value="B" class="mr-3 text-blue-600">
+            <span>(B) Wait on Platform 2 for the repair train to arrive</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q2" value="C" class="mr-3 text-blue-600">
+            <span>(C) Board the free 'Bus Bridge' shuttle bus at Bay 4</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q2" value="D" class="mr-3 text-blue-600">
+            <span>(D) Walk three miles south along First Street</span>
+          </label>
+        </div>
+
+        <button onclick="checkQuestion('q2', 'C')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700 transition">
+          Check Answer (确认答案)
+        </button>
+
+        <div id="feedback-q2" class="hidden p-4 rounded-xl border text-sm space-y-2">
+          <div id="feedback-q2-title" class="font-bold"></div>
+          <div class="text-xs leading-relaxed text-slate-700">
+            <strong>Key Clue:</strong> <em>"A free express bus shuttle, marked 'Bus Bridge', is operating every ten minutes... board the shuttle bus at Bay 4 on First Street."</em>
+          </div>
+          <div class="cn-hint hidden text-xs bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1 text-slate-600">
+            <p><strong>【中文解析】：</strong>广播说明电车在 Civic Center 和 Gish 站之间停运修电缆，乘客需前往 First 街的 4 号站台乘坐标有“Bus Bridge”的免费接驳大巴（free express bus shuttle）。正确答案是 <strong>(C)</strong>。</p>
+            <p><strong>【CASAS 4级生词】：</strong><code>suspended</code> (暂停/停运), <code>shuttle bus / bus bridge</code> (接驳巴士), <code>turnstiles</code> (旋转闸机口), <code>resume</code> (恢复正常)。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q3: Supermarket Membership & App Promotion -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4" id="q3-card">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">Q3 • Consumer & Digital Rewards</span>
+            <h3 class="text-base font-semibold text-slate-900 mt-1">Listen to the supermarket announcement about special discounts and new digital cards.</h3>
+          </div>
+          <span id="badge-q3" class="text-xs px-2.5 py-0.5 rounded-full font-medium hidden"></span>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <button onclick="playAudio('audio3')" id="btn-audio3" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm rounded-lg flex items-center gap-2 shadow-sm transition">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <span>Play Audio (播放完整录音)</span>
+            </button>
+            <div id="playing-indicator-audio3" class="hidden text-blue-600 items-center gap-2 text-xs font-medium">
+              <div class="audio-wave"><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div></div>
+              <span>Playing... (建议反复听2遍)</span>
+            </div>
+          </div>
+          <button onclick="toggleTranscript('trans3')" class="text-xs text-blue-600 underline hover:text-blue-800">
+            Show Audio Script (看听力原文)
+          </button>
+        </div>
+
+        <div id="trans3" class="hidden bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs leading-relaxed text-amber-900">
+          <strong>Audio Script (原文录音):</strong><br>
+          "Attention shoppers, welcome to Pacific Supermarket. Today only in our bakery department, all freshly baked whole wheat and sourdough bread is 30% off while supplies last. In addition, we are excited to introduce our brand new Digital Rewards Program starting this week. Existing plastic membership cards will remain valid until December 31st; however, to receive personalized weekly digital coupons, member-only discounts, and earn double reward points on fresh seafood, customers are strongly encouraged to download our Pacific Market mobile app. Customer service representatives are available near aisle 1 until 7:00 PM today to assist you with downloading the app and linking your phone number. Thank you for shopping with us, and have a wonderful day."
+        </div>
+
+        <p class="font-medium text-sm text-slate-900">Why are shoppers encouraged to download the new mobile app?</p>
+
+        <div class="space-y-2">
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q3" value="A" class="mr-3 text-blue-600">
+            <span>(A) Because plastic membership cards will no longer work after today</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q3" value="B" class="mr-3 text-blue-600">
+            <span>(B) To receive digital coupons, member discounts, and double seafood points</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q3" value="C" class="mr-3 text-blue-600">
+            <span>(C) To apply for a part-time job as a customer service cashier</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q3" value="D" class="mr-3 text-blue-600">
+            <span>(D) To pay for groceries online and pick them up tomorrow morning</span>
+          </label>
+        </div>
+
+        <button onclick="checkQuestion('q3', 'B')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700 transition">
+          Check Answer (确认答案)
+        </button>
+
+        <div id="feedback-q3" class="hidden p-4 rounded-xl border text-sm space-y-2">
+          <div id="feedback-q3-title" class="font-bold"></div>
+          <div class="text-xs leading-relaxed text-slate-700">
+            <strong>Key Clue:</strong> <em>"...however, to receive personalized weekly digital coupons, member-only discounts, and earn double reward points on fresh seafood, customers are strongly encouraged to download our Pacific Market mobile app."</em>
+          </div>
+          <div class="cn-hint hidden text-xs bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1 text-slate-600">
+            <p><strong>【中文解析】：</strong>实体塑料卡到12月31日前依然有效（选项A是干扰项）。下载App的原因是“获取专属数字优惠券、会员折扣以及海鲜双倍积分”。正确选项为 <strong>(B)</strong>。</p>
+            <p><strong>【CASAS 4级生词】：</strong><code>personalized</code> (个性化的), <code>coupons</code> (优惠券), <code>valid</code> (有效的), <code>while supplies last</code> (售完即止), <code>aisle</code> (超市通道/走道)。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q4: Workplace Overtime & Holiday Shifts -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4" id="q4-card">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">Q4 • Workplace Communication & Shifts</span>
+            <h3 class="text-base font-semibold text-slate-900 mt-1">Listen to Marcus, the warehouse shift supervisor, leaving a detailed voicemail for Helen.</h3>
+          </div>
+          <span id="badge-q4" class="text-xs px-2.5 py-0.5 rounded-full font-medium hidden"></span>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <button onclick="playAudio('audio4')" id="btn-audio4" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm rounded-lg flex items-center gap-2 shadow-sm transition">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <span>Play Audio (播放完整录音)</span>
+            </button>
+            <div id="playing-indicator-audio4" class="hidden text-blue-600 items-center gap-2 text-xs font-medium">
+              <div class="audio-wave"><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div></div>
+              <span>Playing... (建议反复听2遍)</span>
+            </div>
+          </div>
+          <button onclick="toggleTranscript('trans4')" class="text-xs text-blue-600 underline hover:text-blue-800">
+            Show Audio Script (看听力原文)
+          </button>
+        </div>
+
+        <div id="trans4" class="hidden bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs leading-relaxed text-amber-900">
+          <strong>Audio Script (原文录音):</strong><br>
+          "Hello Helen, this is Marcus, your shift supervisor at the logistics distribution center. I'm calling regarding our staffing schedule for next week leading up to the holiday rush. Management is opening voluntary overtime shifts starting this coming Monday through Friday. If you are interested in extra hours, you can choose either the early morning shift from 6:00 AM to 2:30 PM, or the afternoon shift from 3:00 PM to 11:30 PM. Both shifts qualify for time-and-a-half overtime pay, plus an additional two-dollar per hour weekend differential if you volunteer to work on Saturday as well. Shift sign-up sheets have been posted on the bulletin board right next to the breakroom timeclock. Please put your name down before Friday at 12:00 noon so that we can finalize the schedule. Give me a call back if you have any questions."
+        </div>
+
+        <p class="font-medium text-sm text-slate-900">What must Helen do before Friday noon if she wants to work overtime shifts?</p>
+
+        <div class="space-y-2">
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q4" value="A" class="mr-3 text-blue-600">
+            <span>(A) Email her doctor's medical permission note to Marcus</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q4" value="B" class="mr-3 text-blue-600">
+            <span>(B) Sign her name on the shift sheet by the breakroom timeclock</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q4" value="C" class="mr-3 text-blue-600">
+            <span>(C) Attend a mandatory safety meeting on Saturday morning</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q4" value="D" class="mr-3 text-blue-600">
+            <span>(D) Purchase new safety work boots before Monday</span>
+          </label>
+        </div>
+
+        <button onclick="checkQuestion('q4', 'B')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700 transition">
+          Check Answer (确认答案)
+        </button>
+
+        <div id="feedback-q4" class="hidden p-4 rounded-xl border text-sm space-y-2">
+          <div id="feedback-q4-title" class="font-bold"></div>
+          <div class="text-xs leading-relaxed text-slate-700">
+            <strong>Key Clue:</strong> <em>"Shift sign-up sheets have been posted on the bulletin board right next to the breakroom timeclock. Please put your name down before Friday at 12:00 noon..."</em>
+          </div>
+          <div class="cn-hint hidden text-xs bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1 text-slate-600">
+            <p><strong>【中文解析】：</strong>主管在留言中明确要求：有意愿加班的员工，必须在“周五中午12点前，在茶水间打卡机旁的公告栏报名表上签名（put your name down on the bulletin board next to the timeclock）”。因此正确答案是 <strong>(B)</strong>。</p>
+            <p><strong>【CASAS 4级生词】：</strong><code>voluntary overtime</code> (自愿加班), <code>qualify for</code> (符合...资格), <code>time-and-a-half</code> (1.5倍加班工资), <code>differential</code> (班次补贴), <code>timeclock</code> (打卡机)。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q5: Adult School CASAS Testing & Spring Registration -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4" id="q5-card">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">Q5 • School Announcements & Level Testing</span>
+            <h3 class="text-base font-semibold text-slate-900 mt-1">Listen to the Santa Clara Adult Education office message about semester testing and registration.</h3>
+          </div>
+          <span id="badge-q5" class="text-xs px-2.5 py-0.5 rounded-full font-medium hidden"></span>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <button onclick="playAudio('audio5')" id="btn-audio5" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm rounded-lg flex items-center gap-2 shadow-sm transition">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <span>Play Audio (播放完整录音)</span>
+            </button>
+            <div id="playing-indicator-audio5" class="hidden text-blue-600 items-center gap-2 text-xs font-medium">
+              <div class="audio-wave"><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div></div>
+              <span>Playing... (建议反复听2遍)</span>
+            </div>
+          </div>
+          <button onclick="toggleTranscript('trans5')" class="text-xs text-blue-600 underline hover:text-blue-800">
+            Show Audio Script (看听力原文)
+          </button>
+        </div>
+
+        <div id="trans5" class="hidden bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs leading-relaxed text-amber-900">
+          <strong>Audio Script (原文录音):</strong><br>
+          "Good evening, Santa Clara Adult Education students. This is an important announcement regarding our upcoming CASAS end-of-semester progress testing and Spring semester priority registration. Current fall classes will officially end on Friday, December 18th. All registered ESL students are required to take their CASAS listening and reading evaluations between December 1st and December 8th during their regularly scheduled class time. Your test scores will determine your course placement for the spring term, which begins on Monday, January 12th. If an emergency prevents you from attending class on your scheduled test day, make-up testing sessions will be conducted in the Computer Lab in Building C on Saturday, December 13th from 9:00 AM to 12:00 noon. Please remember to bring your student photo ID card and arrive 15 minutes before testing begins. Thank you for your dedication."
+        </div>
+
+        <p class="font-medium text-sm text-slate-900">When and where can students take a make-up exam if they miss their regular class test?</p>
+
+        <div class="space-y-2">
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q5" value="A" class="mr-3 text-blue-600">
+            <span>(A) Online at home any evening before December 18th</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q5" value="B" class="mr-3 text-blue-600">
+            <span>(B) On Saturday, December 13th in Building C Computer Lab</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q5" value="C" class="mr-3 text-blue-600">
+            <span>(C) On Monday, January 12th in their regular classroom</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q5" value="D" class="mr-3 text-blue-600">
+            <span>(D) At the district administration office on Friday morning</span>
+          </label>
+        </div>
+
+        <button onclick="checkQuestion('q5', 'B')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700 transition">
+          Check Answer (确认答案)
+        </button>
+
+        <div id="feedback-q5" class="hidden p-4 rounded-xl border text-sm space-y-2">
+          <div id="feedback-q5-title" class="font-bold"></div>
+          <div class="text-xs leading-relaxed text-slate-700">
+            <strong>Key Clue:</strong> <em>"...make-up testing sessions will be conducted in the Computer Lab in Building C on Saturday, December 13th from 9:00 AM to 12:00 noon."</em>
+          </div>
+          <div class="cn-hint hidden text-xs bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1 text-slate-600">
+            <p><strong>【中文解析】：</strong>成人学校通知指出，常规随堂测试在12月1日至8日之间进行。若因紧急情况缺席，补考安排在“12月13日星期六上午9:00到12:00，在C号楼电脑机房举行”。正确答案是 <strong>(B)</strong>。</p>
+            <p><strong>【CASAS 4级生词】：</strong><code>progress testing</code> (阶段进展测试), <code>course placement</code> (分班分级判定), <code>make-up testing</code> (补考), <code>conducted</code> (举行/主持)。</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- PART 2: READING (QUESTIONS 6-10)          -->
+    <!-- ========================================== -->
+    <div id="readingSection" class="space-y-6 hidden">
+
+      <!-- Q6: Clinic Preparation & Late Cancellation Policy -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4" id="q6-card">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-800">Q6 • Clinic Guidelines & Cancellation Policy</span>
+            <h3 class="text-base font-semibold text-slate-900 mt-1">Read the patient appointment policy and preparation guidelines from the community clinic.</h3>
+          </div>
+          <span id="badge-q6" class="text-xs px-2.5 py-0.5 rounded-full font-medium hidden"></span>
+        </div>
+
+        <!-- Comprehensive Health Clinic Notice -->
+        <div class="border-2 border-slate-300 rounded-xl p-4 sm:p-5 bg-white space-y-3 text-xs text-slate-800">
+          <div class="border-b border-slate-200 pb-2.5 flex flex-col sm:flex-row justify-between sm:items-center gap-1">
+            <div class="font-bold text-sm text-blue-900">SANTA CLARA COMMUNITY HEALTH CENTER</div>
+            <div class="text-slate-500 font-medium">PATIENT SERVICE POLICY #402</div>
+          </div>
+
+          <div class="space-y-2">
+            <p class="font-semibold text-slate-900">APPOINTMENT CHECK-IN & DOCUMENTATION:</p>
+            <p class="leading-relaxed text-slate-700">All registered patients must arrive 15 minutes prior to their scheduled consultation time to complete vital signs checking and update insurance eligibility. Please present a government-issued photo ID, your active insurance card, and an updated list of all prescription medications and dietary supplements.</p>
+
+            <div class="p-3 bg-amber-50 border border-amber-200 rounded-lg space-y-1 text-slate-800">
+              <p class="font-bold text-amber-900">CANCELLATION & RESCHEDULING REGULATIONS:</p>
+              <ul class="list-disc list-inside space-y-1 text-slate-700">
+                <li>If you are unable to attend your scheduled appointment, you must notify the Patient Coordination Desk at least <strong>24 business hours in advance</strong> by calling (408) 555-3200.</li>
+                <li>Cancellations made with less than 24 hours of notice, as well as missed appointments ("no-shows"), will be assessed a <strong>$25.00 late cancellation fee</strong> that is not covered by insurance.</li>
+                <li>Patients who arrive more than 15 minutes past their appointment time may be asked to reschedule or wait for the next open walk-in slot.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <p class="font-medium text-sm text-slate-900">According to the policy, what must a patient do to avoid paying a $25 cancellation fee?</p>
+
+        <div class="space-y-2">
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q6" value="A" class="mr-3 text-blue-600">
+            <span>(A) Show a list of dietary supplements upon arrival at the clinic</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q6" value="B" class="mr-3 text-blue-600">
+            <span>(B) Call to notify the clinic at least 24 business hours in advance</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q6" value="C" class="mr-3 text-blue-600">
+            <span>(C) Request that their private insurance company pay the fine</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q6" value="D" class="mr-3 text-blue-600">
+            <span>(D) Arrive 30 minutes after their scheduled appointment time</span>
+          </label>
+        </div>
+
+        <button onclick="checkQuestion('q6', 'B')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700 transition">
+          Check Answer (确认答案)
+        </button>
+
+        <div id="feedback-q6" class="hidden p-4 rounded-xl border text-sm space-y-2">
+          <div id="feedback-q6-title" class="font-bold"></div>
+          <div class="text-xs leading-relaxed text-slate-700">
+            <strong>Key Clue:</strong> <em>"...you must notify the Patient Coordination Desk at least 24 business hours in advance... Cancellations made with less than 24 hours of notice... will be assessed a $25.00 late cancellation fee..."</em>
+          </div>
+          <div class="cn-hint hidden text-xs bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1 text-slate-600">
+            <p><strong>【中文解析】：</strong>诊所规定明确指出：若需取消或改期，必须提前至少24个工作小时（at least 24 business hours in advance）致电通知，否则将收取25美元的违约罚款且保险不予报销。正确答案是 <strong>(B)</strong>。</p>
+            <p><strong>【CASAS 4级生词】：</strong><code>consultation</code> (问诊/就诊), <code>vital signs</code> (生命体征：血压、心率等), <code>assessed a fee</code> (被收取费用), <code>no-shows</code> (未提前通知且未出席者)。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q7: Apartment Maintenance & Water Service Restoration -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4" id="q7-card">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-800">Q7 • Housing & Facility Maintenance Notice</span>
+            <h3 class="text-base font-semibold text-slate-900 mt-1">Read the building maintenance notice posted on residential mailboxes.</h3>
+          </div>
+          <span id="badge-q7" class="text-xs px-2.5 py-0.5 rounded-full font-medium hidden"></span>
+        </div>
+
+        <!-- Housing Flyer Mockup -->
+        <div class="border border-slate-300 rounded-xl p-4 sm:p-5 bg-white shadow-inner space-y-3 text-xs text-slate-800">
+          <div class="border-b border-slate-200 pb-2 text-center">
+            <h4 class="font-bold text-sm tracking-wide text-slate-900">OAKRIDGE APARTMENT HOMES • PROPERTY MANAGEMENT</h4>
+            <p class="text-[11px] text-slate-500">Date Posted: Wednesday, November 18, 2026</p>
+          </div>
+
+          <div class="space-y-2 leading-relaxed">
+            <p><strong>TO RESIDENTS OF BUILDINGS 300, 400, AND 500:</strong></p>
+            <p>Please be advised that the municipal water authority will temporarily shut off all domestic cold and hot water service to your buildings on <strong>Thursday, November 20th, from 9:00 AM to 3:30 PM</strong> to facilitate mandatory valve replacements and pipe repairs.</p>
+
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg space-y-1">
+              <p class="font-semibold text-slate-900">IMPORTANT RESIDENT PRECAUTIONS:</p>
+              <ul class="list-disc list-inside space-y-1 text-slate-700">
+                <li>Keep all sink faucets, bathtubs, and shower handles completely shut off during the maintenance period to avoid flooding when pressure is restored.</li>
+                <li>Do not run washing machines or dishwashers between 9:00 AM and 3:30 PM.</li>
+                <li><strong>Water Quality After Restoration:</strong> When water is turned back on at 3:30 PM, the water line may spit air or run slightly discolored. <strong>Please turn on your cold water tap for 1 to 2 minutes until the water runs completely clear</strong> before using it for cooking or drinking.</li>
+              </ul>
+            </div>
+            <p class="text-slate-500 italic text-[11px]">Emergency maintenance line (available 24/7): (408) 555-4921 • Management Office Suite 100.</p>
+          </div>
+        </div>
+
+        <p class="font-medium text-sm text-slate-900">What should residents do if their tap water looks discolored when water service returns at 3:30 PM?</p>
+
+        <div class="space-y-2">
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q7" value="A" class="mr-3 text-blue-600">
+            <span>(A) Immediately purchase and install a new kitchen water filter</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q7" value="B" class="mr-3 text-blue-600">
+            <span>(B) Run the cold water tap for 1 to 2 minutes until it flows clear</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q7" value="C" class="mr-3 text-blue-600">
+            <span>(C) Call the city emergency 911 dispatch operator</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q7" value="D" class="mr-3 text-blue-600">
+            <span>(D) Avoid using all household tap water for at least one week</span>
+          </label>
+        </div>
+
+        <button onclick="checkQuestion('q7', 'B')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700 transition">
+          Check Answer (确认答案)
+        </button>
+
+        <div id="feedback-q7" class="hidden p-4 rounded-xl border text-sm space-y-2">
+          <div id="feedback-q7-title" class="font-bold"></div>
+          <div class="text-xs leading-relaxed text-slate-700">
+            <strong>Key Clue:</strong> <em>"When water is turned back on at 3:30 PM... Please turn on your cold water tap for 1 to 2 minutes until the water runs completely clear..."</em>
+          </div>
+          <div class="cn-hint hidden text-xs bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1 text-slate-600">
+            <p><strong>【中文解析】：</strong>公告第三条注意事项专门说明：恢复供水后可能会有少量浑浊或气泡，此时只需“打开冷水龙头放水1到2分钟，直到水质变清澈（turn on cold water tap for 1 to 2 minutes until clear）”。因此正确答案是 <strong>(B)</strong>。</p>
+            <p><strong>【CASAS 4级生词】：</strong><code>municipal water authority</code> (市政自来水管理局), <code>precautions</code> (预防措施/注意事项), <code>discolored</code> (变色的/浑浊的), <code>restoration</code> (恢复正常)。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q8: Employment Vacancy & Benefits Eligibility -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4" id="q8-card">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-800">Q8 • Employment & Benefits Package</span>
+            <h3 class="text-base font-semibold text-slate-900 mt-1">Read the job vacancy announcement for a medical clinic in Santa Clara County.</h3>
+          </div>
+          <span id="badge-q8" class="text-xs px-2.5 py-0.5 rounded-full font-medium hidden"></span>
+        </div>
+
+        <!-- Full Job Listing Mockup -->
+        <div class="border border-slate-300 rounded-xl p-4 sm:p-5 bg-slate-50 space-y-3 text-xs text-slate-800">
+          <div class="border-b border-slate-200 pb-2">
+            <h4 class="font-bold text-sm text-blue-900">SANTA CLARA MEDICAL PLAZA • JOB VACANCY</h4>
+            <p class="text-slate-600 font-medium">Position: Medical Office Receptionist / Patient Intake Clerk (Full-Time, 40 hrs/week)</p>
+            <p class="text-emerald-700 font-semibold">Compensation: $23.50 – $26.00 / hour depending on experience</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-700">
+            <div>
+              <p class="font-semibold text-slate-900 mb-1">Key Responsibilities & Shift:</p>
+              <ul class="list-disc list-inside space-y-1">
+                <li>Schedule patient appointments and manage check-ins</li>
+                <li>Verify medical insurance copayments and eligibility</li>
+                <li>Work shift: Monday through Friday, 8:00 AM – 4:30 PM</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-900 mb-1">Required Qualifications:</p>
+              <ul class="list-disc list-inside space-y-1">
+                <li>High school diploma or GED equivalent</li>
+                <li>Minimum 1 year of customer service or front-desk experience</li>
+                <li><strong>Bilingual proficiency in English & Mandarin or Spanish preferred</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-3 bg-white border border-slate-200 rounded-lg space-y-1">
+            <p class="font-bold text-slate-900">EMPLOYEE BENEFITS PACKAGE:</p>
+            <p class="text-slate-700 leading-relaxed">
+              Comprehensive medical, dental, and vision health coverage begins <strong>following the completion of 60 continuous days of full-time employment</strong>. Employees also receive 10 paid vacation days, 6 paid sick leave days per year, and a 401(k) retirement savings plan with a 4% company match after 6 months.
+            </p>
+          </div>
+          <p class="text-slate-500 text-[11px]">To apply: Submit your resume and cover letter to careers@santaclaramedplaza.org by December 15th.</p>
+        </div>
+
+        <p class="font-medium text-sm text-slate-900">According to the job listing, when do health benefits become effective for a new employee?</p>
+
+        <div class="space-y-2">
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q8" value="A" class="mr-3 text-blue-600">
+            <span>(A) On the employee's very first day of training</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q8" value="B" class="mr-3 text-blue-600">
+            <span>(B) After completing 60 continuous days of full-time employment</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q8" value="C" class="mr-3 text-blue-600">
+            <span>(C) Only after working for the clinic for a full calendar year</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q8" value="D" class="mr-3 text-blue-600">
+            <span>(D) After passing an advanced medical terminology exam</span>
+          </label>
+        </div>
+
+        <button onclick="checkQuestion('q8', 'B')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700 transition">
+          Check Answer (确认答案)
+        </button>
+
+        <div id="feedback-q8" class="hidden p-4 rounded-xl border text-sm space-y-2">
+          <div id="feedback-q8-title" class="font-bold"></div>
+          <div class="text-xs leading-relaxed text-slate-700">
+            <strong>Key Clue:</strong> <em>"Comprehensive medical, dental, and vision health coverage begins following the completion of 60 continuous days of full-time employment."</em>
+          </div>
+          <div class="cn-hint hidden text-xs bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1 text-slate-600">
+            <p><strong>【中文解析】：</strong>福利说明栏写得非常清楚：医疗、牙科和眼科保险在“连续全职工作满60天后开始生效（following the completion of 60 continuous days）”。退休金匹配则需6个月。因此正确答案是 <strong>(B)</strong>。</p>
+            <p><strong>【CASAS 4级生词】：</strong><code>compensation</code> (薪酬/时薪), <code>intake clerk</code> (接诊登记员), <code>continuous employment</code> (连续在职工作), <code>copayments</code> (自付挂号费), <code>match</code> (公司等额配比缴纳)。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q9: Workplace Safety & Hazardous Chemical Protocol -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4" id="q9-card">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-800">Q9 • Workplace Safety & Chemical Protocol</span>
+            <h3 class="text-base font-semibold text-slate-900 mt-1">Read the safety and chemical spill procedures posted in an electronics manufacturing facility.</h3>
+          </div>
+          <span id="badge-q9" class="text-xs px-2.5 py-0.5 rounded-full font-medium hidden"></span>
+        </div>
+
+        <!-- Safety Notice Board -->
+        <div class="border-2 border-red-200 rounded-xl p-4 sm:p-5 bg-red-50/40 space-y-3 text-xs text-slate-800">
+          <div class="flex items-center gap-2 border-b border-red-200 pb-2 text-red-800 font-bold text-sm">
+            <span>🚨 SILICON VALLEY ELECTRONICS • OCCUPATIONAL HEALTH & SAFETY</span>
+          </div>
+
+          <div class="space-y-2 text-slate-700">
+            <p class="font-bold text-slate-900">SECTION 1: FIRE & EVACUATION PROCEDURES</p>
+            <p>In the event of smoke or fire, activate the nearest wall-mounted fire alarm box. <strong>Do NOT attempt to use passenger or freight elevators under any circumstance.</strong> Proceed immediately down the designated emergency stairwells and gather at <strong>Assembly Point C in North Parking Lot</strong> for departmental headcounts.</p>
+
+            <p class="font-bold text-slate-900 pt-1">SECTION 2: CHEMICAL SOLVENT SPILL PROTOCOL</p>
+            <div class="p-3 bg-white border border-red-200 rounded-lg space-y-1">
+              <p>Industrial cleaning solvents and solder fluxes contain hazardous vapors. If an accidental spill occurs in the assembly hall:</p>
+              <ul class="list-disc list-inside space-y-1">
+                <li>Immediately alert coworkers in the immediate area to stand at least 20 feet back.</li>
+                <li><strong>Do NOT attempt to clean up unknown chemical liquids using standard paper towels or mops.</strong></li>
+                <li>Contact the Environmental Safety Coordinator in <strong>Room 108 (Ext. 410)</strong> so trained personnel equipped with chemical respirators and spill kits can safely neutralize the substance.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <p class="font-medium text-sm text-slate-900">What is an employee instructed to do if an unknown chemical spill occurs in the assembly hall?</p>
+
+        <div class="space-y-2">
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q9" value="A" class="mr-3 text-blue-600">
+            <span>(A) Quickly mop up the spill using warm water and paper towels</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q9" value="B" class="mr-3 text-blue-600">
+            <span>(B) Notify coworkers, stay back, and contact Room 108 for trained cleanup</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q9" value="C" class="mr-3 text-blue-600">
+            <span>(C) Open all windows and leave the factory building for the day</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q9" value="D" class="mr-3 text-blue-600">
+            <span>(D) Pour sand directly over the chemical liquid without gloves</span>
+          </label>
+        </div>
+
+        <button onclick="checkQuestion('q9', 'B')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700 transition">
+          Check Answer (确认答案)
+        </button>
+
+        <div id="feedback-q9" class="hidden p-4 rounded-xl border text-sm space-y-2">
+          <div id="feedback-q9-title" class="font-bold"></div>
+          <div class="text-xs leading-relaxed text-slate-700">
+            <strong>Key Clue:</strong> <em>"Do NOT attempt to clean up unknown chemical liquids... Contact the Environmental Safety Coordinator in Room 108... so trained personnel equipped with chemical respirators... can safely neutralize the substance."</em>
+          </div>
+          <div class="cn-hint hidden text-xs bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1 text-slate-600">
+            <p><strong>【中文解析】：</strong>安全细则明确严禁普通员工用拖把或纸巾清理不明化学溶剂，而是应通知周围同事退后20英尺，并立刻联系108室环保安全协调员派专业防护人员处理。正确选项是 <strong>(B)</strong>。</p>
+            <p><strong>【CASAS 4级生词】：</strong><code>solvent / flux</code> (溶剂/助焊剂), <code>hazardous vapors</code> (有害挥发气体), <code>neutralize</code> (中和/处理化学物), <code>respirators</code> (防毒防尘面具)。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q10: Time-of-Use Electricity Bill & Incentive Program -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4" id="q10-card">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-800">Q10 • Consumer Utility Bill & Rates</span>
+            <h3 class="text-base font-semibold text-slate-900 mt-1">Read the residential electric utility bill notice explaining Time-of-Use rate periods.</h3>
+          </div>
+          <span id="badge-q10" class="text-xs px-2.5 py-0.5 rounded-full font-medium hidden"></span>
+        </div>
+
+        <!-- Utility Bill Mockup -->
+        <div class="border border-slate-300 rounded-xl p-4 sm:p-5 bg-white space-y-3 text-xs text-slate-800">
+          <div class="flex justify-between items-center border-b border-slate-200 pb-2">
+            <div>
+              <span class="font-bold text-sm text-emerald-700">CALIFORNIA CLEAN POWER • RESIDENTIAL STATEMENT</span>
+              <p class="text-slate-500 text-[11px]">Billing Period: Oct 01, 2026 – Oct 31, 2026 • Account # 839-2041-00</p>
+            </div>
+            <div class="text-right">
+              <span class="text-slate-500">Total Due:</span>
+              <p class="text-base font-bold text-slate-900">$134.80</p>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <p class="font-semibold text-slate-900">UNDERSTANDING YOUR TIME-OF-USE (TOU) RATES:</p>
+            <p class="text-slate-700 leading-relaxed">
+              Under California energy conservation standards, your electricity price varies depending on the time of day. Shift your energy usage to lower your monthly electric bill:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <div class="p-3 bg-rose-50 border border-rose-200 rounded-lg">
+                <p class="font-bold text-rose-800">🔴 PEAK HOURS: 4:00 PM – 9:00 PM</p>
+                <p class="text-slate-600 mt-0.5">Rate: <strong>$0.48 per kWh</strong> (Highest demand & most expensive)</p>
+                <p class="text-[11px] text-slate-500 mt-1">Avoid running large appliances (dishwashers, ovens, EV chargers) during this window.</p>
+              </div>
+              <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg">
+                <p class="font-bold text-emerald-800">🟢 OFF-PEAK: Before 4:00 PM & After 9:00 PM</p>
+                <p class="text-slate-600 mt-0.5">Rate: <strong>$0.24 per kWh</strong> (50% cheaper)</p>
+                <p class="text-[11px] text-slate-500 mt-1">Best time for laundry, charging electric vehicles, and major chores.</p>
+              </div>
+            </div>
+
+            <div class="p-2.5 bg-blue-50 border border-blue-200 rounded-lg text-blue-900">
+              <strong>BILL CREDIT REMINDER:</strong> Enroll in Auto-Pay Paperless e-Billing by your payment due date (November 25th) and receive a one-time <strong>$15 bill credit</strong>.
+            </div>
+          </div>
+        </div>
+
+        <p class="font-medium text-sm text-slate-900">According to the rate explanation, during which time of day is electricity the most expensive to use?</p>
+
+        <div class="space-y-2">
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q10" value="A" class="mr-3 text-blue-600">
+            <span>(A) Early morning between 6:00 AM and 10:00 AM</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q10" value="B" class="mr-3 text-blue-600">
+            <span>(B) Daily peak hours between 4:00 PM and 9:00 PM</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q10" value="C" class="mr-3 text-blue-600">
+            <span>(C) Late night hours between 11:00 PM and 5:00 AM</span>
+          </label>
+          <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
+            <input type="radio" name="q10" value="D" class="mr-3 text-blue-600">
+            <span>(D) All day Sunday and federal holidays</span>
+          </label>
+        </div>
+
+        <button onclick="checkQuestion('q10', 'B')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700 transition">
+          Check Answer (确认答案)
+        </button>
+
+        <div id="feedback-q10" class="hidden p-4 rounded-xl border text-sm space-y-2">
+          <div id="feedback-q10-title" class="font-bold"></div>
+          <div class="text-xs leading-relaxed text-slate-700">
+            <strong>Key Clue:</strong> <em>"PEAK HOURS: 4:00 PM – 9:00 PM... Rate: $0.48 per kWh (Highest demand & most expensive)"</em>
+          </div>
+          <div class="cn-hint hidden text-xs bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1 text-slate-600">
+            <p><strong>【中文解析】：</strong>加利福尼亚电力账单分时电价（Time-of-Use）图表显示：下午4点至晚上9点为用电高峰期（Peak Hours），费率为每度电0.48美元，价格最贵。正确选项是 <strong>(B)</strong>。</p>
+            <p><strong>【CASAS 4级生词】：</strong><code>Time-of-Use (TOU)</code> (分时计费电价), <code>peak / off-peak</code> (用电高峰期/低谷期), <code>conservation</code> (节能/节约), <code>appliances</code> (大型家用电器)。</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Final Result / Level 4 Assessment -->
+    <div id="resultsCard" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+      <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+        <span>🏆 Level 4 Readiness Assessment (升4级成绩评估)</span>
+      </h3>
+      <div id="evaluationText" class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700 leading-relaxed">
+        Complete all 10 questions to see your CASAS Level 4 readiness evaluation.
+      </div>
+      <div class="flex justify-between items-center pt-2">
+        <button onclick="resetQuiz()" class="px-4 py-2 border border-slate-300 text-slate-700 hover:bg-slate-100 rounded-lg text-xs font-semibold transition">
+          ↺ Reset & Retake Quiz (重新测试)
+        </button>
+        <span class="text-xs text-slate-400">California Adult School CASAS Level C Prep</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Audio Scripts & Speech Synthesis
+    const audioScripts = {
+      audio1: "Good morning, this is Brenda calling from Valley Medical Imaging for patient Susan Lee. Dr. Patel has referred you for an abdominal ultrasound examination scheduled for Wednesday, December 10th at 10:15 AM. Our imaging clinic is located in Building B on the second floor, Suite 210. Because this is an abdominal scan, you must fast—which means no food or drinks other than water—for at least six hours before your exam. In addition, please drink two full glasses of water exactly one hour prior to arriving, and do not empty your bladder so that the technician can capture clear images. Please remember to bring your photo ID and insurance card. If you need to cancel or reschedule, please notify our office at least 48 hours in advance at 408-555-0144. Thank you, and we look forward to seeing you.",
+      audio2: "Attention all VTA light rail passengers traveling on the Mountain View to Winchester line: Due to urgent overhead power line repairs between Civic Center and Gish stations, all train service between these two stations is temporarily suspended until further notice. A free express bus shuttle, marked 'Bus Bridge', is operating every ten minutes to transport passengers directly between Civic Center and Gish. If you are continuing southbound toward downtown San Jose or Winchester, please exit through the north turnstiles and board the shuttle bus at Bay 4 on First Street. Normal train connections will resume at Gish station. We sincerely apologize for this inconvenience and thank you for your patience.",
+      audio3: "Attention shoppers, welcome to Pacific Supermarket. Today only in our bakery department, all freshly baked whole wheat and sourdough bread is 30% off while supplies last. In addition, we are excited to introduce our brand new Digital Rewards Program starting this week. Existing plastic membership cards will remain valid until December 31st; however, to receive personalized weekly digital coupons, member-only discounts, and earn double reward points on fresh seafood, customers are strongly encouraged to download our Pacific Market mobile app. Customer service representatives are available near aisle 1 until 7:00 PM today to assist you with downloading the app and linking your phone number. Thank you for shopping with us, and have a wonderful day.",
+      audio4: "Hello Helen, this is Marcus, your shift supervisor at the logistics distribution center. I'm calling regarding our staffing schedule for next week leading up to the holiday rush. Management is opening voluntary overtime shifts starting this coming Monday through Friday. If you are interested in extra hours, you can choose either the early morning shift from 6:00 AM to 2:30 PM, or the afternoon shift from 3:00 PM to 11:30 PM. Both shifts qualify for time-and-a-half overtime pay, plus an additional two-dollar per hour weekend differential if you volunteer to work on Saturday as well. Shift sign-up sheets have been posted on the bulletin board right next to the breakroom timeclock. Please put your name down before Friday at 12:00 noon so that we can finalize the schedule. Give me a call back if you have any questions.",
+      audio5: "Good evening, Santa Clara Adult Education students. This is an important announcement regarding our upcoming CASAS end-of-semester progress testing and Spring semester priority registration. Current fall classes will officially end on Friday, December 18th. All registered ESL students are required to take their CASAS listening and reading evaluations between December 1st and December 8th during their regularly scheduled class time. Your test scores will determine your course placement for the spring term, which begins on Monday, January 12th. If an emergency prevents you from attending class on your scheduled test day, make-up testing sessions will be conducted in the Computer Lab in Building C on Saturday, December 13th from 9:00 AM to 12:00 noon. Please remember to bring your student photo ID card and arrive 15 minutes before testing begins. Thank you for your dedication."
+    };
+
+    let speechSpeed = 1.0;
+    let score = 0;
+    const answered = {};
+    const totalQuestions = 10;
+
+    function setSpeed(rate) {
+      speechSpeed = rate;
+      const btnNormal = document.getElementById('speedNormal');
+      const btnSlow = document.getElementById('speedSlow');
+      if (rate === 1.0) {
+        btnNormal.className = "px-2.5 py-1 rounded-lg border font-medium bg-blue-50 text-blue-700 border-blue-300";
+        btnSlow.className = "px-2.5 py-1 rounded-lg border border-slate-200 font-medium text-slate-600 hover:bg-slate-100";
+      } else {
+        btnSlow.className = "px-2.5 py-1 rounded-lg border font-medium bg-blue-50 text-blue-700 border-blue-300";
+        btnNormal.className = "px-2.5 py-1 rounded-lg border border-slate-200 font-medium text-slate-600 hover:bg-slate-100";
+      }
+    }
+
+    function playAudio(audioId) {
+      if (!('speechSynthesis' in window)) {
+        alert("Your browser does not support text-to-speech audio playback. Click 'Show Audio Script' to read along.");
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const text = audioScripts[audioId];
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = speechSpeed;
+      utterance.lang = 'en-US';
+
+      const indicator = document.getElementById('playing-indicator-' + audioId);
+      const btn = document.getElementById('btn-' + audioId);
+
+      indicator.classList.remove('hidden');
+      indicator.classList.add('flex');
+      btn.classList.add('opacity-70');
+
+      utterance.onend = function() {
+        indicator.classList.add('hidden');
+        indicator.classList.remove('flex');
+        btn.classList.remove('opacity-70');
+      };
+
+      utterance.onerror = function() {
+        indicator.classList.add('hidden');
+        indicator.classList.remove('flex');
+        btn.classList.remove('opacity-70');
+      };
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function toggleTranscript(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle('hidden');
+    }
+
+    function toggleChineseHints() {
+      const show = document.getElementById('toggleCn').checked;
+      document.querySelectorAll('.cn-hint').forEach(el => {
+        if (show) {
+          el.classList.remove('hidden');
+        } else {
+          el.classList.add('hidden');
+        }
+      });
+    }
+
+    function switchTab(tab) {
+      const listeningSection = document.getElementById('listeningSection');
+      const readingSection = document.getElementById('readingSection');
+      const tabListening = document.getElementById('tabListening');
+      const tabReading = document.getElementById('tabReading');
+
+      if (tab === 'listening') {
+        listeningSection.classList.remove('hidden');
+        readingSection.classList.add('hidden');
+        tabListening.className = "px-5 py-2.5 text-sm font-semibold border-b-2 border-blue-600 text-blue-600 flex items-center gap-2 transition";
+        tabReading.className = "px-5 py-2.5 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2 transition";
+      } else {
+        listeningSection.classList.add('hidden');
+        readingSection.classList.remove('hidden');
+        tabReading.className = "px-5 py-2.5 text-sm font-semibold border-b-2 border-blue-600 text-blue-600 flex items-center gap-2 transition";
+        tabListening.className = "px-5 py-2.5 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2 transition";
+      }
+    }
+
+    function checkQuestion(qId, correctVal) {
+      const selected = document.querySelector(`input[name="${qId}"]:checked`);
+      const feedback = document.getElementById(`feedback-${qId}`);
+      const feedbackTitle = document.getElementById(`feedback-${qId}-title`);
+      const badge = document.getElementById(`badge-${qId}`);
+
+      if (!selected) {
+        alert("Please select an answer first! (请先选择一个选项)");
+        return;
+      }
+
+      feedback.classList.remove('hidden');
+      badge.classList.remove('hidden');
+
+      const isCorrect = (selected.value === correctVal);
+
+      if (!answered[qId]) {
+        if (isCorrect) {
+          score++;
+          answered[qId] = 'correct';
+        } else {
+          answered[qId] = 'incorrect';
+        }
+      }
+
+      if (isCorrect) {
+        feedback.className = "p-4 rounded-xl border border-emerald-300 bg-emerald-50 text-sm space-y-2";
+        feedbackTitle.className = "font-bold text-emerald-800";
+        feedbackTitle.innerText = "✓ Correct! (回答正确)";
+        badge.className = "text-xs px-2.5 py-0.5 rounded-full font-medium bg-emerald-100 text-emerald-800";
+        badge.innerText = "Correct";
+      } else {
+        feedback.className = "p-4 rounded-xl border border-rose-300 bg-rose-50 text-sm space-y-2";
+        feedbackTitle.className = "font-bold text-rose-800";
+        feedbackTitle.innerText = `✗ Incorrect. The correct answer is (${correctVal}). (回答错误)`;
+        badge.className = "text-xs px-2.5 py-0.5 rounded-full font-medium bg-rose-100 text-rose-800";
+        badge.innerText = "Incorrect";
+      }
+
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const answeredCount = Object.keys(answered).length;
+      document.getElementById('scoreDisplay').innerText = `${score} / 10`;
+      document.getElementById('progressText').innerText = `Progress: ${answeredCount} of 10 completed`;
+      const pct = Math.round((answeredCount / totalQuestions) * 100);
+      document.getElementById('progressPercent').innerText = `${pct}%`;
+      document.getElementById('progressBar').style.width = `${pct}%`;
+
+      if (answeredCount === totalQuestions) {
+        showFinalAssessment();
+      }
+    }
+
+    function showFinalAssessment() {
+      const evalBox = document.getElementById('evaluationText');
+      if (score >= 8) {
+        evalBox.className = "p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs sm:text-sm text-emerald-900 leading-relaxed space-y-1.5";
+        evalBox.innerHTML = `
+          <p class="font-bold text-base text-emerald-800">🎉 Excellent Job! Level 4 Ready! (太棒了！已达到4级通过水平)</p>
+          <p>Your score is <strong>${score}/10</strong> (${score*10}%). You demonstrated strong comprehension of extended authentic dialogues and workplace documents. You are well prepared for the December exam (CASAS 221+ target)!</p>
+        `;
+      } else if (score >= 6) {
+        evalBox.className = "p-4 rounded-xl bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900 leading-relaxed space-y-1.5";
+        evalBox.innerHTML = `
+          <p class="font-bold text-base text-blue-800">👍 Good Effort! Approaching Level 4 (成绩良好，接近4级目标)</p>
+          <p>Your score is <strong>${score}/10</strong> (${score*10}%). You have a solid understanding. Review the questions you missed and read the Chinese notes to memorize specific detail terms (like <em>fasting, valve replacement, continuous days</em>).</p>
+        `;
+      } else {
+        evalBox.className = "p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs sm:text-sm text-amber-900 leading-relaxed space-y-1.5";
+        evalBox.innerHTML = `
+          <p class="font-bold text-base text-amber-800">💪 Keep Practicing! (继续练习，强化细节抓取)</p>
+          <p>Your score is <strong>${score}/10</strong> (${score*10}%). These longer passages contain extra detail. Try using the <strong>0.8x 慢速</strong> audio speed and click <strong>"Show Audio Script"</strong> to read while listening, then retake the quiz!</p>
+        `;
+      }
+    }
+
+    function resetQuiz() {
+      if (confirm("Reset and retake the quiz? (确定重新开始测试吗？)")) {
+        window.location.reload();
+      }
+    }
+  </script>
+</body>
+</html>
