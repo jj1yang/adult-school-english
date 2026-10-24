@@ -60,9 +60,9 @@
       <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
         <!-- Voice Engine Selection -->
         <div class="flex items-center gap-2">
-          <label class="text-slate-600 font-semibold whitespace-nowrap">🎙️ 语音引擎:</label>
-          <select id="voiceSelect" onchange="onVoiceChange()" class="w-full bg-slate-50 border border-slate-300 text-slate-700 py-1.5 px-2.5 rounded-lg text-xs focus:ring-blue-500 focus:border-blue-500">
-            <option value="auto">⭐ 自然真人美音 (Natural Enhanced / Auto)</option>
+          <label class="text-slate-600 font-semibold whitespace-nowrap">🎙️ 语音选择:</label>
+          <select id="voiceSelect" onchange="onVoiceChange()" class="w-full bg-slate-50 border border-slate-300 text-slate-700 py-1.5 px-2.5 rounded-lg text-xs focus:ring-blue-500 focus:border-blue-500 font-medium">
+            <option value="auto">⭐ 自然美音 (Natural American English)</option>
           </select>
         </div>
 
@@ -576,6 +576,17 @@ Under California Civil Code Section 1950.5:<br><br>
     let speechSpeed = 1.0;
     let quizAnswers = {}; // user choices
     let mistakeBank = []; // list of missed items
+    let activeUtterance = null;
+    let activePlayingId = null;
+
+    function getItemById(itemId) {
+      for (const qKey in quizData) {
+        const q = quizData[qKey];
+        const found = [...(q.listening || []), ...(q.reading || [])].find(i => i.id === itemId);
+        if (found) return found;
+      }
+      return null;
+    }
 
     // Load state from localStorage
     function loadSavedState() {
@@ -604,7 +615,7 @@ Under California Civil Code Section 1950.5:<br><br>
     }
 
     // ==========================================
-    // 3. VOICE ENGINE WITH REALISTIC VOICE FALLBACKS
+    // 3. ROBUST VOICE ENGINE & AUDIO PLAYBACK
     // ==========================================
     function initVoices() {
       if (!('speechSynthesis' in window)) return;
@@ -619,7 +630,7 @@ Under California Civil Code Section 1950.5:<br><br>
         // Filter English voices
         const englishVoices = voices.filter(v => v.lang.startsWith('en'));
         
-        // Sort priority: Natural/Enhanced/Premium first, then Google, then others
+        // Sort priority: Natural/Enhanced/Premium first, then Google, then Apple/Microsoft
         englishVoices.sort((a, b) => {
           const aScore = getVoiceScore(a.name);
           const bScore = getVoiceScore(b.name);
@@ -629,7 +640,7 @@ Under California Civil Code Section 1950.5:<br><br>
         englishVoices.forEach((v, idx) => {
           const opt = document.createElement('option');
           opt.value = v.name;
-          const isHighQuality = getVoiceScore(v.name) >= 2;
+          const isHighQuality = getVoiceScore(v.name) >= 3;
           opt.textContent = `${isHighQuality ? '⭐ ' : ''}${v.name} (${v.lang})`;
           select.appendChild(opt);
           if (idx === 0) currentVoice = v;
@@ -647,7 +658,7 @@ Under California Civil Code Section 1950.5:<br><br>
       const lower = name.toLowerCase();
       if (lower.includes('natural') || lower.includes('enhanced') || lower.includes('premium')) score += 5;
       if (lower.includes('google')) score += 4;
-      if (lower.includes('samantha') || lower.includes('flo') || lower.includes('eddy') || lower.includes('ava') || lower.includes('siri') || lower.includes('karen')) score += 3;
+      if (lower.includes('samantha') || lower.includes('flo') || lower.includes('eddy') || lower.includes('ava') || lower.includes('siri') || lower.includes('karen') || lower.includes('serena')) score += 3;
       if (lower.includes('us')) score += 1;
       return score;
     }
@@ -656,6 +667,9 @@ Under California Civil Code Section 1950.5:<br><br>
       const select = document.getElementById('voiceSelect');
       const voices = window.speechSynthesis.getVoices();
       currentVoice = voices.find(v => v.name === select.value) || null;
+      if (activePlayingId) {
+        stopAudio();
+      }
     }
 
     function setSpeed(rate) {
@@ -671,19 +685,54 @@ Under California Civil Code Section 1950.5:<br><br>
       }
     }
 
-    // Play text with natural sentence pacing
-    function playAudio(text, btnId, indicatorId) {
+    function stopAudio() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      if (activePlayingId) {
+        const ind = document.getElementById('ind-' + activePlayingId);
+        const btn = document.getElementById('btn-' + activePlayingId);
+        if (ind) { ind.classList.add('hidden'); ind.classList.remove('flex'); }
+        if (btn) btn.classList.remove('opacity-70');
+        activePlayingId = null;
+      }
+      activeUtterance = null;
+    }
+
+    // Play Item Audio: Clean lookup directly from JS object (No URL encoding bugs!)
+    function playListeningItem(itemId, mode) {
+      const item = getItemById(itemId);
+      if (!item) return;
+
+      let textToSpeak = "";
+      if (mode === 'question') {
+        textToSpeak = "Question: " + item.question;
+      } else {
+        // CASAS Standard: Play passage, natural pause, then read the question!
+        textToSpeak = item.audio + ". ... ... Question: " + item.question;
+      }
+
+      speakCleanText(textToSpeak, itemId);
+    }
+
+    function speakCleanText(text, itemId) {
       if (!('speechSynthesis' in window)) {
         alert("Audio playback is not supported on this browser.");
         return;
       }
-      window.speechSynthesis.cancel();
 
-      const indicator = document.getElementById(indicatorId);
-      const btn = document.getElementById(btnId);
+      stopAudio();
+
+      const indicator = document.getElementById('ind-' + itemId);
+      const btn = document.getElementById('btn-' + itemId);
 
       const utterance = new SpeechSynthesisUtterance(text);
-      if (currentVoice) utterance.voice = currentVoice;
+      activeUtterance = utterance; // Prevent garbage collection bug in Chrome
+      activePlayingId = itemId;
+
+      if (currentVoice) {
+        utterance.voice = currentVoice;
+      }
       utterance.rate = speechSpeed;
       utterance.pitch = 1.0;
       utterance.lang = 'en-US';
@@ -695,19 +744,12 @@ Under California Civil Code Section 1950.5:<br><br>
       if (btn) btn.classList.add('opacity-70');
 
       utterance.onend = () => {
-        if (indicator) {
-          indicator.classList.add('hidden');
-          indicator.classList.remove('flex');
-        }
-        if (btn) btn.classList.remove('opacity-70');
+        stopAudio();
       };
 
-      utterance.onerror = () => {
-        if (indicator) {
-          indicator.classList.add('hidden');
-          indicator.classList.remove('flex');
-        }
-        if (btn) btn.classList.remove('opacity-70');
+      utterance.onerror = (e) => {
+        console.error("Speech error", e);
+        stopAudio();
       };
 
       window.speechSynthesis.speak(utterance);
@@ -717,6 +759,7 @@ Under California Civil Code Section 1950.5:<br><br>
     // 4. RENDERING & QUIZ NAVIGATION
     // ==========================================
     function selectQuiz(quizId) {
+      stopAudio();
       activeQuizId = quizId;
       quizAnswers = {};
 
@@ -756,6 +799,7 @@ Under California Civil Code Section 1950.5:<br><br>
     }
 
     function switchSection(section) {
+      stopAudio();
       activeSection = section;
       const tabListening = document.getElementById('tabListening');
       const tabReading = document.getElementById('tabReading');
@@ -796,17 +840,23 @@ Under California Civil Code Section 1950.5:<br><br>
             ${activeSection === 'listening' ? `
               <!-- Audio Player Box -->
               <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div class="flex items-center gap-3">
-                  <button onclick="playAudio('${encodeURIComponent(item.audio).replace(/'/g, "%27")}', 'btn-${item.id}', 'ind-${item.id}')" id="btn-${item.id}" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm rounded-lg flex items-center gap-2 shadow-sm transition">
+                <div class="flex flex-wrap items-center gap-2">
+                  <button onclick="playListeningItem('${item.id}', 'all')" id="btn-${item.id}" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm rounded-lg flex items-center gap-2 shadow-sm transition">
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    <span>Play Audio (播放录音)</span>
+                    <span>Play Audio & Question (听录音与问题)</span>
+                  </button>
+                  <button onclick="playListeningItem('${item.id}', 'question')" class="px-3 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium text-xs rounded-lg transition">
+                    🔊 Repeat Question (只听问题)
+                  </button>
+                  <button onclick="stopAudio()" class="px-3 py-2 border border-slate-300 hover:bg-slate-100 text-slate-600 font-medium text-xs rounded-lg transition">
+                    ⏹ Stop (停止)
                   </button>
                   <div id="ind-${item.id}" class="hidden text-blue-600 items-center gap-2 text-xs font-medium">
                     <div class="audio-wave"><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div></div>
-                    <span>Playing Audio... (可反复听2遍)</span>
+                    <span>Playing Audio... (正在播放)</span>
                   </div>
                 </div>
-                <button onclick="document.getElementById('trans-${item.id}').classList.toggle('hidden')" class="text-xs text-blue-600 underline hover:text-blue-800">
+                <button onclick="document.getElementById('trans-${item.id}').classList.toggle('hidden')" class="text-xs text-blue-600 underline hover:text-blue-800 whitespace-nowrap">
                   Show Audio Script (看听力原文)
                 </button>
               </div>
@@ -823,7 +873,13 @@ Under California Civil Code Section 1950.5:<br><br>
               </div>
             `}
 
-            <p class="font-medium text-sm text-slate-900">${item.question}</p>
+            <!-- Question Text -->
+            <div class="p-3 bg-blue-50/50 border border-blue-100 rounded-xl flex items-center justify-between gap-3">
+              <p class="font-bold text-sm text-slate-900">Question: ${item.question}</p>
+              <button onclick="speakCleanText('${item.question.replace(/'/g, "\\'")}', '${item.id}')" class="text-xs text-blue-600 hover:text-blue-800 font-medium whitespace-nowrap flex items-center gap-1">
+                <span>🔊 Read Question</span>
+              </button>
+            </div>
 
             <!-- Options -->
             <div class="space-y-2">
@@ -996,13 +1052,14 @@ Under California Civil Code Section 1950.5:<br><br>
           </div>
           <h4 class="font-semibold text-sm text-slate-900">${item.title}</h4>
           ${item.audio ? `
-            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs">
-              <strong>Audio Clue:</strong> <em>"${item.clue}"</em>
+            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs flex justify-between items-center">
+              <span><strong>Audio Clue:</strong> <em>"${item.clue}"</em></span>
+              <button onclick="speakCleanText('${item.clue.replace(/'/g, "\\'")}', '${item.id}')" class="px-2.5 py-1 bg-blue-600 text-white rounded text-xs">🔊 Listen</button>
             </div>
           ` : `
             <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs">${item.doc}</div>
           `}
-          <p class="font-medium text-xs text-slate-900">${item.question}</p>
+          <p class="font-medium text-xs text-slate-900">Question: ${item.question}</p>
           <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-xs space-y-1">
             <p class="font-bold text-emerald-800">Correct Answer: (${item.correct})</p>
             <p class="text-slate-600"><strong>解析:</strong> ${item.chinese}</p>
