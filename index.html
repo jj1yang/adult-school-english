@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +7,31 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            slate: {
+              750: '#293548',
+              850: '#151f32',
+              950: '#0b1120'
+            }
+          }
+        }
+      }
+    }
+  </script>
   <style>
     .audio-wave {
       display: inline-flex;
       align-items: center;
       gap: 3px;
-      height: 16px;
+      height: 18px;
     }
     .audio-bar {
-      width: 3px;
+      width: 3.5px;
       height: 100%;
       background-color: currentColor;
       border-radius: 9999px;
@@ -28,100 +44,122 @@
       50% { transform: scaleY(1); }
     }
     .option-label:has(input:checked) {
-      border-color: #2563eb;
-      background-color: rgba(37, 99, 235, 0.08);
+      border-color: #38bdf8 !important;
+      background-color: rgba(14, 165, 233, 0.15) !important;
+      color: #ffffff !important;
+      font-weight: 600;
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased p-3 sm:p-6 md:p-8 min-h-screen">
+<body class="bg-slate-950 text-slate-100 antialiased p-3 sm:p-6 md:p-8 min-h-screen transition-colors duration-200">
   <div class="max-w-3xl mx-auto space-y-6">
 
-    <!-- Top Header Banner -->
-    <header class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+    <!-- Top Header Banner (Dark Theme with High Contrast) -->
+    <header class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-xl">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-800">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 mb-2">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs sm:text-sm font-bold bg-emerald-950 text-emerald-300 border border-emerald-800 mb-2.5">
             <span>🎯 40-Day December Promotion Plan • Target CASAS Level 4 (221+)</span>
           </div>
-          <h1 class="text-xl sm:text-2xl font-bold text-slate-900">ESL Level 3 → 4 Exam Prep Hub</h1>
-          <p class="text-xs sm:text-sm text-slate-500 mt-1">
-            Ventures 3 & California Adult Education • 120+ Authentic Practice Questions & Score Tracker
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">ESL Level 3 → 4 Exam Prep Hub</h1>
+          <p class="text-sm sm:text-base text-slate-300 font-medium mt-1.5">
+            Ventures 3 & California Adult Education • High-Contrast Audio, Practice Tests & Score Tracker
           </p>
         </div>
         <div class="flex items-center gap-3">
-          <div class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 text-right">
-            <div class="text-[11px] font-medium text-slate-500 uppercase tracking-wider">Current Score</div>
-            <div id="scoreDisplay" class="text-xl font-bold text-blue-600">0 / 10</div>
+          <div class="bg-slate-950 border border-slate-800 rounded-2xl px-5 py-3 text-right shadow-inner">
+            <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Current Score</div>
+            <div id="scoreDisplay" class="text-2xl sm:text-3xl font-black text-sky-400">0 / 10</div>
           </div>
+          <!-- Dark / Light Mode Toggle Button -->
+          <button onclick="toggleTheme()" id="themeBtn" class="p-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition text-lg" title="Toggle Light/Dark Theme">
+            🌙
+          </button>
         </div>
       </div>
 
-      <!-- Controls: Realistic Voice Selector & Settings -->
-      <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-        <!-- Voice Engine Selection -->
-        <div class="flex items-center gap-2">
-          <label class="text-slate-600 font-semibold whitespace-nowrap">🎙️ 语音引擎:</label>
-          <select id="voiceSelect" onchange="onVoiceChange()" class="w-full bg-slate-50 border border-slate-300 text-slate-700 py-1.5 px-2.5 rounded-lg text-xs focus:ring-blue-500 focus:border-blue-500 font-medium">
-            <option value="auto">⭐ 自然美音 (Natural American English)</option>
-          </select>
+      <!-- Controls: Realistic Voice Engine (Female & Male Voice Selectors) -->
+      <div class="mt-5 space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-3 text-sm">
+          <!-- Voice Selector: Male vs Female Dedicated Presets -->
+          <div class="flex items-center gap-2">
+            <span class="text-slate-300 font-bold text-sm sm:text-base">🎙️ 语音选择:</span>
+            <button onclick="setVoiceGender('female')" id="btnVoiceFemale" class="px-3.5 py-1.5 rounded-xl font-bold text-xs sm:text-sm bg-sky-600 text-white shadow-md transition flex items-center gap-1.5">
+              <span>👩 美音女声 (Female)</span>
+            </button>
+            <button onclick="setVoiceGender('male')" id="btnVoiceMale" class="px-3.5 py-1.5 rounded-xl font-medium text-xs sm:text-sm bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition flex items-center gap-1.5">
+              <span>👨 美音男声 (Male)</span>
+            </button>
+            <button onclick="testCurrentVoice()" class="px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 transition" title="Test voice sound">
+              ▶ 试听
+            </button>
+          </div>
+
+          <!-- Speed & Chinese Toggle -->
+          <div class="flex items-center gap-3 ml-auto">
+            <div class="flex items-center gap-1.5">
+              <span class="text-slate-400 font-medium text-xs sm:text-sm">语速:</span>
+              <button id="speedNormal" onclick="setSpeed(1.0)" class="px-3 py-1 rounded-lg border font-bold text-xs sm:text-sm bg-sky-600 text-white border-sky-500">1.0x 标准</button>
+              <button id="speedSlow" onclick="setSpeed(0.85)" class="px-3 py-1 rounded-lg border border-slate-700 font-semibold text-xs sm:text-sm text-slate-300 hover:bg-slate-800">0.85x 慢速</button>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer select-none text-slate-200 font-bold text-xs sm:text-sm bg-slate-800/80 px-3 py-1 rounded-lg border border-slate-700">
+              <input type="checkbox" id="toggleCn" onchange="toggleChineseHints()" class="w-4 h-4 rounded border-slate-600 text-sky-500 focus:ring-sky-400 bg-slate-900">
+              <span>显示中文解析</span>
+            </label>
+          </div>
         </div>
 
-        <!-- Audio Speed & Chinese Toggle -->
-        <div class="flex items-center justify-between sm:justify-end gap-3">
-          <div class="flex items-center gap-1.5">
-            <span class="text-slate-500 font-medium">语速:</span>
-            <button id="speedNormal" onclick="setSpeed(1.0)" class="px-2.5 py-1 rounded-lg border font-medium bg-blue-50 text-blue-700 border-blue-300">1.0x 标准</button>
-            <button id="speedSlow" onclick="setSpeed(0.85)" class="px-2.5 py-1 rounded-lg border border-slate-200 font-medium text-slate-600 hover:bg-slate-100">0.85x 慢速</button>
-          </div>
-          <label class="flex items-center gap-1.5 cursor-pointer select-none text-slate-700 font-medium">
-            <input type="checkbox" id="toggleCn" onchange="toggleChineseHints()" class="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500">
-            <span>中文解析</span>
-          </label>
+        <!-- Optional Detailed Voice Dropdown for Power Users -->
+        <div class="flex items-center gap-2 pt-1">
+          <label class="text-xs text-slate-400 whitespace-nowrap">系统声音微调:</label>
+          <select id="voiceSelect" onchange="onManualVoiceSelect()" class="w-full bg-slate-950 border border-slate-750 text-slate-200 py-1.5 px-3 rounded-xl text-xs focus:ring-sky-500 focus:border-sky-500 font-medium">
+            <option value="auto">自动智能匹配 (Auto Best Match)</option>
+          </select>
         </div>
       </div>
 
       <!-- Progress bar -->
-      <div class="mt-4">
-        <div class="flex justify-between text-xs text-slate-500 mb-1">
+      <div class="mt-5">
+        <div class="flex justify-between text-xs sm:text-sm text-slate-300 font-medium mb-1.5">
           <span id="progressText">Progress: 0 of 10 completed</span>
-          <span id="progressPercent">0%</span>
+          <span id="progressPercent" class="font-bold text-sky-400">0%</span>
         </div>
-        <div class="w-full bg-slate-100 rounded-full h-2">
-          <div id="progressBar" class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+        <div class="w-full bg-slate-950 rounded-full h-2.5 border border-slate-800">
+          <div id="progressBar" class="bg-gradient-to-r from-sky-500 to-emerald-400 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
         </div>
       </div>
     </header>
 
-    <!-- Quiz Navigation Hub Tabs -->
-    <div class="flex flex-wrap border-b border-slate-200 gap-1.5 bg-white p-2.5 rounded-xl shadow-sm">
-      <button onclick="selectQuiz('quiz1')" id="navQuiz1" class="px-3.5 py-2 text-xs sm:text-sm font-bold rounded-lg bg-blue-600 text-white transition">
+    <!-- Quiz Navigation Hub Tabs (Large Touch Buttons) -->
+    <div class="flex flex-wrap border border-slate-800 gap-2 bg-slate-900 p-2.5 rounded-2xl shadow-xl">
+      <button onclick="selectQuiz('quiz1')" id="navQuiz1" class="px-4 py-2.5 text-sm sm:text-base font-bold rounded-xl bg-sky-600 text-white shadow-md transition">
         Quiz #1
       </button>
-      <button onclick="selectQuiz('quiz2')" id="navQuiz2" class="px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:bg-slate-100 transition">
+      <button onclick="selectQuiz('quiz2')" id="navQuiz2" class="px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-transparent transition">
         Quiz #2
       </button>
-      <button onclick="selectQuiz('quiz3')" id="navQuiz3" class="px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:bg-slate-100 transition">
+      <button onclick="selectQuiz('quiz3')" id="navQuiz3" class="px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-transparent transition">
         Quiz #3
       </button>
-      <button onclick="selectQuiz('quiz4')" id="navQuiz4" class="px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:bg-slate-100 transition">
+      <button onclick="selectQuiz('quiz4')" id="navQuiz4" class="px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-transparent transition">
         Quiz #4
       </button>
-      <button onclick="selectQuiz('mistakes')" id="navMistakes" class="px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-amber-700 hover:bg-amber-50 transition flex items-center gap-1">
+      <button onclick="selectQuiz('mistakes')" id="navMistakes" class="px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-amber-300 hover:bg-amber-950/40 border border-amber-800/40 transition flex items-center gap-1.5">
         <span>📕 错题本</span>
-        <span id="mistakeBadge" class="px-1.5 py-0.2 rounded-full text-[10px] bg-amber-200 text-amber-900 font-bold">0</span>
+        <span id="mistakeBadge" class="px-2 py-0.5 rounded-full text-xs bg-amber-400 text-amber-950 font-black">0</span>
       </button>
-      <button onclick="selectQuiz('plan')" id="navPlan" class="px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-emerald-700 hover:bg-emerald-50 transition ml-auto flex items-center gap-1">
+      <button onclick="selectQuiz('plan')" id="navPlan" class="px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-emerald-300 hover:bg-emerald-950/40 border border-emerald-800/40 transition ml-auto flex items-center gap-1.5">
         <span>📅 40-Day Plan</span>
       </button>
     </div>
 
     <!-- Sub-tabs for Current Quiz (Listening vs Reading) -->
-    <div id="subTabs" class="flex border-b border-slate-200 gap-2">
-      <button onclick="switchSection('listening')" id="tabListening" class="px-5 py-2.5 text-sm font-semibold border-b-2 border-blue-600 text-blue-600 flex items-center gap-2 transition">
-        <span>🎧 Part 1: Listening (5 Questions)</span>
+    <div id="subTabs" class="flex border-b border-slate-800 gap-2">
+      <button onclick="switchSection('listening')" id="tabListening" class="px-6 py-3 text-base sm:text-lg font-bold border-b-2 border-sky-400 text-sky-400 flex items-center gap-2 transition">
+        <span>🎧 Part 1: Listening (5 题)</span>
       </button>
-      <button onclick="switchSection('reading')" id="tabReading" class="px-5 py-2.5 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2 transition">
-        <span>📖 Part 2: Reading (5 Questions)</span>
+      <button onclick="switchSection('reading')" id="tabReading" class="px-6 py-3 text-base sm:text-lg font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2 transition">
+        <span>📖 Part 2: Reading (5 题)</span>
       </button>
     </div>
 
@@ -133,18 +171,18 @@
     </main>
 
     <!-- Final Result / Level 4 Assessment -->
-    <div id="resultsCard" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
-      <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+    <div id="resultsCard" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl space-y-4">
+      <h3 class="font-extrabold text-lg sm:text-xl text-white flex items-center gap-2">
         <span>🏆 Level 4 Readiness Assessment (成绩评估与记录)</span>
       </h3>
-      <div id="evaluationText" class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700 leading-relaxed">
+      <div id="evaluationText" class="p-5 rounded-2xl bg-slate-950 border border-slate-800 text-sm sm:text-base text-slate-200 leading-relaxed font-medium">
         Complete all 10 questions to see your CASAS Level 4 readiness score and save to your study log.
       </div>
       <div class="flex flex-wrap justify-between items-center gap-3 pt-2">
-        <button onclick="resetCurrentQuiz()" class="px-4 py-2 border border-slate-300 text-slate-700 hover:bg-slate-100 rounded-lg text-xs font-semibold transition">
+        <button onclick="resetCurrentQuiz()" class="px-5 py-2.5 border-2 border-slate-750 text-slate-200 hover:bg-slate-800 rounded-xl text-sm font-bold transition">
           ↺ Retake Current Quiz (重测本套题)
         </button>
-        <span class="text-xs text-slate-400">Scores are saved automatically to your device</span>
+        <span class="text-xs sm:text-sm text-slate-400">Scores are saved automatically to your device</span>
       </div>
     </div>
 
@@ -251,13 +289,15 @@
             id: "q1_6",
             category: "Healthcare Notice",
             title: "Read the patient appointment policy and preparation guidelines from the community clinic.",
-            doc: `<strong>SANTA CLARA COMMUNITY HEALTH CENTER • POLICY #402</strong><br><br>
-<strong>APPOINTMENT CHECK-IN & DOCUMENTATION:</strong><br>
+            doc: `<span class="text-sky-300 font-extrabold text-lg">SANTA CLARA COMMUNITY HEALTH CENTER • POLICY #402</span><br><br>
+<strong class="text-white text-base">APPOINTMENT CHECK-IN & DOCUMENTATION:</strong><br>
 All registered patients must arrive 15 minutes prior to their scheduled consultation time to complete vital signs checking and update insurance eligibility. Please present a photo ID, active insurance card, and medication list.<br><br>
-<span class="text-amber-800 font-semibold">CANCELLATION & RESCHEDULING REGULATIONS:</span><br>
-• If unable to attend, notify Patient Coordination Desk at least <strong>24 business hours in advance</strong> at (408) 555-3200.<br>
-• Cancellations made with less than 24 hours of notice, as well as missed appointments ("no-shows"), will be assessed a <strong>$25.00 late cancellation fee</strong> not covered by insurance.<br>
-• Arriving more than 15 minutes late may require rescheduling.`,
+<div class="p-3 bg-amber-950/40 border border-amber-800 rounded-xl space-y-1 text-amber-200">
+  <span class="font-bold text-base text-amber-300">CANCELLATION & RESCHEDULING REGULATIONS:</span><br>
+  • If unable to attend, notify Patient Coordination Desk at least <strong>24 business hours in advance</strong> at (408) 555-3200.<br>
+  • Cancellations made with less than 24 hours of notice, as well as missed appointments ("no-shows"), will be assessed a <strong>$25.00 late cancellation fee</strong> not covered by insurance.<br>
+  • Arriving more than 15 minutes late may require rescheduling.
+</div>`,
             question: "According to the policy, what must a patient do to avoid paying a $25 cancellation fee?",
             options: [
               "(A) Show a list of dietary supplements upon arrival at the clinic",
@@ -274,13 +314,15 @@ All registered patients must arrive 15 minutes prior to their scheduled consulta
             id: "q1_7",
             category: "Housing Maintenance",
             title: "Read the building maintenance notice posted on residential mailboxes.",
-            doc: `<strong>OAKRIDGE APARTMENT HOMES • PROPERTY MANAGEMENT</strong><br>
-Date Posted: Wednesday, November 18, 2026<br><br>
-<strong>TO RESIDENTS OF BUILDINGS 300, 400, AND 500:</strong><br>
+            doc: `<span class="text-sky-300 font-extrabold text-lg">OAKRIDGE APARTMENT HOMES • PROPERTY MANAGEMENT</span><br>
+<span class="text-slate-400">Date Posted: Wednesday, November 18, 2026</span><br><br>
+<strong class="text-white text-base">TO RESIDENTS OF BUILDINGS 300, 400, AND 500:</strong><br>
 The municipal water authority will temporarily shut off all water service to your buildings on <strong>Thursday, November 20th, from 9:00 AM to 3:30 PM</strong> for pipe repairs.<br><br>
-<strong>IMPORTANT RESIDENT PRECAUTIONS:</strong><br>
-• Keep all faucets and valves tightly closed to prevent accidental flooding.<br>
-• <strong>Water Quality After Restoration:</strong> When water is turned back on at 3:30 PM, it may run slightly discolored. <strong>Please turn on your cold water tap for 1 to 2 minutes until it runs completely clear</strong> before using it for cooking or drinking.`,
+<div class="p-3 bg-slate-900 border border-slate-700 rounded-xl space-y-1 text-slate-200">
+  <strong class="text-sky-300">IMPORTANT RESIDENT PRECAUTIONS:</strong><br>
+  • Keep all faucets and valves tightly closed to prevent accidental flooding.<br>
+  • <strong>Water Quality After Restoration:</strong> When water is turned back on at 3:30 PM, it may run slightly discolored. <strong>Please turn on your cold water tap for 1 to 2 minutes until it runs completely clear</strong> before using it for cooking or drinking.
+</div>`,
             question: "What should residents do if their tap water looks discolored when water service returns at 3:30 PM?",
             options: [
               "(A) Immediately purchase and install a new kitchen water filter",
@@ -297,14 +339,16 @@ The municipal water authority will temporarily shut off all water service to you
             id: "q1_8",
             category: "Employment & Jobs",
             title: "Read the job vacancy announcement for a medical clinic in Santa Clara County.",
-            doc: `<strong>SANTA CLARA MEDICAL PLAZA • JOB VACANCY</strong><br>
-Position: Medical Office Receptionist / Patient Intake Clerk (Full-Time, 40 hrs/wk)<br>
-Compensation: $23.50 – $26.00 / hour • Shift: Monday – Friday, 8:00 AM – 4:30 PM<br><br>
-<strong>QUALIFICATIONS:</strong><br>
+            doc: `<span class="text-sky-300 font-extrabold text-lg">SANTA CLARA MEDICAL PLAZA • JOB VACANCY</span><br>
+<strong class="text-white">Position:</strong> Medical Office Receptionist / Patient Intake Clerk (Full-Time, 40 hrs/wk)<br>
+<span class="text-emerald-400 font-bold">Compensation:</span> $23.50 – $26.00 / hour • Shift: Monday – Friday, 8:00 AM – 4:30 PM<br><br>
+<strong class="text-white">QUALIFICATIONS:</strong><br>
 • High school diploma or GED; min. 1 year customer service experience<br>
 • Bilingual proficiency in English & Mandarin or Spanish preferred<br><br>
-<strong>BENEFITS PACKAGE:</strong><br>
-Comprehensive medical, dental, and vision health coverage begins <strong>following the completion of 60 continuous days of full-time employment</strong>. Includes 10 paid vacation days and 401(k) retirement match after 6 months.`,
+<div class="p-3 bg-slate-900 border border-slate-700 rounded-xl text-slate-200">
+  <strong class="text-sky-300">BENEFITS PACKAGE:</strong><br>
+  Comprehensive medical, dental, and vision health coverage begins <strong>following the completion of 60 continuous days of full-time employment</strong>. Includes 10 paid vacation days and 401(k) retirement match after 6 months.
+</div>`,
             question: "According to the job listing, when do health benefits become effective for a new employee?",
             options: [
               "(A) On the employee's very first day of training",
@@ -321,14 +365,16 @@ Comprehensive medical, dental, and vision health coverage begins <strong>followi
             id: "q1_9",
             category: "Workplace Safety",
             title: "Read the safety and chemical spill procedures posted in an electronics manufacturing facility.",
-            doc: `<strong>SILICON VALLEY ELECTRONICS • OCCUPATIONAL HEALTH & SAFETY</strong><br><br>
-<strong>SECTION 1: FIRE EVACUATION</strong><br>
+            doc: `<span class="text-rose-400 font-extrabold text-lg">SILICON VALLEY ELECTRONICS • OCCUPATIONAL HEALTH & SAFETY</span><br><br>
+<strong class="text-white">SECTION 1: FIRE EVACUATION</strong><br>
 Activate nearest alarm box. <strong>Do NOT use elevators under any circumstance.</strong> Proceed down emergency stairwells to <strong>Assembly Point C in North Parking Lot</strong>.<br><br>
-<strong>SECTION 2: CHEMICAL SOLVENT SPILL PROTOCOL</strong><br>
-Solvents contain hazardous vapors. If an accidental spill occurs:<br>
-• Alert coworkers to stand at least 20 feet back.<br>
-• <strong>Do NOT attempt to clean up unknown chemical liquids with paper towels or mops.</strong><br>
-• Contact Environmental Safety Coordinator in <strong>Room 108 (Ext. 410)</strong> for trained personnel with respirators.`,
+<div class="p-3 bg-rose-950/40 border border-rose-800 rounded-xl space-y-1 text-rose-200">
+  <strong class="text-rose-300">SECTION 2: CHEMICAL SOLVENT SPILL PROTOCOL</strong><br>
+  Solvents contain hazardous vapors. If an accidental spill occurs:<br>
+  • Alert coworkers to stand at least 20 feet back.<br>
+  • <strong>Do NOT attempt to clean up unknown chemical liquids with paper towels or mops.</strong><br>
+  • Contact Environmental Safety Coordinator in <strong>Room 108 (Ext. 410)</strong> for trained personnel with respirators.
+</div>`,
             question: "What is an employee instructed to do if an unknown chemical spill occurs in the assembly hall?",
             options: [
               "(A) Quickly mop up the spill using warm water and paper towels",
@@ -345,13 +391,15 @@ Solvents contain hazardous vapors. If an accidental spill occurs:<br>
             id: "q1_10",
             category: "Consumer Utility Bill",
             title: "Read the residential electric utility bill notice explaining Time-of-Use rate periods.",
-            doc: `<strong>CALIFORNIA CLEAN POWER • RESIDENTIAL STATEMENT</strong><br>
-Account # 839-2041-00 • Billing Period: Oct 01 – Oct 31 • Total Due: $134.80<br><br>
-<strong>TIME-OF-USE (TOU) RATES:</strong><br>
+            doc: `<span class="text-sky-300 font-extrabold text-lg">CALIFORNIA CLEAN POWER • RESIDENTIAL STATEMENT</span><br>
+<span class="text-slate-400">Account # 839-2041-00 • Billing Period: Oct 01 – Oct 31 • Total Due: $134.80</span><br><br>
+<strong class="text-white">TIME-OF-USE (TOU) RATES:</strong><br>
 Shift electricity usage to lower your monthly electric bill:<br>
-• 🔴 <span class="text-rose-700 font-bold">PEAK HOURS: 4:00 PM – 9:00 PM</span> ($0.48/kWh - Most Expensive). Avoid running dishwashers, laundry, or electric vehicle chargers during this window.<br>
-• 🟢 <span class="text-emerald-700 font-bold">OFF-PEAK: Before 4:00 PM & After 9:00 PM</span> ($0.24/kWh - 50% Cheaper).<br><br>
-<strong>BILL CREDIT:</strong> Sign up for Auto-Pay Paperless e-Billing by Nov 25th for a $15 discount credit.`,
+• 🔴 <span class="text-rose-400 font-bold">PEAK HOURS: 4:00 PM – 9:00 PM</span> ($0.48/kWh - Most Expensive). Avoid running dishwashers, laundry, or electric vehicle chargers during this window.<br>
+• 🟢 <span class="text-emerald-400 font-bold">OFF-PEAK: Before 4:00 PM & After 9:00 PM</span> ($0.24/kWh - 50% Cheaper).<br><br>
+<div class="p-2.5 bg-slate-900 border border-slate-750 rounded-xl text-sky-300">
+  <strong>BILL CREDIT:</strong> Sign up for Auto-Pay Paperless e-Billing by Nov 25th for a $15 discount credit.
+</div>`,
             question: "According to the rate explanation, during which time of day is electricity the most expensive to use?",
             options: [
               "(A) Early morning between 6:00 AM and 10:00 AM",
@@ -462,13 +510,15 @@ Shift electricity usage to lower your monthly electric bill:<br>
             id: "q2_6",
             category: "Food Nutrition & Allergies",
             title: "Read the nutrition label and allergen statement on an organic cereal box.",
-            doc: `<strong>ORGANIC HONEY ALMOND GRANOLA • NUTRITION FACTS</strong><br>
-Serving Size: 1/2 cup (55g) • Servings Per Container: 8<br>
-Calories: 220 • Total Fat: 7g • Dietary Fiber: 5g • Total Sugars: 9g<br><br>
-<span class="text-rose-800 font-bold">ALLERGEN STATEMENT:</span><br>
-• Contains: <strong>Almonds and Coconut</strong>.<br>
-• <strong>Manufactured in a shared facility that also processes peanuts, wheat, and soy products.</strong><br><br>
-<strong>STORAGE INSTRUCTIONS:</strong><br>
+            doc: `<span class="text-sky-300 font-extrabold text-lg">ORGANIC HONEY ALMOND GRANOLA • NUTRITION FACTS</span><br>
+<span class="text-slate-400">Serving Size: 1/2 cup (55g) • Servings Per Container: 8</span><br>
+<span class="text-slate-200">Calories: 220 • Total Fat: 7g • Dietary Fiber: 5g • Total Sugars: 9g</span><br><br>
+<div class="p-3 bg-rose-950/40 border border-rose-800 rounded-xl space-y-1 text-rose-200">
+  <strong class="text-rose-400 font-bold">ALLERGEN STATEMENT:</strong><br>
+  • Contains: <strong>Almonds and Coconut</strong>.<br>
+  • <strong>Manufactured in a shared facility that also processes peanuts, wheat, and soy products.</strong>
+</div><br>
+<strong class="text-white">STORAGE INSTRUCTIONS:</strong><br>
 Store in a cool, dry place. Reseal inner pouch tightly after opening to preserve crunchiness.`,
             question: "What important fact should a customer with a severe peanut allergy know?",
             options: [
@@ -486,11 +536,11 @@ Store in a cool, dry place. Reseal inner pouch tightly after opening to preserve
             id: "q2_7",
             category: "Workplace Overtime Rules",
             title: "Read the employee overtime policy from the warehouse company handbook.",
-            doc: `<strong>APEX LOGISTICS • EMPLOYEE OVERTIME POLICY</strong><br><br>
-1. <strong>Standard Workweek:</strong> 40 hours (Mon – Fri, 8:00 AM – 4:30 PM with 30-min unpaid meal break).<br>
-2. <strong>Overtime Pay:</strong> Hours worked beyond 8 hours per day or 40 hours per week are paid at <strong>1.5 times regular hourly wage</strong>.<br>
-3. <strong>Mandatory Approval:</strong> Employees are strictly prohibited from working overtime without <strong>prior written authorization from their department manager</strong>. Unauthorized overtime may lead to disciplinary action.<br>
-4. <strong>Timecard Deadline:</strong> Submit signed electronic timecards before Monday 10:00 AM.`,
+            doc: `<span class="text-sky-300 font-extrabold text-lg">APEX LOGISTICS • EMPLOYEE OVERTIME POLICY</span><br><br>
+1. <strong class="text-white">Standard Workweek:</strong> 40 hours (Mon – Fri, 8:00 AM – 4:30 PM with 30-min unpaid meal break).<br>
+2. <strong class="text-white">Overtime Pay:</strong> Hours worked beyond 8 hours per day or 40 hours per week are paid at <strong>1.5 times regular hourly wage</strong>.<br>
+3. <strong class="text-amber-300">Mandatory Approval:</strong> Employees are strictly prohibited from working overtime without <strong>prior written authorization from their department manager</strong>. Unauthorized overtime may lead to disciplinary action.<br>
+4. <strong class="text-white">Timecard Deadline:</strong> Submit signed electronic timecards before Monday 10:00 AM.`,
             question: "What is required before an employee is permitted to work overtime hours?",
             options: [
               "(A) An approval signature from the corporate president",
@@ -507,13 +557,15 @@ Store in a cool, dry place. Reseal inner pouch tightly after opening to preserve
             id: "q2_8",
             category: "Pharmacy Prescription Label",
             title: "Read the medication label and refill instructions from the pharmacy.",
-            doc: `<strong>VALLEY MEDICAL PHARMACY • Rx # 492019-B</strong><br>
-Patient: Robert Zhang • Prescriber: Dr. Angela Wu<br>
-<strong>MEDICATION:</strong> METFORMIN HCL 500 MG (Extended Release)<br><br>
-<strong>DIRECTIONS:</strong><br>
-Take 1 tablet by mouth twice daily with morning and evening meals. <strong>Swallow tablet whole; do not crush, chew, or break.</strong><br><br>
-<strong>REFILLS:</strong> 3 refills remaining before Oct 2027.<br>
-<span class="text-slate-600 italic">Call 24-hr refill line at (408) 555-8910 at least 48 hours before medication runs out.</span>`,
+            doc: `<span class="text-sky-300 font-extrabold text-lg">VALLEY MEDICAL PHARMACY • Rx # 492019-B</span><br>
+<span class="text-slate-400">Patient: Robert Zhang • Prescriber: Dr. Angela Wu</span><br>
+<strong class="text-white text-base">MEDICATION:</strong> METFORMIN HCL 500 MG (Extended Release)<br><br>
+<div class="p-3 bg-slate-900 border border-slate-750 rounded-xl space-y-1 text-slate-200">
+  <strong class="text-sky-300">DIRECTIONS:</strong><br>
+  Take 1 tablet by mouth twice daily with morning and evening meals. <strong>Swallow tablet whole; do not crush, chew, or break.</strong>
+</div><br>
+<strong class="text-white">REFILLS:</strong> 3 refills remaining before Oct 2027.<br>
+<span class="text-slate-400 italic">Call 24-hr refill line at (408) 555-8910 at least 48 hours before medication runs out.</span>`,
             question: "How should the patient take this Metformin medication?",
             options: [
               "(A) Crush the tablet and dissolve it in water",
@@ -530,13 +582,15 @@ Take 1 tablet by mouth twice daily with morning and evening meals. <strong>Swall
             id: "q2_9",
             category: "Water Utility Conservation",
             title: "Read the municipal drought and lawn irrigation restrictions notice.",
-            doc: `<strong>SANTA CLARA VALLEY WATER • SUMMER CONSERVATION NOTICE</strong><br><br>
-<strong>MANDATORY LAWN WATERING SCHEDULE:</strong><br>
+            doc: `<span class="text-sky-300 font-extrabold text-lg">SANTA CLARA VALLEY WATER • SUMMER CONSERVATION NOTICE</span><br><br>
+<strong class="text-white">MANDATORY LAWN WATERING SCHEDULE:</strong><br>
 • Odd-numbered addresses: Mondays & Thursdays only.<br>
 • Even-numbered addresses: Tuesdays & Fridays only.<br><br>
-<span class="text-rose-700 font-bold">PERMITTED WATERING HOURS:</span><br>
-Outdoor lawn irrigation is allowed <strong>only before 9:00 AM or after 6:00 PM</strong> to minimize evaporation. <strong>Watering between 9:00 AM and 6:00 PM is strictly prohibited.</strong><br><br>
-<strong>PENALTIES:</strong> 1st violation warning; 2nd violation carries a <strong>$100 fine</strong>.`,
+<div class="p-3 bg-amber-950/40 border border-amber-800 rounded-xl space-y-1 text-amber-200">
+  <strong class="text-amber-300">PERMITTED WATERING HOURS:</strong><br>
+  Outdoor lawn irrigation is allowed <strong>only before 9:00 AM or after 6:00 PM</strong> to minimize evaporation. <strong>Watering between 9:00 AM and 6:00 PM is strictly prohibited.</strong>
+</div><br>
+<span class="text-rose-400 font-bold">PENALTIES:</span> 1st violation warning; 2nd violation carries a <strong>$100 fine</strong>.`,
             question: "When is outdoor lawn watering strictly prohibited for all residents?",
             options: [
               "(A) Before 9:00 AM in the morning",
@@ -553,12 +607,12 @@ Outdoor lawn irrigation is allowed <strong>only before 9:00 AM or after 6:00 PM<
             id: "q2_10",
             category: "Housing Security Deposit",
             title: "Read the apartment lease policy regarding security deposit refunds.",
-            doc: `<strong>OAKRIDGE APARTMENT HOMES • MOVE-OUT POLICY</strong><br>
-Under California Civil Code Section 1950.5:<br><br>
-1. <strong>Notice to Vacate:</strong> Tenant must provide <strong>30 days written notice</strong> prior to move-out date.<br>
-2. <strong>Pre-Move-Out Inspection:</strong> Tenant may request an initial walkthrough inspection within two weeks before vacating.<br>
-3. <strong>Deposit Refund Timeline:</strong> The landlord must return the full deposit, or an itemized deduction statement with any balance, <strong>within 21 calendar days after key surrender</strong>.<br>
-4. <strong>Cleaning:</strong> Apartment must be left in same condition as move-in.`,
+            doc: `<span class="text-sky-300 font-extrabold text-lg">OAKRIDGE APARTMENT HOMES • MOVE-OUT POLICY</span><br>
+<span class="text-slate-400">Under California Civil Code Section 1950.5:</span><br><br>
+1. <strong class="text-white">Notice to Vacate:</strong> Tenant must provide <strong>30 days written notice</strong> prior to move-out date.<br>
+2. <strong class="text-white">Pre-Move-Out Inspection:</strong> Tenant may request an initial walkthrough inspection within two weeks before vacating.<br>
+3. <strong class="text-emerald-400">Deposit Refund Timeline:</strong> The landlord must return the full deposit, or an itemized deduction statement with any balance, <strong>within 21 calendar days after key surrender</strong>.<br>
+4. <strong class="text-white">Cleaning:</strong> Apartment must be left in same condition as move-in.`,
             question: "Within how many days after moving out must the landlord return the deposit or refund statement?",
             options: [
               "(A) Within 7 business days",
@@ -669,11 +723,11 @@ Under California Civil Code Section 1950.5:<br><br>
             id: "q3_6",
             category: "Consumer Return Policy",
             title: "Read the store return and exchange policy printed on the back of a store receipt.",
-            doc: `<strong>PACIFIC ELECTRONICS • RETURN & REFUND POLICY</strong><br><br>
-1. <strong>Standard Return Window:</strong> Items may be returned within <strong>15 days of original purchase</strong> for a full refund in the original form of payment.<br>
-2. <strong>Proof of Purchase:</strong> The original printed cash register receipt or digital e-receipt is mandatory for all cash or credit card refunds.<br>
-3. <strong>Condition of Merchandise:</strong> Merchandise must be in new, unopened condition with all original packaging, cords, and instruction manuals.<br>
-4. <strong>Opened Box Restocking Fee:</strong> A <strong>15% restocking fee</strong> applies to opened computers, tablets, and drone equipment unless proven defective upon arrival.`,
+            doc: `<span class="text-sky-300 font-extrabold text-lg">PACIFIC ELECTRONICS • RETURN & REFUND POLICY</span><br><br>
+1. <strong class="text-white">Standard Return Window:</strong> Items may be returned within <strong>15 days of original purchase</strong> for a full refund in the original form of payment.<br>
+2. <strong class="text-white">Proof of Purchase:</strong> The original printed cash register receipt or digital e-receipt is mandatory for all cash or credit card refunds.<br>
+3. <strong class="text-white">Condition of Merchandise:</strong> Merchandise must be in new, unopened condition with all original packaging, cords, and instruction manuals.<br>
+4. <span class="text-amber-300 font-bold">Opened Box Restocking Fee:</span> A <strong>15% restocking fee</strong> applies to opened computers, tablets, and drone equipment unless proven defective upon arrival.`,
             question: "What is required for a customer to receive a full refund within 15 days?",
             options: [
               "(A) The original purchase receipt and new unopened merchandise",
@@ -690,12 +744,14 @@ Under California Civil Code Section 1950.5:<br><br>
             id: "q3_7",
             category: "Environmental Waste Rules",
             title: "Read the residential garbage and hazardous waste sorting guidelines.",
-            doc: `<strong>SANTA CLARA COUNTY • RESIDENTIAL WASTE RECYCLING RULES</strong><br><br>
-• 🔵 <strong>BLUE RECYCLING CART:</strong> Clean paper, cardboard boxes, aluminum beverage cans, glass bottles, and rigid plastic jugs.<br>
-• 🟢 <strong>GREEN COMPOST CART:</strong> Food scraps, raw vegetables, coffee grounds, and yard trimmings.<br>
-• ⚫ <strong>BLACK TRASH CART:</strong> Non-recyclable household rubbish, styrofoam, and soiled plastic wrappers.<br><br>
-<span class="text-rose-700 font-bold">⚠️ HAZARDOUS WASTE RESTRICTIONS:</span><br>
-<strong>NEVER place motor oil, paint, lithium batteries, or fluorescent light bulbs into curbside carts.</strong> Drop them off for FREE at the County Household Hazardous Waste Facility by booking an appointment at hhw.org.`,
+            doc: `<span class="text-sky-300 font-extrabold text-lg">SANTA CLARA COUNTY • RESIDENTIAL WASTE RECYCLING RULES</span><br><br>
+• 🔵 <strong class="text-sky-400">BLUE RECYCLING CART:</strong> Clean paper, cardboard boxes, aluminum beverage cans, glass bottles, and rigid plastic jugs.<br>
+• 🟢 <strong class="text-emerald-400">GREEN COMPOST CART:</strong> Food scraps, raw vegetables, coffee grounds, and yard trimmings.<br>
+• ⚫ <strong class="text-slate-300">BLACK TRASH CART:</strong> Non-recyclable household rubbish, styrofoam, and soiled plastic wrappers.<br><br>
+<div class="p-3 bg-rose-950/40 border border-rose-800 rounded-xl space-y-1 text-rose-200">
+  <span class="font-bold text-base text-rose-300">⚠️ HAZARDOUS WASTE RESTRICTIONS:</span><br>
+  <strong>NEVER place motor oil, paint, lithium batteries, or fluorescent light bulbs into curbside carts.</strong> Drop them off for FREE at the County Household Hazardous Waste Facility by booking an appointment at hhw.org.
+</div>`,
             question: "Where should residents dispose of old household paint and batteries?",
             options: [
               "(A) Inside the green yard trimmings compost cart",
@@ -712,13 +768,17 @@ Under California Civil Code Section 1950.5:<br><br>
             id: "q3_8",
             category: "Urgent Care vs. Emergency",
             title: "Read the medical health center guide on choosing between Urgent Care and the ER.",
-            doc: `<strong>VALLEY HEALTHCARE • KNOW WHERE TO GO FOR CARE</strong><br><br>
-<strong>URGENT CARE CLINIC (Copayment: $35.00 | Walk-ins Welcome):</strong><br>
-Go to Urgent Care for common, non-life-threatening illnesses and injuries requiring same-day medical attention:<br>
-• Sprains, minor bone fractures, small cuts requiring stitches, minor burns, flu symptoms, sore throat, or ear pain.<br><br>
-<strong>HOSPITAL EMERGENCY ROOM (Copayment: $250.00 | Open 24/7):</strong><br>
-Call 911 or visit the ER immediately for severe, life-threatening medical emergencies:<br>
-• Sudden chest pain, difficulty breathing, stroke symptoms (facial drooping, slurred speech), uncontrolled heavy bleeding, or major head trauma.`,
+            doc: `<span class="text-sky-300 font-extrabold text-lg">VALLEY HEALTHCARE • KNOW WHERE TO GO FOR CARE</span><br><br>
+<div class="p-3 bg-sky-950/40 border border-sky-800 rounded-xl space-y-1 text-slate-200">
+  <strong class="text-sky-300 text-base">URGENT CARE CLINIC (Copayment: $35.00 | Walk-ins Welcome):</strong><br>
+  Go to Urgent Care for common, non-life-threatening illnesses and injuries requiring same-day medical attention:<br>
+  • Sprains, minor bone fractures, small cuts requiring stitches, minor burns, flu symptoms, sore throat, or ear pain.
+</div><br>
+<div class="p-3 bg-rose-950/40 border border-rose-800 rounded-xl space-y-1 text-slate-200">
+  <strong class="text-rose-400 text-base">HOSPITAL EMERGENCY ROOM (Copayment: $250.00 | Open 24/7):</strong><br>
+  Call 911 or visit the ER immediately for severe, life-threatening medical emergencies:<br>
+  • Sudden chest pain, difficulty breathing, stroke symptoms (facial drooping, slurred speech), uncontrolled heavy bleeding, or major head trauma.
+</div>`,
             question: "According to the guide, where should a patient go for a minor wrist sprain?",
             options: [
               "(A) Hospital Emergency Room with a $250 copay",
@@ -735,15 +795,17 @@ Call 911 or visit the ER immediately for severe, life-threatening medical emerge
             id: "q3_9",
             category: "Forklift Driver Job Listing",
             title: "Read the warehouse job posting for a certified forklift operator.",
-            doc: `<strong>SILICON LOGISTICS HUB • IMMEDIATE JOB VACANCY</strong><br>
-Position: Certified Forklift Operator / Material Handler (Full-Time)<br>
-Location: Milpitas, CA • Pay: $24.00 – $27.50 / hour plus benefits<br><br>
-<strong>MANDATORY REQUIREMENTS:</strong><br>
-• <strong>Valid OSHA-certified forklift operator license is strictly required</strong><br>
-• Minimum 2 years experience operating stand-up and sit-down forklifts<br>
-• Ability to regularly lift packages weighing up to 50 pounds<br>
-• High school diploma or GED equivalent<br><br>
-<strong>SCHEDULE:</strong> Swing Shift: Monday through Friday, 3:30 PM – 12:00 Midnight. Includes shift differential bonus of $1.50 per hour.`,
+            doc: `<span class="text-sky-300 font-extrabold text-lg">SILICON LOGISTICS HUB • IMMEDIATE JOB VACANCY</span><br>
+<strong class="text-white">Position:</strong> Certified Forklift Operator / Material Handler (Full-Time)<br>
+<span class="text-emerald-400 font-bold">Location:</span> Milpitas, CA • Pay: $24.00 – $27.50 / hour plus benefits<br><br>
+<div class="p-3 bg-slate-900 border border-slate-750 rounded-xl space-y-1 text-slate-200">
+  <strong class="text-amber-300">MANDATORY REQUIREMENTS:</strong><br>
+  • <strong>Valid OSHA-certified forklift operator license is strictly required</strong><br>
+  • Minimum 2 years experience operating stand-up and sit-down forklifts<br>
+  • Ability to regularly lift packages weighing up to 50 pounds<br>
+  • High school diploma or GED equivalent
+</div><br>
+<strong class="text-white">SCHEDULE:</strong> Swing Shift: Monday through Friday, 3:30 PM – 12:00 Midnight. Includes shift differential bonus of $1.50 per hour.`,
             question: "Which credential is strictly mandatory for all applicants applying for this job?",
             options: [
               "(A) A college bachelor's degree in engineering",
@@ -760,14 +822,16 @@ Location: Milpitas, CA • Pay: $24.00 – $27.50 / hour plus benefits<br><br>
             id: "q3_10",
             category: "Internet Service Promotion",
             title: "Read the high-speed home fiber internet promotional rate flyer.",
-            doc: `<strong>BAY CONNECT FIBER • HOME INTERNET PROMOTION</strong><br><br>
-<strong>SPECIAL 24-MONTH PROMOTIONAL OFFER:</strong><br>
+            doc: `<span class="text-sky-300 font-extrabold text-lg">BAY CONNECT FIBER • HOME INTERNET PROMOTION</span><br><br>
+<strong class="text-white text-base">SPECIAL 24-MONTH PROMOTIONAL OFFER:</strong><br>
 Sign up for Ultra-Fast Fiber 500 Mbps internet for only <strong>$45.00 per month for the first two years</strong> (Regular price $65.00/month thereafter).<br><br>
-<span class="text-blue-900 font-semibold">REQUIREMENTS TO RECEIVE DISCOUNT RATE:</span><br>
-1. Must enroll in <strong>Auto-Pay</strong> using a checking account or debit card.<br>
-2. Must elect <strong>Paperless Electronic Invoicing</strong>.<br>
-3. Free standard Wi-Fi router rental included. No contract or early termination fees.<br>
-<span class="text-xs text-slate-500 italic">Offer valid for new residential customers in Santa Clara County through December 31st.</span>`,
+<div class="p-3 bg-slate-900 border border-slate-750 rounded-xl space-y-1 text-slate-200">
+  <strong class="text-sky-300">REQUIREMENTS TO RECEIVE DISCOUNT RATE:</strong><br>
+  1. Must enroll in <strong>Auto-Pay</strong> using a checking account or debit card.<br>
+  2. Must elect <strong>Paperless Electronic Invoicing</strong>.<br>
+  3. Free standard Wi-Fi router rental included. No contract or early termination fees.
+</div><br>
+<span class="text-xs text-slate-400 italic">Offer valid for new residential customers in Santa Clara County through December 31st.</span>`,
             question: "How can a customer secure the promotional $45 monthly internet rate?",
             options: [
               "(A) By paying in cash at the store every month",
@@ -878,15 +942,17 @@ Sign up for Ultra-Fast Fiber 500 Mbps internet for only <strong>$45.00 per month
             id: "q4_6",
             category: "Cold Medicine Drug Label",
             title: "Read the Drug Facts label on an over-the-counter nighttime cold medication.",
-            doc: `<strong>NIGHTTIME COLD & COUGH RELIEF • DRUG FACTS</strong><br><br>
-<strong>ACTIVE INGREDIENTS (in each 30 mL dose):</strong><br>
+            doc: `<span class="text-sky-300 font-extrabold text-lg">NIGHTTIME COLD & COUGH RELIEF • DRUG FACTS</span><br><br>
+<strong class="text-white">ACTIVE INGREDIENTS (in each 30 mL dose):</strong><br>
 Acetaminophen 650 mg (Pain reliever/fever reducer), Dextromethorphan HBr 30 mg (Cough suppressant), Doxylamine succinate 12.5 mg (Antihistamine).<br><br>
-<span class="text-rose-700 font-bold">⚠️ LIVER WARNING:</span><br>
-This product contains acetaminophen. Severe liver damage may occur if you take:<br>
-• More than 4 doses in 24 hours<br>
-• With other prescription or nonprescription drugs containing acetaminophen<br>
-• With 3 or more alcoholic drinks daily while using this product.<br><br>
-<strong>DO NOT USE:</strong> With any other product containing acetaminophen.`,
+<div class="p-3 bg-rose-950/40 border border-rose-800 rounded-xl space-y-1 text-rose-200">
+  <span class="font-bold text-base text-rose-300">⚠️ LIVER WARNING:</span><br>
+  This product contains acetaminophen. Severe liver damage may occur if you take:<br>
+  • More than 4 doses in 24 hours<br>
+  • With other prescription or nonprescription drugs containing acetaminophen<br>
+  • With 3 or more alcoholic drinks daily while using this product.<br><br>
+  <strong class="text-rose-400">DO NOT USE:</strong> With any other product containing acetaminophen.
+</div>`,
             question: "What warning is given regarding the acetaminophen in this medication?",
             options: [
               "(A) It should only be taken with alcoholic beverages",
@@ -903,10 +969,13 @@ This product contains acetaminophen. Severe liver damage may occur if you take:<
             id: "q4_7",
             category: "Tenant Pet Policy & Addendum",
             title: "Read the apartment residential lease addendum regarding domestic pets.",
-            doc: `<strong>OAKRIDGE APARTMENT HOMES • PET LEASE ADDENDUM</strong><br><br>
-1. <strong>Allowed Pets:</strong> A maximum of 2 domesticated cats or dogs (weighing under 35 lbs each) per apartment unit with prior management approval.<br>
-2. <strong>Fees & Deposits:</strong> A <strong>$300 refundable pet deposit</strong> per animal, plus an ongoing <strong>$35 monthly pet rent</strong> per animal, is required.<br>
-3. <strong>Service & Assistance Animals:</strong> Under federal Fair Housing laws, certified service animals and emotional support animals are <strong>completely exempt from all pet deposits, breed restrictions, and monthly pet rent fees</strong> upon submission of valid documentation from a licensed healthcare provider.`,
+            doc: `<span class="text-sky-300 font-extrabold text-lg">OAKRIDGE APARTMENT HOMES • PET LEASE ADDENDUM</span><br><br>
+1. <strong class="text-white">Allowed Pets:</strong> A maximum of 2 domesticated cats or dogs (weighing under 35 lbs each) per apartment unit with prior management approval.<br>
+2. <strong class="text-white">Fees & Deposits:</strong> A <strong>$300 refundable pet deposit</strong> per animal, plus an ongoing <strong>$35 monthly pet rent</strong> per animal, is required.<br>
+3. <div class="p-3 bg-emerald-950/40 border border-emerald-800 rounded-xl space-y-1 text-emerald-200 mt-1">
+  <strong class="text-emerald-300">Service & Assistance Animals:</strong><br>
+  Under federal Fair Housing laws, certified service animals and emotional support animals are <strong>completely exempt from all pet deposits, breed restrictions, and monthly pet rent fees</strong> upon submission of valid documentation from a licensed healthcare provider.
+</div>`,
             question: "Under what condition is a resident completely exempt from paying pet deposits and pet rent?",
             options: [
               "(A) If the pet is smaller than 10 pounds",
@@ -923,11 +992,14 @@ This product contains acetaminophen. Severe liver damage may occur if you take:<
             id: "q4_8",
             category: "Workplace Injury & Workers Comp",
             title: "Read the employee handbook policy regarding on-the-job injuries and reporting deadlines.",
-            doc: `<strong>CALIFORNIA INDUSTRIAL LOGISTICS • WORKPLACE INJURY PROTOCOL</strong><br><br>
-1. <strong>Immediate First Aid:</strong> Seek immediate medical care for any life-threatening condition by calling 911 or visiting the emergency room.<br>
-2. <strong>Mandatory 24-Hour Reporting:</strong> Any injury or occupational illness occurring on the job—regardless of how minor it may appear—<strong>must be reported to your shift supervisor within 24 hours of occurrence</strong>.<br>
-3. <strong>Workers' Compensation Claim (Form DWC-1):</strong> Management must provide the injured employee with a California Workers' Compensation Claim Form (DWC-1) within one working day of learning about the injury.<br>
-4. <strong>Authorized Clinics:</strong> Medical treatment must be obtained through our employer-approved medical provider network.`,
+            doc: `<span class="text-sky-300 font-extrabold text-lg">CALIFORNIA INDUSTRIAL LOGISTICS • WORKPLACE INJURY PROTOCOL</span><br><br>
+1. <strong class="text-white">Immediate First Aid:</strong> Seek immediate medical care for any life-threatening condition by calling 911 or visiting the emergency room.<br>
+2. <div class="p-3 bg-amber-950/40 border border-amber-800 rounded-xl space-y-1 text-amber-200">
+  <strong class="text-amber-300">Mandatory 24-Hour Reporting:</strong><br>
+  Any injury or occupational illness occurring on the job—regardless of how minor it may appear—<strong>must be reported to your shift supervisor within 24 hours of occurrence</strong>.
+</div><br>
+3. <strong class="text-white">Workers' Compensation Claim (Form DWC-1):</strong> Management must provide the injured employee with a California Workers' Compensation Claim Form (DWC-1) within one working day of learning about the injury.<br>
+4. <strong class="text-white">Authorized Clinics:</strong> Medical treatment must be obtained through our employer-approved medical provider network.`,
             question: "Within what timeframe must an employee report a workplace injury to their supervisor?",
             options: [
               "(A) Within 30 days after the end of the year",
@@ -944,10 +1016,12 @@ This product contains acetaminophen. Severe liver damage may occur if you take:<
             id: "q4_9",
             category: "Store Price Match & Coupons",
             title: "Read the customer service price guarantee and coupon policy at a local department store.",
-            doc: `<strong>VALLEY SUPERSTORE • PRICE MATCH & COUPON GUARANTEE</strong><br><br>
-• <strong>Price Matching Competitors:</strong> We will match any lower printed advertised price from local brick-and-mortar retail competitors located within 15 miles of this store. The identical brand, model number, and size must be in stock at both stores.<br>
-• <strong>Exclusions:</strong> We do NOT match online marketplace sellers (such as Amazon third-party sellers), clearance liquidation sales, doorbusters, or Black Friday weekend special promotions.<br>
-• <strong>Coupon Limit:</strong> Maximum of one store coupon and one manufacturer coupon permitted per purchased item. Photocopies of coupons are not accepted.`,
+            doc: `<span class="text-sky-300 font-extrabold text-lg">VALLEY SUPERSTORE • PRICE MATCH & COUPON GUARANTEE</span><br><br>
+• <strong class="text-sky-300">Price Matching Competitors:</strong> We will match any lower printed advertised price from local brick-and-mortar retail competitors located within 15 miles of this store. The identical brand, model number, and size must be in stock at both stores.<br>
+• <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl space-y-1 text-slate-200 my-1">
+  <span class="text-rose-400 font-bold">Exclusions:</span> We do NOT match online marketplace sellers (such as Amazon third-party sellers), clearance liquidation sales, doorbusters, or Black Friday weekend special promotions.
+</div>
+• <strong class="text-white">Coupon Limit:</strong> Maximum of one store coupon and one manufacturer coupon permitted per purchased item. Photocopies of coupons are not accepted.`,
             question: "When will the store match a competitor's lower price?",
             options: [
               "(A) For online items sold by third-party marketplace sellers",
@@ -964,11 +1038,14 @@ This product contains acetaminophen. Severe liver damage may occur if you take:<
             id: "q4_10",
             category: "Voting & Official Drop-Boxes",
             title: "Read the official voting notice from the Santa Clara County Registrar of Voters.",
-            doc: `<strong>SANTA CLARA COUNTY • OFFICIAL ELECTION BALLOT DROP-BOX NOTICE</strong><br><br>
+            doc: `<span class="text-sky-300 font-extrabold text-lg">SANTA CLARA COUNTY • OFFICIAL ELECTION BALLOT DROP-BOX NOTICE</span><br><br>
 Every registered California voter receives a vote-by-mail ballot. You have three secure ways to return your completed ballot:<br><br>
-1. <strong>Official Ballot Drop-Boxes:</strong> Deposit your sealed, signed ballot envelope into any secure 24/7 drop-box located at city halls, libraries, and community centers. <strong>All drop-boxes close strictly at 8:00 PM on Election Night.</strong><br>
-2. <strong>US Postal Service Mail:</strong> No postage stamp required. Ballot must be postmarked on or before Election Day and received within 7 days.<br>
-3. <strong>Vote Centers:</strong> Cast your ballot in person or drop off your mail-in envelope from 7:00 AM to 8:00 PM on Election Day.`,
+1. <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl space-y-1 text-slate-200">
+  <strong class="text-sky-300 text-base">Official Ballot Drop-Boxes:</strong><br>
+  Deposit your sealed, signed ballot envelope into any secure 24/7 drop-box located at city halls, libraries, and community centers. <strong class="text-amber-300">All drop-boxes close strictly at 8:00 PM on Election Night.</strong>
+</div><br>
+2. <strong class="text-white">US Postal Service Mail:</strong> No postage stamp required. Ballot must be postmarked on or before Election Day and received within 7 days.<br>
+3. <strong class="text-white">Vote Centers:</strong> Cast your ballot in person or drop off your mail-in envelope from 7:00 AM to 8:00 PM on Election Day.`,
             question: "Until what time on Election Night can a voter deposit their ballot into an official drop-box?",
             options: [
               "(A) Until 5:00 PM in the afternoon",
@@ -990,7 +1067,8 @@ Every registered California voter receives a vote-by-mail ballot. You have three
     // ==========================================
     let activeQuizId = "quiz1";
     let activeSection = "listening";
-    let currentVoice = null;
+    let voiceGender = "female"; // 'female' or 'male'
+    let selectedVoice = null;
     let speechSpeed = 1.0;
     let quizAnswers = {}; // user choices
     let mistakeBank = []; // list of missed items
@@ -1015,6 +1093,10 @@ Every registered California voter receives a vote-by-mail ballot. You have three
           mistakeBank = data.mistakes || [];
           updateMistakeBadge();
         }
+        const savedGender = localStorage.getItem("esl_voice_gender");
+        if (savedGender === "male" || savedGender === "female") {
+          voiceGender = savedGender;
+        }
       } catch (e) {
         console.error("Storage load error", e);
       }
@@ -1033,7 +1115,7 @@ Every registered California voter receives a vote-by-mail ballot. You have three
     }
 
     // ==========================================
-    // 3. ROBUST VOICE ENGINE & AUDIO PLAYBACK
+    // 3. ROBUST VOICE ENGINE (FEMALE & MALE AMERICAN)
     // ==========================================
     function initVoices() {
       if (!('speechSynthesis' in window)) return;
@@ -1043,26 +1125,20 @@ Every registered California voter receives a vote-by-mail ballot. You have three
         const select = document.getElementById('voiceSelect');
         if (!voices || voices.length === 0) return;
 
-        select.innerHTML = '';
+        select.innerHTML = '<option value="auto">自动智能匹配 (Auto Best Match)</option>';
         
         // Filter English voices
         const englishVoices = voices.filter(v => v.lang.startsWith('en'));
-        
-        // Sort priority: Natural/Enhanced/Premium first, then Google, then Apple/Microsoft
-        englishVoices.sort((a, b) => {
-          const aScore = getVoiceScore(a.name);
-          const bScore = getVoiceScore(b.name);
-          return bScore - aScore;
-        });
 
-        englishVoices.forEach((v, idx) => {
+        englishVoices.forEach((v) => {
           const opt = document.createElement('option');
           opt.value = v.name;
-          const isHighQuality = getVoiceScore(v.name) >= 3;
-          opt.textContent = `${isHighQuality ? '⭐ ' : ''}${v.name} (${v.lang})`;
+          const isUs = v.lang.includes('US') || v.lang.includes('en-US');
+          opt.textContent = `${isUs ? '🇺🇸 ' : ''}${v.name} (${v.lang})`;
           select.appendChild(opt);
-          if (idx === 0) currentVoice = v;
         });
+
+        pickBestVoiceForGender();
       };
 
       populate();
@@ -1071,23 +1147,83 @@ Every registered California voter receives a vote-by-mail ballot. You have three
       }
     }
 
-    function getVoiceScore(name) {
-      let score = 0;
-      const lower = name.toLowerCase();
-      if (lower.includes('natural') || lower.includes('enhanced') || lower.includes('premium')) score += 5;
-      if (lower.includes('google')) score += 4;
-      if (lower.includes('samantha') || lower.includes('flo') || lower.includes('eddy') || lower.includes('ava') || lower.includes('siri') || lower.includes('karen') || lower.includes('serena')) score += 3;
-      if (lower.includes('us')) score += 1;
-      return score;
+    function setVoiceGender(gender) {
+      voiceGender = gender;
+      localStorage.setItem("esl_voice_gender", gender);
+      
+      const btnF = document.getElementById('btnVoiceFemale');
+      const btnM = document.getElementById('btnVoiceMale');
+      if (gender === 'female') {
+        btnF.className = "px-3.5 py-1.5 rounded-xl font-bold text-xs sm:text-sm bg-sky-600 text-white shadow-md transition flex items-center gap-1.5";
+        btnM.className = "px-3.5 py-1.5 rounded-xl font-medium text-xs sm:text-sm bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition flex items-center gap-1.5";
+      } else {
+        btnM.className = "px-3.5 py-1.5 rounded-xl font-bold text-xs sm:text-sm bg-sky-600 text-white shadow-md transition flex items-center gap-1.5";
+        btnF.className = "px-3.5 py-1.5 rounded-xl font-medium text-xs sm:text-sm bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition flex items-center gap-1.5";
+      }
+
+      pickBestVoiceForGender();
     }
 
-    function onVoiceChange() {
-      const select = document.getElementById('voiceSelect');
+    function pickBestVoiceForGender() {
+      if (!('speechSynthesis' in window)) return;
       const voices = window.speechSynthesis.getVoices();
-      currentVoice = voices.find(v => v.name === select.value) || null;
+      if (!voices || voices.length === 0) return;
+
+      const usVoices = voices.filter(v => (v.lang.includes('US') || v.lang.includes('en_US') || v.lang === 'en-US') && v.lang.toLowerCase().startsWith('en'));
+      const otherEnVoices = voices.filter(v => !usVoices.includes(v) && v.lang.toLowerCase().startsWith('en'));
+      const pool = [...usVoices, ...otherEnVoices, ...voices];
+
+      if (voiceGender === 'female') {
+        const femaleNames = ['samantha', 'ava', 'victoria', 'allison', 'flo', 'karen', 'jenny', 'aria', 'zira', 'kathy', 'siri', 'female'];
+        selectedVoice = pool.find(v => {
+          const n = v.name.toLowerCase();
+          return femaleNames.some(fn => n.includes(fn)) && !n.includes('male') && !n.includes('david');
+        }) || pool.find(v => v.name.toLowerCase().includes('google us english')) || pool[0];
+      } else {
+        const maleNames = ['alex', 'eddy', 'fred', 'david', 'guy', 'mark', 'tom', 'nathan', 'reed', 'christopher', 'eric', 'andrew', 'brian', 'male', 'daniel'];
+        selectedVoice = pool.find(v => {
+          const n = v.name.toLowerCase();
+          return maleNames.some(mn => n.includes(mn)) && !n.includes('female') && !n.includes('samantha') && !n.includes('zira') && !n.includes('victoria');
+        }) || pool.find(v => {
+          const n = v.name.toLowerCase();
+          return !n.includes('samantha') && !n.includes('ava') && !n.includes('victoria') && !n.includes('female') && !n.includes('zira');
+        }) || pool[0];
+      }
+
+      const sel = document.getElementById('voiceSelect');
+      if (sel && selectedVoice) {
+        sel.value = selectedVoice.name;
+      }
+    }
+
+    function onManualVoiceSelect() {
+      const select = document.getElementById('voiceSelect');
+      if (select.value === 'auto') {
+        pickBestVoiceForGender();
+        return;
+      }
+      const voices = window.speechSynthesis.getVoices();
+      selectedVoice = voices.find(v => v.name === select.value) || null;
       if (activePlayingId) {
         stopAudio();
       }
+    }
+
+    function testCurrentVoice() {
+      stopAudio();
+      const testPhrase = voiceGender === 'female' 
+        ? "Hello! This is your American female practice voice for the Level 4 exam."
+        : "Hello! This is your American male practice voice for the Level 4 exam.";
+      
+      const utterance = new SpeechSynthesisUtterance(testPhrase);
+      activeUtterance = utterance;
+      if (selectedVoice) {
+        utterance.voice = selectedVoice;
+      }
+      utterance.rate = speechSpeed;
+      utterance.pitch = voiceGender === 'female' ? 1.05 : 0.88;
+      utterance.lang = 'en-US';
+      window.speechSynthesis.speak(utterance);
     }
 
     function setSpeed(rate) {
@@ -1095,11 +1231,11 @@ Every registered California voter receives a vote-by-mail ballot. You have three
       const btnNormal = document.getElementById('speedNormal');
       const btnSlow = document.getElementById('speedSlow');
       if (rate === 1.0) {
-        btnNormal.className = "px-2.5 py-1 rounded-lg border font-medium bg-blue-50 text-blue-700 border-blue-300";
-        btnSlow.className = "px-2.5 py-1 rounded-lg border border-slate-200 font-medium text-slate-600 hover:bg-slate-100";
+        btnNormal.className = "px-3 py-1 rounded-lg border font-bold text-xs sm:text-sm bg-sky-600 text-white border-sky-500";
+        btnSlow.className = "px-3 py-1 rounded-lg border border-slate-700 font-semibold text-xs sm:text-sm text-slate-300 hover:bg-slate-800";
       } else {
-        btnSlow.className = "px-2.5 py-1 rounded-lg border font-medium bg-blue-50 text-blue-700 border-blue-300";
-        btnNormal.className = "px-2.5 py-1 rounded-lg border border-slate-200 font-medium text-slate-600 hover:bg-slate-100";
+        btnSlow.className = "px-3 py-1 rounded-lg border font-bold text-xs sm:text-sm bg-sky-600 text-white border-sky-500";
+        btnNormal.className = "px-3 py-1 rounded-lg border border-slate-700 font-semibold text-xs sm:text-sm text-slate-300 hover:bg-slate-800";
       }
     }
 
@@ -1126,7 +1262,7 @@ Every registered California voter receives a vote-by-mail ballot. You have three
       if (mode === 'question') {
         textToSpeak = "Question: " + item.question;
       } else {
-        // CASAS Standard: Play passage, natural pause, then read the question!
+        // Standard CASAS Format: Plays passage, then natural pause, then reads the question aloud!
         textToSpeak = item.audio + ". ... ... Question: " + item.question;
       }
 
@@ -1148,11 +1284,12 @@ Every registered California voter receives a vote-by-mail ballot. You have three
       activeUtterance = utterance; // Prevent garbage collection bug in Chrome
       activePlayingId = itemId;
 
-      if (currentVoice) {
-        utterance.voice = currentVoice;
+      if (selectedVoice) {
+        utterance.voice = selectedVoice;
       }
       utterance.rate = speechSpeed;
-      utterance.pitch = 1.0;
+      // Male pitch = 0.88 for natural masculine resonance; Female pitch = 1.05
+      utterance.pitch = voiceGender === 'female' ? 1.05 : 0.88;
       utterance.lang = 'en-US';
 
       if (indicator) {
@@ -1186,13 +1323,13 @@ Every registered California voter receives a vote-by-mail ballot. You have three
         const btn = document.getElementById('nav' + id.charAt(0).toUpperCase() + id.slice(1));
         if (!btn) return;
         if (id === quizId) {
-          btn.className = "px-3.5 py-2 text-xs sm:text-sm font-bold rounded-lg bg-blue-600 text-white transition";
+          btn.className = "px-4 py-2.5 text-sm sm:text-base font-bold rounded-xl bg-sky-600 text-white shadow-md transition";
         } else if (id === 'mistakes') {
-          btn.className = "px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-amber-700 hover:bg-amber-50 transition flex items-center gap-1";
+          btn.className = "px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-amber-300 hover:bg-amber-950/40 border border-amber-800/40 transition flex items-center gap-1.5";
         } else if (id === 'plan') {
-          btn.className = "px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-emerald-700 hover:bg-emerald-50 transition ml-auto flex items-center gap-1";
+          btn.className = "px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-emerald-300 hover:bg-emerald-950/40 border border-emerald-800/40 transition ml-auto flex items-center gap-1.5";
         } else {
-          btn.className = "px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:bg-slate-100 transition";
+          btn.className = "px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-transparent transition";
         }
       });
 
@@ -1223,11 +1360,11 @@ Every registered California voter receives a vote-by-mail ballot. You have three
       const tabReading = document.getElementById('tabReading');
 
       if (section === 'listening') {
-        tabListening.className = "px-5 py-2.5 text-sm font-semibold border-b-2 border-blue-600 text-blue-600 flex items-center gap-2 transition";
-        tabReading.className = "px-5 py-2.5 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2 transition";
+        tabListening.className = "px-6 py-3 text-base sm:text-lg font-bold border-b-2 border-sky-400 text-sky-400 flex items-center gap-2 transition";
+        tabReading.className = "px-6 py-3 text-base sm:text-lg font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2 transition";
       } else {
-        tabReading.className = "px-5 py-2.5 text-sm font-semibold border-b-2 border-blue-600 text-blue-600 flex items-center gap-2 transition";
-        tabListening.className = "px-5 py-2.5 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2 transition";
+        tabReading.className = "px-6 py-3 text-base sm:text-lg font-bold border-b-2 border-sky-400 text-sky-400 flex items-center gap-2 transition";
+        tabListening.className = "px-6 py-3 text-base sm:text-lg font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2 transition";
       }
       renderActiveSection();
     }
@@ -1244,87 +1381,87 @@ Every registered California voter receives a vote-by-mail ballot. You have three
         const isAnswered = quizAnswers[item.id] !== undefined;
 
         return `
-          <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4" id="card-${item.id}">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-xl space-y-5" id="card-${item.id}">
             <div class="flex items-start justify-between">
               <div>
-                <span class="px-2.5 py-0.5 rounded text-xs font-semibold ${activeSection === 'listening' ? 'bg-blue-100 text-blue-800' : 'bg-emerald-100 text-emerald-800'}">
+                <span class="px-3 py-1 rounded-lg text-xs sm:text-sm font-bold ${activeSection === 'listening' ? 'bg-sky-950 text-sky-300 border border-sky-800' : 'bg-emerald-950 text-emerald-300 border border-emerald-800'}">
                   Q${itemNumber} • ${item.category}
                 </span>
-                <h3 class="text-base font-semibold text-slate-900 mt-1">${item.title}</h3>
+                <h3 class="text-lg sm:text-xl font-bold text-white mt-2 leading-snug">${item.title}</h3>
               </div>
-              <span id="badge-${item.id}" class="text-xs px-2.5 py-0.5 rounded-full font-medium ${isAnswered ? '' : 'hidden'}"></span>
+              <span id="badge-${item.id}" class="text-xs sm:text-sm px-3 py-1 rounded-full font-bold ${isAnswered ? '' : 'hidden'}"></span>
             </div>
 
             ${activeSection === 'listening' ? `
-              <!-- Audio Player Box -->
-              <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div class="flex flex-wrap items-center gap-2">
-                  <button onclick="playListeningItem('${item.id}', 'all')" id="btn-${item.id}" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm rounded-lg flex items-center gap-2 shadow-sm transition">
+              <!-- Audio Player Box (High Contrast) -->
+              <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="flex flex-wrap items-center gap-2.5">
+                  <button onclick="playListeningItem('${item.id}', 'all')" id="btn-${item.id}" class="px-5 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-sm sm:text-base rounded-xl flex items-center gap-2 shadow-lg shadow-sky-950/50 transition">
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     <span>Play Audio & Question (听录音与问题)</span>
                   </button>
-                  <button onclick="playListeningItem('${item.id}', 'question')" class="px-3 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium text-xs rounded-lg transition">
+                  <button onclick="playListeningItem('${item.id}', 'question')" class="px-3.5 py-2.5 bg-slate-800 hover:bg-slate-700 text-sky-300 font-bold text-xs sm:text-sm rounded-xl border border-slate-700 transition">
                     🔊 Repeat Question (只听问题)
                   </button>
-                  <button onclick="stopAudio()" class="px-3 py-2 border border-slate-300 hover:bg-slate-100 text-slate-600 font-medium text-xs rounded-lg transition">
+                  <button onclick="stopAudio()" class="px-3.5 py-2.5 border border-slate-700 hover:bg-slate-800 text-slate-300 font-semibold text-xs sm:text-sm rounded-xl transition">
                     ⏹ Stop (停止)
                   </button>
-                  <div id="ind-${item.id}" class="hidden text-blue-600 items-center gap-2 text-xs font-medium">
+                  <div id="ind-${item.id}" class="hidden text-sky-400 items-center gap-2 text-xs sm:text-sm font-bold">
                     <div class="audio-wave"><div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div></div>
-                    <span>Playing Audio... (正在播放)</span>
+                    <span>Playing Audio...</span>
                   </div>
                 </div>
-                <button onclick="document.getElementById('trans-${item.id}').classList.toggle('hidden')" class="text-xs text-blue-600 underline hover:text-blue-800 whitespace-nowrap">
+                <button onclick="document.getElementById('trans-${item.id}').classList.toggle('hidden')" class="text-xs sm:text-sm text-sky-400 hover:text-sky-300 underline font-semibold whitespace-nowrap">
                   Show Audio Script (看听力原文)
                 </button>
               </div>
 
               <!-- Transcript -->
-              <div id="trans-${item.id}" class="hidden bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs leading-relaxed text-amber-900">
-                <strong>Audio Script (听力文本):</strong><br>
+              <div id="trans-${item.id}" class="hidden bg-slate-950 border-2 border-amber-900/60 rounded-xl p-4 text-sm sm:text-base leading-relaxed text-amber-200">
+                <strong class="text-amber-300 font-bold text-base">Audio Script (听力文本):</strong><br>
                 "${item.audio}"
               </div>
             ` : `
-              <!-- Reading Document Card -->
-              <div class="border-2 border-slate-300 rounded-xl p-4 sm:p-5 bg-white space-y-2 text-xs text-slate-800">
+              <!-- Reading Document Card (Large High Contrast Text) -->
+              <div class="border-2 border-slate-700 rounded-xl p-5 sm:p-6 bg-slate-950/90 space-y-3 text-base sm:text-lg text-slate-100 leading-relaxed font-sans shadow-inner">
                 ${item.doc}
               </div>
             `}
 
-            <!-- Question Text -->
-            <div class="p-3 bg-blue-50/50 border border-blue-100 rounded-xl flex items-center justify-between gap-3">
-              <p class="font-bold text-sm text-slate-900">Question: ${item.question}</p>
-              <button onclick="speakCleanText('${item.question.replace(/'/g, "\\'")}', '${item.id}')" class="text-xs text-blue-600 hover:text-blue-800 font-medium whitespace-nowrap flex items-center gap-1">
+            <!-- Question Text Banner -->
+            <div class="p-4 sm:p-5 bg-sky-950/40 border-2 border-sky-800/80 rounded-2xl flex items-center justify-between gap-3 shadow-sm">
+              <p class="font-extrabold text-base sm:text-xl text-white leading-relaxed">Question: ${item.question}</p>
+              <button onclick="playListeningItem('${item.id}', 'question')" class="text-xs sm:text-sm text-sky-300 hover:text-sky-200 font-bold whitespace-nowrap flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 rounded-xl border border-slate-700 transition">
                 <span>🔊 Read Question</span>
               </button>
             </div>
 
-            <!-- Options -->
-            <div class="space-y-2">
+            <!-- Options (Large Touch Targets & Contrast) -->
+            <div class="space-y-2.5">
               ${item.options.map((opt, optIdx) => {
                 const optLetter = ["A", "B", "C", "D"][optIdx];
                 return `
-                  <label class="option-label flex items-center p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer text-sm transition">
-                    <input type="radio" name="${item.id}" value="${optLetter}" class="mr-3 text-blue-600">
+                  <label class="option-label flex items-center p-4 sm:p-4.5 rounded-xl border-2 border-slate-750 bg-slate-900/80 hover:bg-slate-800/80 text-base sm:text-lg text-slate-100 font-medium cursor-pointer transition shadow-sm">
+                    <input type="radio" name="${item.id}" value="${optLetter}" class="w-5 h-5 mr-3.5 text-sky-500 focus:ring-sky-400 bg-slate-950 border-slate-600">
                     <span>${opt}</span>
                   </label>
                 `;
               }).join('')}
             </div>
 
-            <button onclick="checkItemAnswer('${item.id}', '${item.correct}')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700 transition">
+            <button onclick="checkItemAnswer('${item.id}', '${item.correct}')" class="px-6 py-3 bg-sky-600 hover:bg-sky-500 text-white rounded-xl text-base sm:text-lg font-bold shadow-lg transition">
               Check Answer (确认答案)
             </button>
 
             <!-- Feedback & Bilingual Explanations -->
-            <div id="fb-${item.id}" class="hidden p-4 rounded-xl border text-sm space-y-2">
-              <div id="fb-title-${item.id}" class="font-bold"></div>
-              <div class="text-xs leading-relaxed text-slate-700">
-                <strong>Key Clue:</strong> <em>"${item.clue}"</em>
+            <div id="fb-${item.id}" class="hidden p-5 rounded-2xl border-2 text-base space-y-2.5">
+              <div id="fb-title-${item.id}" class="font-black text-lg"></div>
+              <div class="text-sm sm:text-base leading-relaxed text-slate-200">
+                <strong class="text-white">Key Clue:</strong> <em>"${item.clue}"</em>
               </div>
-              <div class="cn-hint ${document.getElementById('toggleCn').checked ? '' : 'hidden'} text-xs bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1 text-slate-600">
-                <p><strong>【中文解析】：</strong>${item.chinese}</p>
-                <p><strong>【高频词汇】：</strong><code>${item.vocab}</code></p>
+              <div class="cn-hint ${document.getElementById('toggleCn').checked ? '' : 'hidden'} text-sm sm:text-base leading-relaxed bg-slate-950 p-4 rounded-xl border border-slate-750 space-y-1.5 text-slate-200">
+                <p><strong class="text-sky-300">【中文解析】：</strong>${item.chinese}</p>
+                <p><strong class="text-sky-300">【高频词汇】：</strong><code class="px-2 py-0.5 rounded bg-slate-800 text-sky-300 border border-slate-700 font-mono text-sm">${item.vocab}</code></p>
               </div>
             </div>
           </div>
@@ -1351,18 +1488,18 @@ Every registered California voter receives a vote-by-mail ballot. You have three
       badge.classList.remove('hidden');
 
       if (isCorrect) {
-        fb.className = "p-4 rounded-xl border border-emerald-300 bg-emerald-50 text-sm space-y-2";
-        fbTitle.className = "font-bold text-emerald-800";
+        fb.className = "p-5 rounded-2xl border-2 border-emerald-600 bg-emerald-950/40 text-emerald-200 text-base space-y-2.5";
+        fbTitle.className = "font-black text-lg text-emerald-300";
         fbTitle.innerText = "✓ Correct! (回答正确)";
-        badge.className = "text-xs px-2.5 py-0.5 rounded-full font-medium bg-emerald-100 text-emerald-800";
+        badge.className = "text-xs sm:text-sm px-3 py-1 rounded-full font-bold bg-emerald-950 text-emerald-300 border border-emerald-700";
         badge.innerText = "Correct";
         // Remove from mistakes if corrected
         mistakeBank = mistakeBank.filter(m => m.id !== itemId);
       } else {
-        fb.className = "p-4 rounded-xl border border-rose-300 bg-rose-50 text-sm space-y-2";
-        fbTitle.className = "font-bold text-rose-800";
+        fb.className = "p-5 rounded-2xl border-2 border-rose-600 bg-rose-950/40 text-rose-200 text-base space-y-2.5";
+        fbTitle.className = "font-black text-lg text-rose-300";
         fbTitle.innerText = `✗ Incorrect. The correct answer is (${correctLetter}). (回答错误)`;
-        badge.className = "text-xs px-2.5 py-0.5 rounded-full font-medium bg-rose-100 text-rose-800";
+        badge.className = "text-xs sm:text-sm px-3 py-1 rounded-full font-bold bg-rose-950 text-rose-300 border border-rose-700";
         badge.innerText = "Incorrect";
 
         // Add to mistake bank
@@ -1402,15 +1539,15 @@ Every registered California voter receives a vote-by-mail ballot. You have three
     function showEvaluation(score) {
       const evalBox = document.getElementById('evaluationText');
       if (score >= 8) {
-        evalBox.className = "p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs sm:text-sm text-emerald-900 leading-relaxed space-y-1.5";
+        evalBox.className = "p-5 rounded-2xl bg-emerald-950/50 border-2 border-emerald-700 text-emerald-200 leading-relaxed space-y-2 text-base";
         evalBox.innerHTML = `
-          <p class="font-bold text-base text-emerald-800">🎉 Excellent Job! Level 4 Ready! (达标 Level 4)</p>
+          <p class="font-black text-xl text-emerald-300">🎉 Excellent Job! Level 4 Ready! (达到 Level 4 晋级线)</p>
           <p>Your score is <strong>${score}/10</strong> (${score*10}%). You demonstrated strong comprehension of multi-step instructions and workplace materials equivalent to CASAS score <strong>221+</strong>. Ready to proceed to the next quiz!</p>
         `;
       } else {
-        evalBox.className = "p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs sm:text-sm text-amber-900 leading-relaxed space-y-1.5";
+        evalBox.className = "p-5 rounded-2xl bg-amber-950/50 border-2 border-amber-700 text-amber-200 leading-relaxed space-y-2 text-base";
         evalBox.innerHTML = `
-          <p class="font-bold text-base text-amber-800">👍 Good Attempt: ${score}/10 (继续强化错题)</p>
+          <p class="font-black text-xl text-amber-300">👍 Good Attempt: ${score}/10 (继续强化错题)</p>
           <p>Your incorrect answers have been automatically saved to your <strong>📕 错题本 (Mistakes Tab)</strong> above. Click into the Mistakes tab to review and re-test them until you score 100%!</p>
         `;
       }
@@ -1429,10 +1566,27 @@ Every registered California voter receives a vote-by-mail ballot. You have three
       });
     }
 
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      document.getElementById('themeBtn').innerText = isDark ? '🌙' : '☀️';
+      if (!isDark) {
+        document.body.className = "bg-slate-50 text-slate-800 antialiased p-3 sm:p-6 md:p-8 min-h-screen transition-colors duration-200";
+      } else {
+        document.body.className = "bg-slate-950 text-slate-100 antialiased p-3 sm:p-6 md:p-8 min-h-screen transition-colors duration-200";
+      }
+    }
+
     function resetCurrentQuiz() {
       if (confirm("Reset current quiz progress? (确定重置本套题吗？)")) {
         quizAnswers = {};
         selectQuiz(activeQuizId);
+      }
+    }
+
+    function playMistakeClue(idx) {
+      const item = mistakeBank[idx];
+      if (item && item.clue) {
+        speakCleanText("Key clue: " + item.clue, item.id);
       }
     }
 
@@ -1443,45 +1597,45 @@ Every registered California voter receives a vote-by-mail ballot. You have three
       const container = document.getElementById('quizContainer');
       if (mistakeBank.length === 0) {
         container.innerHTML = `
-          <div class="bg-white border border-slate-200 rounded-2xl p-8 text-center space-y-3">
-            <div class="text-4xl">🎉</div>
-            <h3 class="text-lg font-bold text-slate-900">No Mistakes Recorded! (目前没有错题)</h3>
-            <p class="text-xs text-slate-500 max-w-md mx-auto">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-12 text-center space-y-3">
+            <div class="text-5xl">🎉</div>
+            <h3 class="text-xl sm:text-2xl font-black text-white">No Mistakes Recorded! (目前没有错题)</h3>
+            <p class="text-sm sm:text-base text-slate-300 max-w-md mx-auto">
               Any questions you answer incorrectly in any quiz will automatically be collected here for targeted re-practice.
             </p>
-            <button onclick="selectQuiz('quiz1')" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-semibold">Go to Quiz #1</button>
+            <button onclick="selectQuiz('quiz1')" class="px-6 py-2.5 bg-sky-600 text-white rounded-xl text-base font-bold shadow-md">Go to Quiz #1</button>
           </div>
         `;
         return;
       }
 
       container.innerHTML = `
-        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-900 flex justify-between items-center">
+        <div class="bg-amber-950/40 border-2 border-amber-800 rounded-2xl p-5 text-base text-amber-200 flex justify-between items-center shadow-md">
           <div>
-            <strong class="font-bold">📕 错题专项强化 (Targeted Mistake Review):</strong> You have <strong>${mistakeBank.length}</strong> questions to review.
+            <strong class="font-extrabold text-amber-300 text-lg">📕 错题专项强化 (Targeted Mistake Review):</strong> You have <strong>${mistakeBank.length}</strong> questions to review.
           </div>
-          <button onclick="if(confirm('Clear all saved mistakes?')){mistakeBank=[];updateMistakeBadge();renderMistakesBank();saveState();}" class="text-rose-700 underline text-xs font-medium">Clear All (清空)</button>
+          <button onclick="if(confirm('Clear all saved mistakes?')){mistakeBank=[];updateMistakeBadge();renderMistakesBank();saveState();}" class="text-rose-400 hover:text-rose-300 underline font-bold text-sm">Clear All (清空)</button>
         </div>
       ` + mistakeBank.map((item, idx) => `
-        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-3">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-7 shadow-xl space-y-4">
           <div class="flex items-center justify-between">
-            <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-amber-100 text-amber-900">Review Item #${idx + 1} • ${item.category}</span>
-            <span class="text-xs text-slate-400">From ${item.quizId}</span>
+            <span class="px-3.5 py-1 rounded-lg text-xs sm:text-sm font-bold bg-amber-950 text-amber-300 border border-amber-800">Review Item #${idx + 1} • ${item.category}</span>
+            <span class="text-xs sm:text-sm text-slate-400 font-medium">From ${item.quizId}</span>
           </div>
-          <h4 class="font-semibold text-sm text-slate-900">${item.title}</h4>
+          <h4 class="font-bold text-lg text-white">${item.title}</h4>
           ${item.audio ? `
-            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs flex justify-between items-center gap-2">
-              <span><strong>Audio Clue:</strong> <em>"${item.clue}"</em></span>
-              <button onclick="speakCleanText('${item.clue.replace(/'/g, "\\'")}', '${item.id}')" class="px-2.5 py-1 bg-blue-600 text-white rounded text-xs whitespace-nowrap">🔊 Listen</button>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-sm sm:text-base flex justify-between items-center gap-3">
+              <span class="text-slate-200"><strong class="text-sky-300">Audio Clue:</strong> <em>"${item.clue}"</em></span>
+              <button onclick="playMistakeClue(${idx})" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap shadow-md">🔊 Listen</button>
             </div>
           ` : `
-            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs">${item.doc}</div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-sm sm:text-base text-slate-200">${item.doc}</div>
           `}
-          <p class="font-medium text-xs text-slate-900">Question: ${item.question}</p>
-          <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-xs space-y-1">
-            <p class="font-bold text-emerald-800">Correct Answer: (${item.correct})</p>
-            <p class="text-slate-600"><strong>解析:</strong> ${item.chinese}</p>
-            <p class="text-slate-500"><strong>生词:</strong> <code>${item.vocab}</code></p>
+          <p class="font-extrabold text-base sm:text-lg text-white">Question: ${item.question}</p>
+          <div class="p-4 bg-emerald-950/40 border border-emerald-800 rounded-xl text-sm sm:text-base space-y-2">
+            <p class="font-black text-emerald-300 text-base">Correct Answer: (${item.correct})</p>
+            <p class="text-slate-200"><strong>解析:</strong> ${item.chinese}</p>
+            <p class="text-slate-300"><strong>生词:</strong> <code class="px-2 py-0.5 rounded bg-slate-800 text-sky-300 border border-slate-700 font-mono text-sm">${item.vocab}</code></p>
           </div>
         </div>
       `).join('');
@@ -1493,69 +1647,69 @@ Every registered California voter receives a vote-by-mail ballot. You have three
     function renderStudyPlan() {
       const container = document.getElementById('quizContainer');
       container.innerHTML = `
-        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
-          <div class="border-b border-slate-100 pb-3">
-            <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+          <div class="border-b border-slate-800 pb-4">
+            <h2 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
               <span>📅 40-Day Curriculum: 120+ Authentic CASAS Test Questions</span>
             </h2>
-            <p class="text-xs text-slate-500 mt-1">Structured 40-day roadmap designed for a 50-year-old adult school student advancing from Level 3 to Level 4 (Passing Target: CASAS 221+).</p>
+            <p class="text-sm sm:text-base text-slate-300 mt-1.5">Structured 40-day roadmap designed for a 50-year-old adult school student advancing from Level 3 to Level 4 (Passing Target: CASAS 221+).</p>
           </div>
 
           <!-- Total Question Bank Table -->
-          <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-2">
-            <h3 class="font-bold text-slate-900 text-sm">📊 Complete 40-Day Curriculum Architecture</h3>
+          <div class="p-5 bg-slate-950 rounded-2xl border border-slate-800 text-sm space-y-3 shadow-inner">
+            <h3 class="font-extrabold text-white text-base">📊 Complete 40-Day Curriculum Architecture</h3>
             <div class="overflow-x-auto">
-              <table class="w-full text-left text-xs border-collapse">
+              <table class="w-full text-left text-sm border-collapse">
                 <thead>
-                  <tr class="border-b border-slate-200 font-semibold text-slate-700">
-                    <th class="py-2">Phase & Days</th>
-                    <th class="py-2">Target CASAS</th>
-                    <th class="py-2">Quizzes Included</th>
-                    <th class="py-2">Total Questions</th>
+                  <tr class="border-b border-slate-800 font-bold text-slate-300">
+                    <th class="py-2.5">Phase & Days</th>
+                    <th class="py-2.5">Target CASAS</th>
+                    <th class="py-2.5">Quizzes Included</th>
+                    <th class="py-2.5">Total Questions</th>
                   </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-200 text-slate-600">
+                <tbody class="divide-y divide-slate-800 text-slate-300 font-medium">
                   <tr>
-                    <td class="py-2 font-medium text-blue-700">Phase 1 (Days 1–10)</td>
-                    <td class="py-2">211 – 218</td>
-                    <td class="py-2">Quizzes #1, #2, #3, #4 (Foundations & Living)</td>
-                    <td class="py-2 font-bold">40 Questions</td>
+                    <td class="py-3 text-sky-400 font-bold">Phase 1 (Days 1–10)</td>
+                    <td class="py-3">211 – 218</td>
+                    <td class="py-3">Quizzes #1, #2, #3, #4 (Foundations & Living)</td>
+                    <td class="py-3 font-extrabold text-white">40 Questions (Live)</td>
                   </tr>
                   <tr>
-                    <td class="py-2 font-medium text-emerald-700">Phase 2 (Days 11–20)</td>
-                    <td class="py-2">219 – 224</td>
-                    <td class="py-2">Quizzes #5, #6, #7, #8 (Workplace & Conditions)</td>
-                    <td class="py-2 font-bold">40 Questions</td>
+                    <td class="py-3 text-emerald-400 font-bold">Phase 2 (Days 11–20)</td>
+                    <td class="py-3">219 – 224</td>
+                    <td class="py-3">Quizzes #5, #6, #7, #8 (Workplace & Conditions)</td>
+                    <td class="py-3 font-extrabold text-white">40 Questions</td>
                   </tr>
                   <tr>
-                    <td class="py-2 font-medium text-amber-700">Phase 3 (Days 21–30)</td>
-                    <td class="py-2">225 – 230</td>
-                    <td class="py-2">Quizzes #9, #10, #11, #12 (Speed & Inferencing)</td>
-                    <td class="py-2 font-bold">40 Questions</td>
+                    <td class="py-3 text-amber-400 font-bold">Phase 3 (Days 21–30)</td>
+                    <td class="py-3">225 – 230</td>
+                    <td class="py-3">Quizzes #9, #10, #11, #12 (Speed & Inferencing)</td>
+                    <td class="py-3 font-extrabold text-white">40 Questions</td>
                   </tr>
                   <tr>
-                    <td class="py-2 font-medium text-purple-700">Phase 4 (Days 31–40)</td>
-                    <td class="py-2">230+</td>
-                    <td class="py-2">Mock Exam A + Mock Exam B (Full Length CASAS)</td>
-                    <td class="py-2 font-bold">50 Questions</td>
+                    <td class="py-3 text-purple-400 font-bold">Phase 4 (Days 31–40)</td>
+                    <td class="py-3">230+</td>
+                    <td class="py-3">Mock Exam A + Mock Exam B (Full Length CASAS)</td>
+                    <td class="py-3 font-extrabold text-white">50 Questions</td>
                   </tr>
-                  <tr class="font-bold text-slate-900 bg-slate-100">
-                    <td class="py-2" colspan="3">Grand Total Curriculum Practice Bank</td>
-                    <td class="py-2 text-emerald-700">170 Questions</td>
+                  <tr class="font-black text-white bg-slate-900">
+                    <td class="py-3" colspan="3">Grand Total Curriculum Practice Bank</td>
+                    <td class="py-3 text-emerald-400 text-base">170 Questions</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
 
-          <div class="space-y-4 text-xs sm:text-sm">
+          <div class="space-y-4 text-sm sm:text-base">
             <!-- Phase 1 -->
-            <div class="p-4 rounded-xl border border-blue-200 bg-blue-50/50 space-y-2">
+            <div class="p-5 rounded-2xl border-2 border-sky-800/80 bg-sky-950/30 space-y-2">
               <div class="flex items-center justify-between">
-                <span class="font-bold text-blue-900 text-sm">Phase 1 (Days 1 – 10): Level 3 Solidification & Core Vocab</span>
-                <span class="text-xs px-2 py-0.5 rounded bg-blue-200 text-blue-900 font-bold">Target CASAS 211–218</span>
+                <span class="font-black text-sky-300 text-base sm:text-lg">Phase 1 (Days 1 – 10): Level 3 Solidification & Core Vocab</span>
+                <span class="text-xs sm:text-sm px-2.5 py-1 rounded-lg bg-sky-900 text-sky-200 font-bold">CASAS 211–218</span>
               </div>
-              <ul class="list-disc list-inside text-slate-700 space-y-1 text-xs">
+              <ul class="list-disc list-inside text-slate-200 space-y-1.5 text-sm">
                 <li><strong>Quizzes:</strong> Quizzes #1, #2, #3, and #4 (40 questions live on website).</li>
                 <li><strong>Ventures 3 Units:</strong> Unit 1 (Personal Info & School), Unit 4 (Health & Clinic Visits).</li>
                 <li><strong>Routine:</strong> 1 quiz every 2 days. Use remaining days to clear the 📕 错题本 (Mistakes Tab).</li>
@@ -1563,12 +1717,12 @@ Every registered California voter receives a vote-by-mail ballot. You have three
             </div>
 
             <!-- Phase 2 -->
-            <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/50 space-y-2">
+            <div class="p-5 rounded-2xl border-2 border-emerald-800/80 bg-emerald-950/30 space-y-2">
               <div class="flex items-center justify-between">
-                <span class="font-bold text-emerald-900 text-sm">Phase 2 (Days 11 – 20): Level 3 to 4 Transition & Conditions</span>
-                <span class="text-xs px-2 py-0.5 rounded bg-emerald-200 text-emerald-900 font-bold">Target CASAS 219–224</span>
+                <span class="font-black text-emerald-300 text-base sm:text-lg">Phase 2 (Days 11 – 20): Level 3 to 4 Transition & Conditions</span>
+                <span class="text-xs sm:text-sm px-2.5 py-1 rounded-lg bg-emerald-900 text-emerald-200 font-bold">CASAS 219–224</span>
               </div>
-              <ul class="list-disc list-inside text-slate-700 space-y-1 text-xs">
+              <ul class="list-disc list-inside text-slate-200 space-y-1.5 text-sm">
                 <li><strong>Quizzes:</strong> Quizzes #5 through #8 (40 questions).</li>
                 <li><strong>Ventures 3 Units:</strong> Unit 6 (Work & Jobs), Unit 7 (Workplace Safety & Shifts).</li>
                 <li><strong>Focus:</strong> Negative constraints: <em>except, unless, prior to, eligible, unauthorized, differential</em>.</li>
@@ -1576,12 +1730,12 @@ Every registered California voter receives a vote-by-mail ballot. You have three
             </div>
 
             <!-- Phase 3 -->
-            <div class="p-4 rounded-xl border border-amber-200 bg-amber-50/50 space-y-2">
+            <div class="p-5 rounded-2xl border-2 border-amber-800/80 bg-amber-950/30 space-y-2">
               <div class="flex items-center justify-between">
-                <span class="font-bold text-amber-900 text-sm">Phase 3 (Days 21 – 30): High-Intermediate Speed & Inferencing</span>
-                <span class="text-xs px-2 py-0.5 rounded bg-amber-200 text-amber-900 font-bold">Target CASAS 225–230</span>
+                <span class="font-black text-amber-300 text-base sm:text-lg">Phase 3 (Days 21 – 30): High-Intermediate Speed & Inferencing</span>
+                <span class="text-xs sm:text-sm px-2.5 py-1 rounded-lg bg-amber-900 text-amber-200 font-bold">CASAS 225–230</span>
               </div>
-              <ul class="list-disc list-inside text-slate-700 space-y-1 text-xs">
+              <ul class="list-disc list-inside text-slate-200 space-y-1.5 text-sm">
                 <li><strong>Quizzes:</strong> Quizzes #9 through #12 (40 questions).</li>
                 <li><strong>Ventures 3 Units:</strong> Unit 8 (Daily Living & Consumer Bills), Unit 10 (Community & Government Services).</li>
                 <li><strong>Focus:</strong> 1.0x natural American speaking rate, complex tables, and multi-speaker dialogues.</li>
@@ -1589,12 +1743,12 @@ Every registered California voter receives a vote-by-mail ballot. You have three
             </div>
 
             <!-- Phase 4 -->
-            <div class="p-4 rounded-xl border border-purple-200 bg-purple-50/50 space-y-2">
+            <div class="p-5 rounded-2xl border-2 border-purple-800/80 bg-purple-950/30 space-y-2">
               <div class="flex items-center justify-between">
-                <span class="font-bold text-purple-900 text-sm">Phase 4 (Days 31 – 40): Full CASAS Exam Simulation & Stamina</span>
-                <span class="text-xs px-2 py-0.5 rounded bg-purple-200 text-purple-900 font-bold">Target CASAS 230+</span>
+                <span class="font-black text-purple-300 text-base sm:text-lg">Phase 4 (Days 31 – 40): Full CASAS Exam Simulation & Stamina</span>
+                <span class="text-xs sm:text-sm px-2.5 py-1 rounded-lg bg-purple-900 text-purple-200 font-bold">CASAS 230+</span>
               </div>
-              <ul class="list-disc list-inside text-slate-700 space-y-1 text-xs">
+              <ul class="list-disc list-inside text-slate-200 space-y-1.5 text-sm">
                 <li><strong>Mock Exams:</strong> 2 Full-length CASAS Mock Exams (25 questions each, 50 questions total).</li>
                 <li><strong>Routine:</strong> Timed 30-minute exam conditions. Clear all mistakes. Enter the exam room with full confidence!</li>
               </ul>
@@ -1606,8 +1760,9 @@ Every registered California voter receives a vote-by-mail ballot. You have three
 
     // Initialize on page load
     window.addEventListener('DOMContentLoaded', () => {
-      initVoices();
       loadSavedState();
+      initVoices();
+      setVoiceGender(voiceGender);
       selectQuiz('quiz1');
     });
   </script>
