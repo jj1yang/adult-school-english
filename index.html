@@ -130,27 +130,37 @@
       </div>
     </header>
 
-    <!-- Quiz Navigation Hub Tabs (Large Touch Buttons) -->
-    <div class="flex flex-wrap border border-slate-800 gap-2 bg-slate-900 p-2.5 rounded-2xl shadow-xl">
-      <button onclick="selectQuiz('quiz1')" id="navQuiz1" class="px-4 py-2.5 text-sm sm:text-base font-bold rounded-xl bg-sky-600 text-white shadow-md transition">
-        Quiz #1
-      </button>
-      <button onclick="selectQuiz('quiz2')" id="navQuiz2" class="px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-transparent transition">
-        Quiz #2
-      </button>
-      <button onclick="selectQuiz('quiz3')" id="navQuiz3" class="px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-transparent transition">
-        Quiz #3
-      </button>
-      <button onclick="selectQuiz('quiz4')" id="navQuiz4" class="px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-transparent transition">
-        Quiz #4
-      </button>
-      <button onclick="selectQuiz('mistakes')" id="navMistakes" class="px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-amber-300 hover:bg-amber-950/40 border border-amber-800/40 transition flex items-center gap-1.5">
-        <span>📕 错题本</span>
-        <span id="mistakeBadge" class="px-2 py-0.5 rounded-full text-xs bg-amber-400 text-amber-950 font-black">0</span>
-      </button>
-      <button onclick="selectQuiz('plan')" id="navPlan" class="px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-emerald-300 hover:bg-emerald-950/40 border border-emerald-800/40 transition ml-auto flex items-center gap-1.5">
-        <span>📅 40-Day Plan</span>
-      </button>
+    <!-- Quiz Navigation Hub Tabs (Quizzes 1 - 12 + Mistakes + Plan) -->
+    <div class="border border-slate-800 bg-slate-900 p-3 sm:p-4 rounded-2xl shadow-xl space-y-2.5">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-800/80">
+        <div class="flex items-center gap-2">
+          <span class="text-xs sm:text-sm font-black text-sky-400 uppercase tracking-wider">📚 40-Day Curriculum:</span>
+          <span class="text-xs sm:text-sm text-slate-300 font-semibold">12 Mini-Quizzes (120 Questions Live)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="selectQuiz('mistakes')" id="navMistakes" class="px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-xl text-amber-300 hover:bg-amber-950/40 border border-amber-800/40 transition flex items-center gap-1.5">
+            <span>📕 错题本</span>
+            <span id="mistakeBadge" class="px-2 py-0.5 rounded-full text-xs bg-amber-400 text-amber-950 font-black">0</span>
+          </button>
+          <button onclick="selectQuiz('plan')" id="navPlan" class="px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-xl text-emerald-300 hover:bg-emerald-950/40 border border-emerald-800/40 transition flex items-center gap-1.5">
+            <span>📅 40-Day Plan</span>
+          </button>
+        </div>
+      </div>
+      <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-12 gap-1.5 sm:gap-2">
+        <button onclick="selectQuiz('quiz1')" id="navQuiz1" class="py-2 px-1 text-center text-xs sm:text-sm font-bold rounded-xl bg-sky-600 text-white shadow-md transition">Q #1</button>
+        <button onclick="selectQuiz('quiz2')" id="navQuiz2" class="py-2 px-1 text-center text-xs sm:text-sm font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition">Q #2</button>
+        <button onclick="selectQuiz('quiz3')" id="navQuiz3" class="py-2 px-1 text-center text-xs sm:text-sm font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition">Q #3</button>
+        <button onclick="selectQuiz('quiz4')" id="navQuiz4" class="py-2 px-1 text-center text-xs sm:text-sm font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition">Q #4</button>
+        <button onclick="selectQuiz('quiz5')" id="navQuiz5" class="py-2 px-1 text-center text-xs sm:text-sm font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition">Q #5</button>
+        <button onclick="selectQuiz('quiz6')" id="navQuiz6" class="py-2 px-1 text-center text-xs sm:text-sm font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition">Q #6</button>
+        <button onclick="selectQuiz('quiz7')" id="navQuiz7" class="py-2 px-1 text-center text-xs sm:text-sm font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition">Q #7</button>
+        <button onclick="selectQuiz('quiz8')" id="navQuiz8" class="py-2 px-1 text-center text-xs sm:text-sm font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition">Q #8</button>
+        <button onclick="selectQuiz('quiz9')" id="navQuiz9" class="py-2 px-1 text-center text-xs sm:text-sm font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition">Q #9</button>
+        <button onclick="selectQuiz('quiz10')" id="navQuiz10" class="py-2 px-1 text-center text-xs sm:text-sm font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition">Q #10</button>
+        <button onclick="selectQuiz('quiz11')" id="navQuiz11" class="py-2 px-1 text-center text-xs sm:text-sm font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition">Q #11</button>
+        <button onclick="selectQuiz('quiz12')" id="navQuiz12" class="py-2 px-1 text-center text-xs sm:text-sm font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition">Q #12</button>
+      </div>
     </div>
 
     <!-- Sub-tabs for Current Quiz (Listening vs Reading) -->
@@ -1059,6 +1069,1721 @@ Every registered California voter receives a vote-by-mail ballot. You have three
             vocab: "ballot drop-box (选票投递箱), sealed envelope (密封信封), postmarked (盖邮戳), vote-by-mail (邮寄选票)"
           }
         ]
+      },
+
+      // ==========================================
+      // Quiz #5: Workplace Rules, Shifts & Safety
+      // ==========================================
+      quiz5: {
+        title: "Quiz #5: Workplace Rules, Shifts & Safety",
+        listening: [
+          {
+            id: "q5_1",
+            category: "Workplace Compensation",
+            title: "Listen to Carlos from Payroll explaining the third-shift differential pay policy.",
+            audio: "Good morning warehouse team, this is Carlos from Payroll with an update on shift differentials. Starting November 1st, all logistics associates working the third shift—which runs from 11:00 PM to 7:30 AM—will receive a fifteen percent night differential added directly to their base hourly wage. In addition, if you are scheduled for voluntary overtime during weekend graveyard hours, you will also earn standard time-and-a-half calculated on top of your new differential rate. Please verify your electronic paystubs on the ADP portal next Friday. If you spot any discrepancies, notify your floor supervisor before 3:00 PM on Monday so adjustments can be processed in the current pay cycle. Thank you for your dedication to our night operations.",
+            question: "According to Carlos, what additional pay will third-shift associates receive starting November 1st?",
+            options: ["(A) A flat bonus of $50 per pay period", "(B) A 15% night differential added to base hourly wage", "(C) Double-time pay for all weekday evening hours", "(D) A 20% discount on health insurance premiums"],
+            correct: "B",
+            clue: "...all logistics associates working the third shift... will receive a fifteen percent night differential added directly to their base hourly wage.",
+            chinese: "录音明确说明：从11月1日起，三班（夜班11:00 PM - 7:30 AM）物流员工的基本时薪将增加15%的夜班补贴（15% night differential）。",
+            vocab: "shift differential (班次津贴/夜班补贴), base hourly wage (基础时薪), graveyard hours (大夜班时间), discrepancies (出入/差错), pay cycle (薪资周期)"
+          },
+          {
+            id: "q5_2",
+            category: "Workplace Safety & Evacuation",
+            title: "Listen to the plant safety coordinator giving evacuation instructions for a fire drill.",
+            audio: "Attention all plant personnel, this is Safety Coordinator Ramirez with an urgent evacuation reminder for today's mandatory fire drill at 2:00 PM. When the alarm sounds, immediately shut down all machinery using the emergency stop button, close the office doors behind you, and proceed through the nearest marked fire exit. Do not use the elevators under any circumstances. All employees working on the main assembly floor must report directly to Assembly Zone C, which is located in the gravel parking lot near the East Gate. Your departmental leads will conduct a headcount with the roster. Remain at Zone C and do not attempt to re-enter the facility until you hear the two-tone all-clear horn. Thank you for keeping our workplace safe.",
+            question: "Where must assembly floor workers report during the fire drill?",
+            options: ["(A) The cafeteria in Building A", "(B) Assembly Zone C near the East Gate", "(C) The front entrance lobby", "(D) The warehouse loading dock"],
+            correct: "B",
+            clue: "All employees working on the main assembly floor must report directly to Assembly Zone C, which is located in the gravel parking lot near the East Gate.",
+            chinese: "总装车间（main assembly floor）员工听到火警演练警报后，必须直接前往位于东门碎石停车场旁的C区集合点（Assembly Zone C near the East Gate）集合点名。",
+            vocab: "mandatory fire drill (强制消防演习), emergency stop button (急停按钮), headcount (清点人数), roster (花名册), all-clear horn (安全解除号号角)"
+          },
+          {
+            id: "q5_3",
+            category: "Equipment Maintenance",
+            title: "Listen to Frank from maintenance explaining why a pallet jack is tagged out.",
+            audio: "Hi David, this is Frank from facilities maintenance. I inspected electric pallet jack number four this morning and noticed a significant hydraulic oil leak around the main cylinder. I've placed a red 'Out of Service' tag on the steering handle and locked the battery connector. Under OSHA safety regulations, no one is permitted to operate or charge this pallet jack until replacement seals are installed and signed off in the maintenance logbook. I have ordered the spare parts from the supplier in Fremont, and they are scheduled to arrive by Thursday afternoon. In the meantime, please use pallet jack number two or the manual hand truck stationed in aisle six. Thank you for your cooperation.",
+            question: "Why is electric pallet jack number four out of service?",
+            options: ["(A) The battery charger is missing from aisle six", "(B) It has a significant hydraulic oil leak around the cylinder", "(C) The tires failed annual tread inspection", "(D) It was reassigned to the Fremont shipping facility"],
+            correct: "B",
+            clue: "I inspected electric pallet jack number four this morning and noticed a significant hydraulic oil leak around the main cylinder.",
+            chinese: "维护员Frank发现4号电动地牛（pallet jack）的主液压缸存在严重漏油问题（significant hydraulic oil leak），已贴红牌停用锁闭，待周四配件更换。",
+            vocab: "pallet jack (托盘搬运车/地牛), hydraulic oil leak (液压油泄漏), out of service (停止使用), signed off (签字确认), manual hand truck (手动推车)"
+          },
+          {
+            id: "q5_4",
+            category: "Public Transportation & School Transit",
+            title: "Listen to school bus dispatch detailing a construction detour.",
+            audio: "Good morning drivers, this is dispatch with a route alteration notice for elementary bus route seven. Beginning this Monday morning, the city public works department will begin repaving El Camino Real between Scott Boulevard and San Tomas Expressway. Because of the heavy equipment and lane closures, bus route seven will not be able to service the bus stop in front of the community center. Instead, students will be picked up and dropped off two blocks west, at the temporary bus stop across from the Central Park fountain on Kiely Boulevard. Please arrive five minutes earlier than normal at each subsequent stop to allow for slow traffic. If parents inquire, direct them to check the school district transportation portal for updated route maps. Drive safely.",
+            question: "Where is the temporary pickup location for bus route seven students?",
+            options: ["(A) In front of the Scott Boulevard library", "(B) Across from the Central Park fountain on Kiely Boulevard", "(C) At the corner of San Tomas Expressway", "(D) Behind the community center parking lot"],
+            correct: "B",
+            clue: "Instead, students will be picked up and dropped off two blocks west, at the temporary bus stop across from the Central Park fountain on Kiely Boulevard.",
+            chinese: "由于道路铺设封路，7号校车无法停靠社区中心原站点，临时改在Kiely大道中央公园喷泉对面（across from the Central Park fountain on Kiely Boulevard）接送学生。",
+            vocab: "route alteration (线路变更), repaving (重新铺设路面), temporary bus stop (临时公交车站), subsequent stop (后续站点), inquire (询问)"
+          },
+          {
+            id: "q5_5",
+            category: "Healthcare Clinic Procedures",
+            title: "Listen to Dr. Martinez instructing a dental assistant on autoclave testing.",
+            audio: "Good afternoon Elena, this is Dr. Martinez. Before you leave the clinic today, please make sure you run the weekly biological spore test on autoclave unit B. After running the sterilization cycle at 273 degrees Fahrenheit for thirty minutes, remove the biological test ampule with the thermal tongs and place it in the incubator on counter three. Remember that the incubator requires a full twenty-four hours to develop before we can read the color indicator. Once twenty-four hours have passed tomorrow afternoon, check whether the liquid remains purple or turned yellow, and record the exact result and date in the state compliance binder. This documentation is critical for our dental board audit next month. Thank you for your careful attention.",
+            question: "How long must the biological test ampule remain in the incubator before reading the result?",
+            options: ["(A) Thirty minutes", "(B) Exactly six hours", "(C) A full twenty-four hours", "(D) Forty-eight business hours"],
+            correct: "C",
+            clue: "Remember that the incubator requires a full twenty-four hours to develop before we can read the color indicator.",
+            chinese: "诊所医生提醒助手：高压灭菌锅（autoclave）的生物指示剂测试管放入培养箱后，必须孵化整整24小时（a full twenty-four hours）才能读取显色结果并登记在合规本上。",
+            vocab: "autoclave (高压灭菌锅), biological spore test (生物芽孢测试), ampule (安瓿管/试剂管), incubator (培养箱), compliance binder (合规登记册)"
+          }
+        ],
+        reading: [
+          {
+            id: "q5_6",
+            category: "Employee Policy Notice",
+            title: "Read the company policy on overtime authorization.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">PACIFIC LOGISTICS CORP • POLICY MEMORANDUM #14</span><br><br>
+<strong class="text-white text-base">MANDATORY OVERTIME PRE-AUTHORIZATION RULES:</strong><br>
+All non-exempt hourly employees must obtain formal supervisor approval prior to performing any work beyond 8 hours per day or 40 hours per week.<br><br>
+<div class="p-3 bg-amber-950/40 border border-amber-800 rounded-xl space-y-1.5 text-amber-200">
+  <span class="font-bold text-base text-amber-300">SUBMISSION DEADLINES & RESTRICTIONS:</span><br>
+  • All requests for scheduled weekend overtime must be submitted using <strong>Form OT-2 no later than Thursday at 3:00 PM</strong>.<br>
+  • Verbal or telephone approvals are strictly prohibited and will not be honored by Payroll.<br>
+  • Working unauthorized overtime will result in disciplinary counseling and repeated infractions may lead to suspension.
+</div>`,
+            question: "By what time must employees submit Form OT-2 to receive approval for weekend overtime?",
+            options: ["(A) Friday afternoon at 5:00 PM", "(B) Thursday no later than 3:00 PM", "(C) Saturday morning before starting work", "(D) Monday morning when submitting timesheets"],
+            correct: "B",
+            clue: "All requests for scheduled weekend overtime must be submitted using Form OT-2 no later than Thursday at 3:00 PM.",
+            chinese: "公司政策规定：周末预定加班必须在目标周的周四下午3:00前（Thursday no later than 3:00 PM）提交OT-2表格报批，口头批准无效。",
+            vocab: "non-exempt (非豁免/有加班费员工), pre-authorization (预先审批), verbal approval (口头批准), infractions (违规行为)"
+          },
+          {
+            id: "q5_7",
+            category: "Workplace Safety Placard",
+            title: "Read the safety notice posted at the battery charging station.",
+            doc: `<div class="border-2 border-rose-800 bg-rose-950/40 p-4 rounded-xl space-y-2 text-rose-200">
+  <div class="flex items-center gap-2">
+    <span class="px-2.5 py-0.5 bg-rose-600 text-white font-black text-xs rounded">DANGER</span>
+    <span class="font-extrabold text-white text-base">INDUSTRIAL BATTERY CHARGING AREA • ACID & HYDROGEN GAS</span>
+  </div>
+  <p class="text-sm">High explosive risk and chemical burn hazards exist in this station. Smoking, open flames, and sparks are strictly prohibited within 25 feet.</p>
+</div><br>
+<strong class="text-white text-base">REQUIRED PERSONAL PROTECTIVE EQUIPMENT (PPE):</strong><br>
+• Heavy-duty rubber chemical apron.<br>
+• Full-face transparent impact shield (goggles alone are insufficient).<br>
+• Elbow-length neoprene acid-resistant gloves.<br>
+• Steel-toed boots with slip-resistant rubber soles.<br><br>
+<span class="text-xs text-slate-300">Note: In case of electrolyte splash, flush eyes or skin at the emergency wash station for at least 15 continuous minutes.</span>`,
+            question: "Which PPE item is specifically required instead of goggles alone at this battery station?",
+            options: ["(A) Polarized sunglasses", "(B) Full-face transparent impact shield", "(C) Standard cloth dust mask", "(D) Cotton gardening gloves"],
+            correct: "B",
+            clue: "Full-face transparent impact shield (goggles alone are insufficient).",
+            chinese: "安全标识明确指出：在电瓶充电区只戴护目镜是不够的，必须佩戴全脸透明防冲击防护面罩（Full-face transparent impact shield）。",
+            vocab: "chemical apron (防化学围裙), full-face shield (全脸防护面罩), neoprene gloves (氯丁橡胶手套), electrolyte splash (电解液喷溅)"
+          },
+          {
+            id: "q5_8",
+            category: "Employment Schedule Rules",
+            title: "Read the employee shift swap regulations from the retail handbook.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">VALLEY SUPERMARKET • EMPLOYEE HANDBOOK §4.8</span><br><br>
+<strong class="text-white text-base">SHIFT SWAPPING GUIDELINES:</strong><br>
+Team members wishing to trade assigned work shifts must submit a mutual Shift Exchange Form to the Assistant Store Manager at least <strong>48 hours prior</strong> to the scheduled shift.<br><br>
+<div class="p-3 bg-slate-900 border border-slate-750 rounded-xl space-y-1 text-slate-200 text-sm">
+  <span class="font-bold text-sky-300">AUTOMATIC DISQUALIFICATION CONDITIONS:</span><br>
+  1. Requests will be <strong>denied automatically</strong> if the trade causes either employee to exceed 40 hours in the workweek (avoiding overtime).<br>
+  2. Employees must possess identical job skill codes (e.g., cashiers may only swap with cashier-certified staff).<br>
+  3. Employees within their 90-day probationary training period are not permitted to trade shifts.
+</div>`,
+            question: "Why would a shift swap request be automatically denied according to the policy?",
+            options: ["(A) If both employees have identical job skill certifications", "(B) If the swap results in either employee working over 40 hours that week", "(C) If the form is submitted 72 hours before the shift begins", "(D) If the swap occurs on a regular Tuesday morning"],
+            correct: "B",
+            clue: "Requests will be denied automatically if the trade causes either employee to exceed 40 hours in the workweek...",
+            chinese: "员工手册规定：若调班导致任何一位员工该周工作时间超过40小时产生加班，调班申请将被自动否决（denied automatically）。",
+            vocab: "shift swapping (调换班次), mutual form (双方共同签署的表格), disqualification (取消资格/否决), probationary (试用的)"
+          },
+          {
+            id: "q5_9",
+            category: "Healthcare Sanitation Protocol",
+            title: "Read the outpatient clinic hand hygiene standard operating procedure.",
+            doc: `<span class="text-emerald-300 font-extrabold text-lg">SANTA CLARA COMMUNITY CLINIC • INFECTION CONTROL SOP</span><br><br>
+<table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-700">
+  <thead>
+    <tr class="bg-slate-800 text-white">
+      <th class="p-2.5 border border-slate-700">Method</th>
+      <th class="p-2.5 border border-slate-700">Required Situation</th>
+      <th class="p-2.5 border border-slate-700">Minimum Duration</th>
+    </tr>
+  </thead>
+  <tbody class="text-slate-200">
+    <tr class="border-b border-slate-800">
+      <td class="p-2.5 font-bold text-sky-300">Antiseptic Soap & Water</td>
+      <td class="p-2.5">Hands visibly soiled, contact with bodily fluids, or after using restroom</td>
+      <td class="p-2.5 font-bold text-emerald-300">20 full seconds</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2.5 font-bold text-sky-300">Alcohol Hand Rub (60%+)</td>
+      <td class="p-2.5">Routine exam, before entering & after exiting patient consultation room</td>
+      <td class="p-2.5 font-bold text-emerald-300">Rub until completely dry (~15s)</td>
+    </tr>
+  </tbody>
+</table><br>
+<span class="text-xs text-amber-300">Note: Alcohol rubs are ineffective against certain bacterial spores. Always use soap and running water when caring for patients with infectious gastrointestinal illness.</span>`,
+            question: "When is washing with soap and water required rather than using alcohol rub?",
+            options: ["(A) Before entering an empty examination room to check inventory", "(B) When hands are visibly soiled or in contact with bodily fluids", "(C) After answering a telephone inquiry at the reception desk", "(D) Between typing routine notes on the clinic computer"],
+            correct: "B",
+            clue: "Hands visibly soiled, contact with bodily fluids, or after using restroom: 20 full seconds with Antiseptic Soap & Water.",
+            chinese: "感染控制规范明确要求：当手部肉眼可见弄脏（visibly soiled）或接触体液后，必须使用洗手液和清水清洗至少20秒，不可仅用酒精洗手液。",
+            vocab: "antiseptic soap (抗菌肥皂), visibly soiled (肉眼可见污渍), consultation room (问诊室), gastrointestinal (肠胃的)"
+          },
+          {
+            id: "q5_10",
+            category: "Employee Benefits Schedule",
+            title: "Read the annual vacation accrual and rollover rules.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">SILICON VALLEY LOGISTICS • BENEFITS SUMMARY 2026</span><br><br>
+<strong class="text-white text-base">PAID TIME OFF (PTO) ACCRUAL & ROLLOVER POLICY:</strong><br>
+Full-time regular employees accrue vacation hours each bi-weekly pay period based on completed years of continuous service.<br><br>
+<ul class="list-disc list-inside space-y-1 text-slate-200 text-sm">
+  <li><strong>1 to 3 Years Service:</strong> Accrue 3.08 hours per pay period (10 days / 80 hours annually).</li>
+  <li><strong>4 to 7 Years Service:</strong> Accrue 4.62 hours per pay period (15 days / 120 hours annually).</li>
+  <li><strong>Maximum Accrual Cap:</strong> An employee may never hold more than <strong>120 total accumulated hours</strong> at any time. Once 120 hours is reached, accrual pauses until time is taken.</li>
+  <li><strong>Year-End Rollover Deadline:</strong> Up to 40 unused hours may roll over past December 31st into the new calendar year. All excess unused hours beyond 40 are <strong>forfeited without cash payout</strong>.</li>
+</ul>`,
+            question: "What is the maximum number of unused vacation hours that an employee can roll over past December 31st?",
+            options: ["(A) 80 hours", "(B) 120 hours", "(C) Up to 40 unused hours", "(D) Unlimited hours with manager approval"],
+            correct: "C",
+            clue: "Up to 40 unused hours may roll over past December 31st into the new calendar year. All excess unused hours beyond 40 are forfeited...",
+            chinese: "年假结转规定明确指出：跨入新年（12月31日后），最多只能顺延结转40小时（Up to 40 unused hours），多余未休假时间将被作废无补偿。",
+            vocab: "bi-weekly (每两周一次), continuous service (连续工龄), accrual cap (累积上限), rollover (结转), forfeited (作废)"
+          }
+        ]
+      },
+
+      // ==========================================
+      // Quiz #6: Healthcare Billing, Insurance & Pharmacy
+      // ==========================================
+      quiz6: {
+        title: "Quiz #6: Healthcare Billing, Insurance & Pharmacy",
+        listening: [
+          {
+            id: "q6_1",
+            category: "Health Insurance Billing",
+            title: "Listen to an insurance representative explaining a health plan deductible.",
+            audio: "Hello Mr. Lin, this is Angela from Blue Shield Member Services following up on your inquiry about claims for your outpatient knee arthroscopy. I want to explain how your cost-sharing works under your current Silver HMO plan. You have an individual annual deductible of one thousand five hundred dollars. Because you have only paid three hundred dollars towards your deductible so far this year, you must pay the remaining one thousand two hundred dollars out of pocket directly to the surgical center. Once your annual deductible is satisfied, your plan covers eighty percent of all approved surgical and hospital charges, leaving you with a twenty percent coinsurance until you reach your out-of-pocket maximum of four thousand dollars. If you would like to set up a monthly payment plan for the deductible, please contact the hospital billing office directly. Have a pleasant day.",
+            question: "How much does Mr. Lin still need to pay to satisfy his annual deductible?",
+            options: ["(A) Three hundred dollars", "(B) One thousand two hundred dollars", "(C) One thousand five hundred dollars", "(D) Four thousand dollars"],
+            correct: "B",
+            clue: "Because you have only paid three hundred dollars towards your deductible so far this year, you must pay the remaining one thousand two hundred dollars out of pocket...",
+            chinese: "保险客服说明：年度免赔额（deductible）共$1,500，林先生今年已付$300，因此仍需自付剩余的$1,200（one thousand two hundred dollars）才能达到免赔额线。",
+            vocab: "deductible (免赔额), coinsurance (共同保险比例), out-of-pocket maximum (自付最高限额), arthroscopy (关节镜手术), satisfied (达到/付满)"
+          },
+          {
+            id: "q6_2",
+            category: "Medical Clinic Coordination",
+            title: "Listen to a physical therapy receptionist calling about insurance pre-authorization.",
+            audio: "Good morning Mrs. Zhang, this is Kevin from Fremont Physical Therapy calling regarding your upcoming rehabilitation appointments. We submitted a request to your insurance carrier for twelve additional therapy sessions for your shoulder recovery. However, the insurance reviewer called this morning requesting updated progress notes and an objective mobility evaluation from your orthopedic doctor before they will issue approval. Because of this administrative delay, we must reschedule your appointment originally booked for this Thursday. Please call Dr. Chen's office at 408-555-0199 and ask them to fax your latest examination notes directly to our clinic. As soon as the insurance company issues the formal authorization number, we will contact you immediately to resume your therapy. We apologize for the inconvenience.",
+            question: "What is delaying Mrs. Zhang's additional physical therapy sessions?",
+            options: ["(A) The clinic's therapy pool is closed for maintenance", "(B) Her insurance requires updated progress notes from her doctor", "(C) Her primary care doctor has moved to another county", "(D) She has exceeded her lifetime maximum benefit cap"],
+            correct: "B",
+            clue: "...the insurance reviewer called this morning requesting updated progress notes and an objective mobility evaluation from your orthopedic doctor before they will issue approval.",
+            chinese: "前台通知：由于保险公司要求主治骨科医生提供最新的病程记录和关节活动度评估报告（updated progress notes）后才予批准，导致后续理疗暂时推迟。",
+            vocab: "rehabilitation (康复治疗), pre-authorization (预先授权), insurance reviewer (保险审核员), orthopedic doctor (骨科医生), objective mobility (客观活动度)"
+          },
+          {
+            id: "q6_3",
+            category: "Pharmacy Medication Instructions",
+            title: "Listen to a pharmacist giving directions for pediatric antibiotic suspension.",
+            audio: "Hello Mrs. Gomez, this is pharmacist Brian from CVS regarding your daughter's prescription for amoxicillin liquid suspension. I have prepared the medicine by adding purified water to the powder. Because the active antibiotic particles settle at the bottom over time, you must shake the bottle vigorously for at least ten seconds before measuring each dosage using the plastic oral syringe provided. Give her five milliliters twice a day, exactly twelve hours apart, preferably with meals to prevent stomach upset. Store this bottle in the main refrigerator door, not the freezer. Most importantly, continue giving the medicine for the full ten days until the bottle is completely empty, even if her earache and fever disappear after three days. If you stop early, the bacteria can return stronger. Call us if she develops a skin rash.",
+            question: "What must Mrs. Gomez do before measuring each dose of the medication?",
+            options: ["(A) Dilute the liquid with warm fruit juice", "(B) Shake the bottle vigorously for at least ten seconds", "(C) Warm the bottle in hot water for twenty minutes", "(D) Expose the liquid to direct sunlight"],
+            correct: "B",
+            clue: "...you must shake the bottle vigorously for at least ten seconds before measuring each dosage using the plastic oral syringe provided.",
+            chinese: "药剂师叮嘱：由于抗生素混悬液会沉淀，每次用药前必须用力摇晃药瓶至少10秒（shake the bottle vigorously for at least ten seconds），且必须服满整整10天疗程。",
+            vocab: "liquid suspension (口服混悬液), vigorously (用力地/剧烈地), oral syringe (口服注射器/量筒), stomach upset (胃部不适), full course (完整疗程)"
+          },
+          {
+            id: "q6_4",
+            category: "Vision Care & Optical Pick-up",
+            title: "Listen to an optometry clinic calling about prescription eyeglasses.",
+            audio: "Good afternoon, this is Jessica calling from South Bay Eye Care for patient David Park. We are pleased to inform you that your customized progressive bifocal lenses have arrived from our optical laboratory in Hayward and have passed our final optical inspection. Your glasses are ready for fitting and pickup at our optics counter in Suite 105. Our clinic is open Monday through Friday from 8:30 AM to 5:30 PM, and on Saturdays from 9:00 AM to 1:00 PM. An optician needs to adjust the nose pads and temple arms on your face, so please allow about fifteen minutes for your pickup. Please bring your photo ID and remember that unclaimed eyeglasses will only be held in our optical vault for thirty days before being returned to the lab. Thank you.",
+            question: "How long will the clinic hold the eyeglasses before returning them to the lab?",
+            options: ["(A) Seven business days", "(B) Fourteen calendar days", "(C) Thirty days", "(D) Sixty days"],
+            correct: "C",
+            clue: "...unclaimed eyeglasses will only be held in our optical vault for thirty days before being returned to the lab.",
+            chinese: "眼科诊所电话通知：定做的渐进多焦点眼镜已做好，未领取的眼镜将在保险库中最多保留30天（held for thirty days），逾期将退回加工厂。",
+            vocab: "progressive bifocal lenses (渐进多焦点镜片), optical inspection (光学质检), fitting (试戴微调), nose pads (眼镜鼻托), optical vault (配镜储物室)"
+          },
+          {
+            id: "q6_5",
+            category: "Employee Wellness & Support",
+            title: "Listen to an HR coordinator introducing the Employee Assistance Program (EAP).",
+            audio: "Good morning colleagues, this is Sarah from Human Resources with a brief overview of our Employee Assistance Program, commonly known as EAP. We understand that balancing workplace demands with personal family challenges can sometimes feel overwhelming. As part of your total benefits package, every eligible employee and their resident household members receive up to four complimentary, completely confidential counseling sessions per calendar year with a licensed therapist. These sessions cover stress management, grief, marital issues, elder care planning, or financial debt counseling. EAP services are independent of our company; your manager and HR will never be informed of your participation or clinical notes. You can schedule an in-person or telehealth session twenty-four hours a day by calling 1-800-555-EAP-HELP. Take care of your well-being.",
+            question: "How many free counseling sessions per year are provided under the EAP?",
+            options: ["(A) Two sessions per department", "(B) Up to four sessions per calendar year", "(C) Six sessions every six months", "(D) Ten sessions with manager approval"],
+            correct: "B",
+            clue: "...every eligible employee and their resident household members receive up to four complimentary, completely confidential counseling sessions per calendar year...",
+            chinese: "人事部宣布：员工协助项目（EAP）每年为每位员工及其家庭成员提供最多4次免费且完全保密的专业心理或财务咨询（up to four complimentary sessions per calendar year）。",
+            vocab: "Employee Assistance Program (员工协助项目), complimentary (免费赠送的), confidential (保密的), licensed therapist (持证心理治疗师), telehealth (远程医疗)"
+          }
+        ],
+        reading: [
+          {
+            id: "q6_6",
+            category: "Medical Billing Statement",
+            title: "Read the Explanation of Benefits (EOB) insurance statement.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">CALIFORNIA HEALTH NETWORK • EXPLANATION OF BENEFITS</span><br>
+<span class="text-xs text-slate-400">THIS IS NOT A BILL • KEEP FOR TAX RECORDS</span><br><br>
+<table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-700">
+  <thead>
+    <tr class="bg-slate-800 text-white">
+      <th class="p-2 border border-slate-700">Service Description</th>
+      <th class="p-2 border border-slate-700">Billed</th>
+      <th class="p-2 border border-slate-700">Plan Discount</th>
+      <th class="p-2 border border-slate-700">Plan Paid</th>
+      <th class="p-2 border border-slate-700">Patient Responsibility</th>
+    </tr>
+  </thead>
+  <tbody class="text-slate-200">
+    <tr class="border-b border-slate-800">
+      <td class="p-2">Diagnostic Blood Panel</td>
+      <td class="p-2">$220.00</td>
+      <td class="p-2">$100.00</td>
+      <td class="p-2">$96.00</td>
+      <td class="p-2 font-bold text-amber-300">$24.00 (20%)</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2">Specialist Office Visit</td>
+      <td class="p-2">$280.00</td>
+      <td class="p-2">$110.00</td>
+      <td class="p-2">$130.00</td>
+      <td class="p-2 font-bold text-amber-300">$40.00 (Copay)</td>
+    </tr>
+    <tr class="bg-slate-900 font-bold text-white">
+      <td class="p-2">TOTALS</td>
+      <td class="p-2">$500.00</td>
+      <td class="p-2">$210.00</td>
+      <td class="p-2">$226.00</td>
+      <td class="p-2 text-emerald-400">$64.00</td>
+    </tr>
+  </tbody>
+</table><br>
+<p class="text-xs text-slate-300">Remarks: You will receive a separate bill from the medical provider for your total responsibility of $64.00. Do not send payment to California Health Network.</p>`,
+            question: "What total amount is the patient responsible for paying according to this statement?",
+            options: ["(A) $500.00", "(B) $210.00", "(C) $226.00", "(D) $64.00"],
+            correct: "D",
+            clue: "TOTALS Patient Responsibility: $64.00.",
+            chinese: "医疗理赔说明单（EOB）显示：诊所总账单$500，协议折扣$210，保险报销$226，患者最终自付责任总额为$64.00（$24化验费自付额 + $40专家门诊挂号费）。",
+            vocab: "Explanation of Benefits (理赔解释单), plan discount (医保协议优惠额), patient responsibility (患者自付额), copay (定额挂号费)"
+          },
+          {
+            id: "q6_7",
+            category: "Prescription Safety Labels",
+            title: "Read the warning labels printed on the prescription medication container.",
+            doc: `<span class="text-amber-300 font-extrabold text-lg">VALLEY PHARMACY • RX #9402188 • ATORVASTATIN 20MG</span><br><br>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+  <div class="p-3 bg-rose-950/40 border border-rose-800 rounded-xl space-y-1 text-rose-200">
+    <strong class="text-rose-300 text-sm">WARNING: NO GRAPEFRUIT</strong><br>
+    Do not consume grapefruit or drink grapefruit juice while taking this medication. Grapefruit significantly increases active drug levels in the blood and raises the risk of severe muscle breakdown.
+  </div>
+  <div class="p-3 bg-amber-950/40 border border-amber-800 rounded-xl space-y-1 text-amber-200">
+    <strong class="text-amber-300 text-sm">CAUTION: DROWSINESS</strong><br>
+    May cause dizziness or blurred vision. Avoid operating motor vehicles or hazardous heavy machinery until you know how this medication affects you.
+  </div>
+</div><br>
+<div class="p-3 bg-slate-900 border border-slate-750 rounded-xl text-xs text-slate-300">
+  <strong>STORAGE INSTRUCTIONS:</strong> Store at controlled room temperature between 68°F and 77°F. Protect from excessive moisture, heat, and direct sunlight. Keep out of reach of children.
+</div>`,
+            question: "Why must patients avoid consuming grapefruit while taking this medication?",
+            options: ["(A) It prevents the tablet from dissolving in the stomach", "(B) It raises drug levels in the blood and increases the risk of muscle damage", "(C) It causes the medication to expire within twenty-four hours", "(D) It cancels out the anti-cholesterol benefits completely"],
+            correct: "B",
+            clue: "Grapefruit significantly increases active drug levels in the blood and raises the risk of severe muscle breakdown.",
+            chinese: "药瓶警示标签明确指出：西柚/葡萄柚会显著升高血液中的药物浓度，增加严重肌肉损伤的风险（increases drug levels and raises risk of muscle breakdown）。",
+            vocab: "grapefruit juice (西柚汁), muscle breakdown (肌肉分解/横纹肌溶解), drowsiness (嗜睡), controlled room temperature (恒温室温)"
+          },
+          {
+            id: "q6_8",
+            category: "Healthcare Navigation Guide",
+            title: "Read the community guide on choosing Urgent Care versus Emergency Department.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">HEALTH FIRST CLINICAL GUIDE • WHERE TO SEEK CARE</span><br><br>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+  <div class="p-3.5 bg-emerald-950/40 border border-emerald-800 rounded-xl space-y-1.5 text-emerald-200">
+    <strong class="text-emerald-300 text-base">URGENT CARE CENTER</strong><br>
+    <em>For non-life-threatening illnesses requiring prompt care:</em><br>
+    • Sprains, strains, minor closed fractures<br>
+    • Cuts requiring simple stitches<br>
+    • Ear infections, mild asthma, urinary tract infections<br>
+    • Typical Copay: <strong>$35 – $50</strong><br>
+    • Average Wait: 20 – 45 minutes
+  </div>
+  <div class="p-3.5 bg-rose-950/40 border border-rose-800 rounded-xl space-y-1.5 text-rose-200">
+    <strong class="text-rose-300 text-base">HOSPITAL EMERGENCY ROOM (ER)</strong><br>
+    <em>For acute life-threatening medical emergencies:</em><br>
+    • Chest pain, pressure, radiating arm pain<br>
+    • Sudden weakness, face drooping, speech difficulty<br>
+    • Severe uncontrolled bleeding, head trauma<br>
+    • Typical Copay: <strong>$250 – $350</strong><br>
+    • Open 24/7/365 • Always call 911 for transport
+  </div>
+</div>`,
+            question: "Which medical condition is listed as appropriate for treatment at an Urgent Care Center?",
+            options: ["(A) Sudden face drooping and inability to speak", "(B) Minor cut requiring simple stitches", "(C) Severe chest pain radiating down the left arm", "(D) Uncontrolled heavy arterial bleeding"],
+            correct: "B",
+            clue: "Urgent Care Center: Cuts requiring simple stitches, sprains, strains, ear infections.",
+            chinese: "医疗就诊指南对比：需要缝简单几针的轻度伤口（cuts requiring simple stitches）适合前往急诊门诊（Urgent Care），而面瘫、剧烈胸痛等中风心脏病危重急症必须去急症室（ER）。",
+            vocab: "non-life-threatening (无生命危险的), stitches (缝针/缝合), radiating pain (放射性疼痛), face drooping (面部下垂/中风征兆)"
+          },
+          {
+            id: "q6_9",
+            category: "Post-Procedure Medical Discharge",
+            title: "Read the post-operative discharge instructions following outpatient surgery.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">BAY AREA SURGICAL CENTER • PATIENT DISCHARGE DIRECTIVE</span><br><br>
+<strong class="text-white text-base">INCISION CARE & RECOVERY PROTOCOL:</strong><br>
+1. <strong>Bathing:</strong> Keep surgical dressing clean and completely dry for 48 hours. Sponge bathe only. Do not submerge incision in a bathtub or hot tub for 2 weeks.<br>
+2. <strong>Physical Activity:</strong> Do not lift objects heavier than 10 pounds (such as groceries or children) for two full weeks. Rest frequently.<br><br>
+<div class="p-3 bg-rose-950/40 border border-rose-800 rounded-xl space-y-1 text-rose-200 text-xs sm:text-sm">
+  <span class="font-bold text-rose-300 text-sm">NOTIFY ON-CALL SURGEON IMMEDIATELY IF:</span><br>
+  • Oral body temperature exceeds <strong>101.0°F (38.3°C)</strong>.<br>
+  • Increasing severe redness, swelling, or foul-smelling yellow drainage spreads from wound.<br>
+  • Pain worsens steadily despite taking prescribed pain medication.
+</div>`,
+            question: "What is the maximum weight the patient is permitted to lift during the first two weeks?",
+            options: ["(A) Five pounds", "(B) Ten pounds", "(C) Twenty-five pounds", "(D) Fifty pounds"],
+            correct: "B",
+            clue: "Do not lift objects heavier than 10 pounds (such as groceries or children) for two full weeks.",
+            chinese: "出院指导明确说明：术后前两周内，禁止搬提超过10磅（heavier than 10 pounds）的重物，且必须保持伤口敷料干燥48小时。",
+            vocab: "post-operative (术后的), discharge directive (出院指示), submerge (浸泡), drainage (分泌物/渗出液), on-call surgeon (值班外科医生)"
+          },
+          {
+            id: "q6_10",
+            category: "Legal & Healthcare Privacy Notice",
+            title: "Read the patient authorization form for disclosure of health records.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">CALIFORNIA MEDICAL BOARD • FORM HIPAA-AUTH §2</span><br><br>
+<strong class="text-white text-base">AUTHORIZATION TO RELEASE PROTECTED HEALTH INFORMATION:</strong><br>
+By signing this document, you authorize Valley Health Clinic to disclose medical consultation records, lab findings, and radiological films to designated family members or third parties.<br><br>
+<div class="p-3 bg-slate-900 border border-slate-750 rounded-xl space-y-1.5 text-slate-200 text-xs sm:text-sm">
+  <span class="font-bold text-sky-300">CRITICAL LEGAL TERMS:</span><br>
+  • <strong>Duration:</strong> This authorization expires automatically <strong>one calendar year</strong> from the date of patient signature, unless an earlier date is specified.<br>
+  • <strong>Revocation Right:</strong> You maintain the legal right to revoke this consent at any time by delivering a written revocation notice to the Medical Records Custodian.<br>
+  • Revocation will not affect any disclosures already completed prior to receiving the written notice.
+</div>`,
+            question: "When does this health records authorization automatically expire if no earlier date is specified?",
+            options: ["(A) Thirty calendar days from signature", "(B) Six months after the next doctor visit", "(C) One calendar year from the date of signature", "(D) It remains valid permanently until the patient turns 65"],
+            correct: "C",
+            clue: "This authorization expires automatically one calendar year from the date of patient signature, unless an earlier date is specified.",
+            chinese: "医疗隐私披露协议（HIPAA）规定：若未指定更早日期，该授权书自患者签署之日起满一年自动失效（expires automatically one calendar year from signature），患者随时有权书面撤销。",
+            vocab: "disclosure (披露/公开), protected health information (受保护的健康信息), revocation (撤销/废止), custodian (保管人)"
+          }
+        ]
+      },
+
+      // ==========================================
+      // Quiz #7: Banking Transactions, Consumer Credit & Scams
+      // ==========================================
+      quiz7: {
+        title: "Quiz #7: Banking Transactions, Consumer Credit & Scams",
+        listening: [
+          {
+            id: "q7_1",
+            category: "Banking Wire Transfer Security",
+            title: "Listen to a credit union representative verifying an international wire transfer.",
+            audio: "Hello Mr. Henderson, this is Marcus from Mission City Credit Union. I am calling to confirm your request for an outgoing international wire transfer of four thousand two hundred dollars submitted online this morning to a machinery parts vendor in Taipei. To protect your account against unauthorized wire fraud, our bank policy requires direct voice verification for all initial wire transfers exceeding three thousand dollars. Please return our call at 408-555-0188 and provide your secret telephone banking security passcode. In addition, please be aware that our international wire processing cutoff time is 2:30 PM Pacific Standard Time. If we do not verify your authorization prior to 2:30 PM, your transfer will be placed on security hold until the following business day. Thank you.",
+            question: "What is the daily cutoff time for international wire transfer processing?",
+            options: ["(A) 11:30 AM", "(B) 1:00 PM", "(C) 2:30 PM Pacific Standard Time", "(D) 5:00 PM Eastern Standard Time"],
+            correct: "C",
+            clue: "...our international wire processing cutoff time is 2:30 PM Pacific Standard Time. If we do not verify your authorization prior to 2:30 PM, your transfer will be placed on security hold...",
+            chinese: "信用社银行客服通知：为防范电汇诈骗，超过$3,000的初次汇款需电话验证，且国际电汇每日截止处理时间为太平洋标准时间下午2:30（2:30 PM PST）。",
+            vocab: "outgoing wire transfer (汇出电汇), vendor (供应商), voice verification (语音核实), cutoff time (截止时间), security hold (安全暂扣)"
+          },
+          {
+            id: "q7_2",
+            category: "Consumer Banking & Fraud Prevention",
+            title: "Listen to an automated debit card fraud alert from First National Bank.",
+            audio: "This is an automated fraud detection message from First National Bank calling for account holder Linda Chen. We have detected two unusual consecutive online transactions on your debit card ending in 4092. The first charge was for four hundred twenty dollars at an online gaming website, followed two minutes later by a charge for four hundred twenty-two dollars from a digital gift card retailer based in London. For your immediate protection, we have temporarily placed a security block on your debit card. If you authorized these transactions, press one now. If you did not recognize or authorize these charges, press two immediately to speak with a fraud prevention investigator who will permanently cancel your compromised card and issue a replacement overnight. You are protected by our zero-liability fraud policy.",
+            question: "What action did the bank take regarding Linda's debit card?",
+            options: ["(A) Closed her checking account permanently", "(B) Temporarily placed a security block on the card", "(C) Increased her daily withdrawal limit to $1,000", "(D) Forwarded the bill to her home address"],
+            correct: "B",
+            clue: "For your immediate protection, we have temporarily placed a security block on your debit card.",
+            chinese: "银行防欺诈系统检测到两笔连续异常境外消费后，已立即对琳达的借记卡实施了临时安全锁卡拦截（temporarily placed a security block）。",
+            vocab: "fraud detection (欺诈检测), consecutive transactions (连续交易), security block (安全锁卡/风控拦截), compromised card (信息泄露的卡), zero-liability (零责任保障)"
+          },
+          {
+            id: "q7_3",
+            category: "Auto Insurance Claims",
+            title: "Listen to an insurance adjuster explaining an auto repair estimate and deductible waiver.",
+            audio: "Hello Mr. Rodriguez, this is Cynthia Adams, the insurance claims adjuster handling your accident claim from last Friday on Interstate 880. Our field appraiser examined your Honda sedan at the repair facility in San Jose this morning. The total estimate for parts and body repair is three thousand four hundred dollars. Because the other driver was determined to be one hundred percent at fault for running a red light, your five hundred dollar collision deductible is completely waived under California insurance law. Furthermore, your policy provides rental car reimbursement of up to thirty-five dollars per day for a maximum of ten days while your vehicle is in the repair shop. Please retain all rental receipts and upload them to the claims portal for immediate reimbursement. Call me at extension 404 if you have questions.",
+            question: "Why is Mr. Rodriguez's $500 collision deductible waived?",
+            options: ["(A) His car was declared a total mechanical loss", "(B) The other driver was determined to be 100% at fault", "(C) He paid his annual insurance premium six months early", "(D) He agreed to repair the vehicle in his own home garage"],
+            correct: "B",
+            clue: "Because the other driver was determined to be one hundred percent at fault for running a red light, your five hundred dollar collision deductible is completely waived...",
+            chinese: "理赔员说明：因对方司机闯红灯被判定负100%全责（100% at fault），罗德里格斯先生原本$500的碰撞险免赔额被全部豁免免除。",
+            vocab: "claims adjuster (理赔定损员), appraiser (估价师), collision deductible (碰撞险免赔额), waived (免除/放弃), reimbursement (报销)"
+          },
+          {
+            id: "q7_4",
+            category: "Public Utility Notifications",
+            title: "Listen to a utility company notice regarding a scheduled power outage.",
+            audio: "Good afternoon, this is an automated courtesy advisory from Pacific Gas and Electric Company for residential customers in the Sunnyvale Heritage neighborhood. In order to upgrade aging electrical transformers and improve grid reliability before the winter storm season, a scheduled electrical power interruption will take place this coming Tuesday, November 18th. Power will be shut off promptly at 9:00 AM and is estimated to be restored by 2:00 PM. If you rely on life-support medical equipment requiring electricity, please implement your personal backup emergency power plan or contact our medical baseline team at 1-800-743-5000. Please keep refrigerator and freezer doors closed during the outage to preserve perishable groceries. We appreciate your patience during these infrastructure upgrades.",
+            question: "What is the expected timeframe of the scheduled power outage on Tuesday?",
+            options: ["(A) 6:00 AM to 10:00 AM", "(B) 9:00 AM to 2:00 PM", "(C) 1:00 PM to 6:00 PM", "(D) Overnight from 11:00 PM to 5:00 AM"],
+            correct: "B",
+            clue: "Power will be shut off promptly at 9:00 AM and is estimated to be restored by 2:00 PM.",
+            chinese: "电力公司通告：周二变压器升级改造停电时间为上午9:00至下午2:00（9:00 AM to 2:00 PM），建议有医疗用电设备者启动备用电源。",
+            vocab: "courtesy advisory (预警通报), transformer (变压器), electrical power interruption (停电), medical baseline (医疗保障基准计划), perishable groceries (易腐生鲜食品)"
+          },
+          {
+            id: "q7_5",
+            category: "Consumer Delivery & Installation",
+            title: "Listen to a home appliance delivery dispatch coordinator.",
+            audio: "Hello Mrs. Miller, this is dispatch from Sears Home Appliance Delivery. We have your scheduled home delivery of a French door stainless refrigerator and dishwasher for tomorrow, Wednesday, November 19th. Your delivery route has been assigned to truck number five, with an estimated arrival window between 1:00 PM and 5:00 PM. An adult who is at least eighteen years of age must be present at the home throughout the arrival window to inspect the appliances and sign the delivery manifest. If you purchased our haul-away service for your existing refrigerator, please make sure the old unit is completely emptied of food and unplugged from the wall at least three hours before the crew arrives so that the freezer coils can defrost. If you need to reschedule, call dispatch before 6:00 PM today. Thank you.",
+            question: "What must Mrs. Miller do to prepare her old refrigerator for haul-away service?",
+            options: ["(A) Dismantle the compressor and copper tubing", "(B) Empty all food and unplug it at least three hours prior", "(C) Leave it on the public street sidewalk overnight", "(D) Paint the exterior white to cover scratches"],
+            correct: "B",
+            clue: "...please make sure the old unit is completely emptied of food and unplugged from the wall at least three hours before the crew arrives...",
+            chinese: "家电送货通知：若购买了旧冰箱拖走回收服务，送货团队到达前至少3小时须将旧冰箱内部食物清空并拔掉电源（emptied and unplugged 3 hours prior）以便解冻化霜。",
+            vocab: "delivery manifest (送货签收单), haul-away service (旧家电回收清运), unplugged (拔掉插头的), defrost (解冻/化霜), arrival window (送达时间段)"
+          }
+        ],
+        reading: [
+          {
+            id: "q7_6",
+            category: "Financial Statement & Consumer Credit",
+            title: "Read the monthly credit card statement summary and minimum payment warning.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">FIRST HORIZON VISA • MONTHLY BILLING STATEMENT</span><br><br>
+<div class="grid grid-cols-2 gap-3 text-xs sm:text-sm">
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <span class="text-slate-400">Statement Closing Date:</span><br>
+    <strong class="text-white text-base">Nov 15, 2026</strong>
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <span class="text-slate-400">Payment Due Date:</span><br>
+    <strong class="text-rose-400 text-base">Dec 10, 2026</strong>
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <span class="text-slate-400">New Balance Total:</span><br>
+    <strong class="text-sky-300 text-base">$1,280.00</strong>
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <span class="text-slate-400">Minimum Payment Due:</span><br>
+    <strong class="text-amber-300 text-base">$35.00</strong>
+  </div>
+</div><br>
+<div class="p-3.5 bg-amber-950/40 border border-amber-800 rounded-xl space-y-1.5 text-xs sm:text-sm text-amber-200">
+  <strong class="text-amber-300 text-sm">MANDATORY MINIMUM PAYMENT WARNING:</strong><br>
+  If you make only the minimum payment each month, it will take you <strong>8 years and 4 months</strong> to pay off the balance, and you will end up paying an estimated total of <strong>$2,314.00</strong> (including $1,034 in interest charges at 22.99% APR).
+</div>`,
+            question: "According to the warning, what happens if the cardholder pays only the $35 minimum payment each month?",
+            options: ["(A) The balance will be paid off completely within 12 months", "(B) The credit card account will be closed immediately by the bank", "(C) It will take over 8 years to pay off and cost over $1,000 in interest", "(D) The interest rate will drop from 22.99% to zero percent"],
+            correct: "C",
+            clue: "If you make only the minimum payment each month, it will take you 8 years and 4 months... and you will end up paying an estimated total of $2,314.00 (including $1,034 in interest charges)...",
+            chinese: "信用卡账单警示：若每月只还$35最低还款额，需耗费8年4个月才能还清，且利息高达$1,034以上（总偿还额达$2,314）。",
+            vocab: "closing date (出账单日), payment due date (还款截止日), minimum payment due (最低还款额), pay off (还清), APR (年化利率)"
+          },
+          {
+            id: "q7_7",
+            category: "Consumer Retail Policy",
+            title: "Read the department store customer return and refund policy.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">PACIFIC APPAREL & HOME • RETURN & EXCHANGE POLICY</span><br><br>
+<strong class="text-white text-base">GENERAL MERCHANDISE:</strong><br>
+Items in new, unworn condition with original tags attached may be returned for a full refund to the original payment method within <strong>30 calendar days</strong> of purchase with a valid sales receipt.<br><br>
+<div class="p-3 bg-slate-900 border border-slate-750 rounded-xl space-y-1 text-slate-200 text-xs sm:text-sm">
+  <span class="font-bold text-amber-300">SPECIAL PRODUCT RESTRICTIONS:</span><br>
+  • <strong>Major Electronics:</strong> Must be returned within <strong>14 days</strong> in original box with all cords and accessories. Opened electronics are subject to a <strong>15% restocking fee</strong>.<br>
+  • <strong>Clearance Items:</strong> Merchandise with red tags ending in .97 or .99 are Final Sale and non-refundable.<br>
+  • <strong>Returns Without Receipt:</strong> Eligible only for store merchandise credit at the lowest promotional price within the last 90 days with valid government photo ID.
+</div>`,
+            question: "What fee applies to major electronics returned after being opened?",
+            options: ["(A) A flat $5 processing fee", "(B) A 15% restocking fee", "(C) A 50% environmental recycling penalty", "(D) No fee if returned on a weekend"],
+            correct: "B",
+            clue: "Opened electronics are subject to a 15% restocking fee.",
+            chinese: "商店退换货规定：大件电子产品拆封后退货需扣除15%重新入库手续费（15% restocking fee），且须在14天内原盒退回。",
+            vocab: "merchandise (商品), original payment method (原支付渠道), restocking fee (重新上架手续费/退货手续费), final sale (最终清仓/恕不退换)"
+          },
+          {
+            id: "q7_8",
+            category: "Consumer Banking Schedule",
+            title: "Read the schedule of consumer checking account fees.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">BAY HERITAGE BANK • PERSONAL CHECKING FEE SCHEDULE</span><br><br>
+<table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-700">
+  <thead>
+    <tr class="bg-slate-800 text-white">
+      <th class="p-2 border border-slate-700">Fee Category</th>
+      <th class="p-2 border border-slate-700">Amount</th>
+      <th class="p-2 border border-slate-700">How to Avoid Fee</th>
+    </tr>
+  </thead>
+  <tbody class="text-slate-200">
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Monthly Maintenance</td>
+      <td class="p-2">$12.00 / month</td>
+      <td class="p-2">Maintain $1,500 daily balance OR set up $500 monthly qualifying direct deposit</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Non-Network ATM Fee</td>
+      <td class="p-2">$2.50 per withdrawal</td>
+      <td class="p-2">Use over 30,000 surcharge-free Allpoint Network ATMs nationwide</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Overdraft Protection Transfer</td>
+      <td class="p-2">$10.00 per transfer</td>
+      <td class="p-2">Links savings account to cover shortfall; much lower than $34 NSF returned check fee</td>
+    </tr>
+  </tbody>
+</table><br>
+<span class="text-xs text-slate-300">Note: Qualifying direct deposits must be an electronic deposit of salary, pension, or government benefits from an employer or outside agency.</span>`,
+            question: "How can a customer avoid the $12.00 monthly checking account maintenance fee?",
+            options: ["(A) Pay by cash at the teller counter once per week", "(B) Maintain a $1,500 daily balance or set up a $500 monthly direct deposit", "(C) Withdraw cash from non-network ATMs at least five times a month", "(D) Close their linked savings account"],
+            correct: "B",
+            clue: "Maintain $1,500 daily balance OR set up $500 monthly qualifying direct deposit.",
+            chinese: "银行资费表显示：避免每月$12管理费的方式为——账户每日保持$1,500以上余额，或者每月设置至少$500符合条件的工资/政府福利直接入账（direct deposit）。",
+            vocab: "monthly maintenance fee (月度账户管理费), direct deposit (自动直接入账/工资直入), surcharge-free (免附加费的), overdraft protection (透支保护)"
+          },
+          {
+            id: "q7_9",
+            category: "Telecommunications Consumer Contract",
+            title: "Read the mobile phone plan terms and high-speed data threshold notice.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">HORIZON WIRELESS • UNLIMITED PLUS DATA POLICY</span><br><br>
+<strong class="text-white text-base">NETWORK MANAGEMENT & CONGESTION DISCLOSURE:</strong><br>
+Unlimited Plus lines include unlimited nationwide voice calling, unlimited domestic text messages, and unlimited mobile data usage per monthly billing period.<br><br>
+<div class="p-3 bg-slate-900 border border-slate-750 rounded-xl space-y-1.5 text-xs sm:text-sm text-slate-200">
+  <span class="font-bold text-sky-300">DATA USAGE THRESHOLDS:</span><br>
+  • Each individual line receives <strong>40 Gigabytes (GB) of premium high-speed 5G data</strong> each month.<br>
+  • If an individual line exceeds 40 GB of data usage in a single billing cycle, speeds for that line may be <strong>temporarily slowed down to 3G speeds</strong> during periods of acute network congestion until the start of the next billing cycle.<br>
+  • Mobile hotspot tethering is capped at 15 GB of high-speed data per month, after which hotspot speeds reduce to 600 kbps.
+</div>`,
+            question: "What happens after a subscriber uses more than 40 GB of data in one billing cycle?",
+            options: ["(A) An extra charge of $50 is automatically billed to the account", "(B) Mobile data service is permanently terminated for all lines", "(C) Data speeds may be temporarily slowed during network congestion", "(D) The user must purchase a new phone device"],
+            correct: "C",
+            clue: "If an individual line exceeds 40 GB of data usage... speeds for that line may be temporarily slowed down to 3G speeds during periods of acute network congestion...",
+            chinese: "手机套餐细则表明：单条线路单月使用超过40GB高速数据后，在基站网络高峰拥堵期间，网速可能会被临时限速降至3G（temporarily slowed during network congestion）。",
+            vocab: "billing cycle (账单周期), threshold (门槛/临界点), congestion (网络拥堵), mobile hotspot (移动热点), tethering (网络共享)"
+          },
+          {
+            id: "q7_10",
+            category: "Consumer Product Safety Recall",
+            title: "Read the official consumer product safety recall announcement.",
+            doc: `<div class="border-2 border-rose-800 bg-rose-950/40 p-4 rounded-xl space-y-1.5 text-rose-200">
+  <div class="flex items-center gap-2">
+    <span class="px-2 py-0.5 bg-rose-600 text-white font-black text-xs rounded">URGENT SAFETY RECALL</span>
+    <span class="font-extrabold text-white text-base">U.S. CONSUMER PRODUCT SAFETY COMMISSION</span>
+  </div>
+  <p class="text-sm">Recall Date: November 12, 2026 • Product: ChefPro 8-Quart Multi-Cooker Electric Pressure Cookers</p>
+</div><br>
+<strong class="text-white text-base">HAZARD IDENTIFICATION:</strong><br>
+The silicone pressure release gasket can dislodge during cooking, allowing boiling food and liquids to erupt under high pressure when the lid is removed, posing serious burn hazards to consumers.<br><br>
+<div class="p-3 bg-slate-900 border border-slate-750 rounded-xl space-y-1 text-slate-200 text-xs sm:text-sm">
+  <span class="font-bold text-amber-300">CONSUMER REMEDY INSTRUCTIONS:</span><br>
+  1. Consumers should <strong>immediately stop using</strong> the recalled pressure cookers.<br>
+  2. Contact ChefPro toll-free at 1-888-555-COOK or visit www.chefpro-recall.com to register.<br>
+  3. Registered owners will receive a <strong>free replacement silicone safety gasket and redesigned locking lid</strong> by mail with prepaid return shipping for the defective parts.
+</div>`,
+            question: "What should consumers do immediately according to the recall instructions?",
+            options: ["(A) Repair the defective lid themselves using waterproof glue", "(B) Immediately stop using the recalled pressure cookers and contact ChefPro for a free replacement lid", "(C) Sell the appliance at a garage sale or flea market", "(D) Continue using it on low heat settings only"],
+            correct: "B",
+            clue: "Consumers should immediately stop using the recalled pressure cookers. Contact ChefPro... to receive a free replacement silicone safety gasket and redesigned locking lid...",
+            chinese: "消费品安全召回令（CPSC）指示：消费者应立即停止使用召回的高压锅（immediately stop using），并联系厂家免费获取改良版安全密封圈与安全锅盖。",
+            vocab: "product safety recall (产品安全召回), hazard identification (隐患说明), gasket (密封圈/垫圈), dislodge (脱落/移位), remedy (补救措施)"
+          }
+        ]
+      },
+
+      // ==========================================
+      // Quiz #8: Civic Services, Government Programs & Transit
+      // ==========================================
+      quiz8: {
+        title: "Quiz #8: Civic Services, Government Programs & Transit",
+        listening: [
+          {
+            id: "q8_1",
+            category: "Adult Education Testing & Registration",
+            title: "Listen to an adult school counselor discussing CASAS post-testing and priority registration.",
+            audio: "Good evening students, this is Counselor Maria from the Santa Clara Adult Education Department. I have important news regarding our upcoming December CASAS progress assessments and priority registration for the spring term. All current Level 3 students are required to take the official CASAS post-test between December 8th and December 12th in room 104. Scoring 221 or higher qualifies you directly for advancement into Level 4 High-Intermediate ESL. In addition, state funding guidelines require a minimum of forty instructional attendance hours before post-testing. Students who complete forty classroom hours and finish their CASAS exam by December 12th will be granted early priority registration beginning January 5th to choose their preferred morning or evening schedule. Please confirm your testing time with your classroom teacher tonight.",
+            question: "What CASAS score is required for students to advance directly to Level 4 ESL?",
+            options: ["(A) 190 or higher", "(B) 205 or higher", "(C) 221 or higher", "(D) 245 or higher"],
+            correct: "C",
+            clue: "Scoring 221 or higher qualifies you directly for advancement into Level 4 High-Intermediate ESL.",
+            chinese: "成人学校辅导员明确通知：所有Level 3学员必须参加12月8-12日的CASAS测试，考取221分或更高（221 or higher）即可直接晋级Level 4高进阶班。",
+            vocab: "progress assessment (进度评估/考评), advancement (晋级/升学), instructional attendance hours (出勤课时), priority registration (优先选课报名), high-intermediate (高进阶级)"
+          },
+          {
+            id: "q8_2",
+            category: "Public Health Community Services",
+            title: "Listen to a county health department public announcement regarding mobile clinics.",
+            audio: "Attention community members, this is an official announcement from the Santa Clara County Public Health Department. In response to rising seasonal respiratory infections, our mobile medical health van will be offering free seasonal flu vaccines and updated COVID-19 boosters this Saturday, November 21st, from 9:00 AM to 1:00 PM at the Mexican Heritage Plaza on King Road in East San Jose. These immunizations are available to all county residents regardless of health insurance coverage, immigration status, or ability to pay. No appointments are necessary; patients will be served on a first-come, first-served basis. Free high-filtration N95 masks and rapid home test kits will also be distributed while supplies last. Please wear a short-sleeved shirt for easy vaccination access. Stay healthy this winter.",
+            question: "Who is eligible to receive free vaccines at the mobile clinic on Saturday?",
+            options: ["(A) Only senior citizens over age 75 with private insurance", "(B) All county residents regardless of insurance or immigration status", "(C) Full-time college students living on campus", "(D) Only county government employees and their dependents"],
+            correct: "B",
+            clue: "These immunizations are available to all county residents regardless of health insurance coverage, immigration status, or ability to pay.",
+            chinese: "县公共卫生局公告：本周六流动医疗车接种疫苗面向所有县居民（all county residents），无论有无医疗保险、移民身份或支付能力均完全免费。",
+            vocab: "respiratory infections (呼吸道感染), immunizations (预防接种/疫苗), regardless of (无论...与否), immigration status (移民身份), first-come first-served (先到先得)"
+          },
+          {
+            id: "q8_3",
+            category: "Community Senior Services",
+            title: "Listen to a city parks and recreation coordinator explaining the senior activity pass.",
+            audio: "Hello everyone, my name is Arthur, Senior Program Coordinator for the City of Sunnyvale Parks and Recreation Department. We are excited to announce our 2027 Senior Recreation Pass for local residents aged sixty-two and older. For an annual fee of only twenty dollars, this pass gives you unlimited admission to our heated indoor therapy pool, drop-in tai chi and gentle yoga fitness classes, and our weekday social club lunches. To apply for your pass, simply visit the community center reception desk between 8:30 AM and 4:30 PM. You will need to show a government-issued photo ID establishing your age, along with a recent property tax statement or residential utility bill proving you reside within city limits. Non-residents may purchase the pass for an annual fee of forty-five dollars. We look forward to seeing you at our center.",
+            question: "What two documents must Sunnyvale residents show to purchase the $20 senior recreation pass?",
+            options: ["(A) A high school diploma and a doctor's medical clearance letter", "(B) A photo ID proving age and a utility bill proving city residency", "(C) An active gym membership card and two passport photos", "(D) A vehicle registration card and a California voting stub"],
+            correct: "B",
+            clue: "You will need to show a government-issued photo ID establishing your age, along with a recent property tax statement or residential utility bill proving you reside within city limits.",
+            chinese: "社区长者项目协调员说明：年满62岁长者申请$20年卡需出示：证明年龄的带照片证件（photo ID proving age）以及证明本市居住地址的水电费账单（utility bill proving residency）。",
+            vocab: "recreation pass (文体活动年卡), indoor therapy pool (室内水疗恒温泳池), drop-in classes (无需预约随到随上的课程), reside within city limits (居住在市区范围内)"
+          },
+          {
+            id: "q8_4",
+            category: "Tenant Rights & Housing Regulations",
+            title: "Listen to a legal aid attorney explaining California rent increase notice rules.",
+            audio: "Hello Mr. Ramos, this is Attorney Jennifer Wu from the Bay Area Legal Aid Housing Project. I received your voice message regarding the rent increase notice you found taped to your apartment door yesterday. Under the California Tenant Protection Act, landlords are strictly prohibited from giving verbal or text message notice for rent increases. For tenants who have lived in their rental unit for more than one continuous year, the landlord must provide a written notice of at least sixty full days in advance before any rent increase can take effect. Because your lease began three years ago, a thirty-day notice is legally invalid. In addition, the maximum allowable annual rent increase in Santa Clara County this year is capped at eight point eight percent. Please do not sign any agreement until you bring your notice to our clinic this Thursday at 2:00 PM for review.",
+            question: "How many days of written advance notice is required for tenants who have lived in their unit over one year?",
+            options: ["(A) Fourteen calendar days", "(B) Thirty days", "(C) At least sixty full days", "(D) Ninety business days"],
+            correct: "C",
+            clue: "For tenants who have lived in their rental unit for more than one continuous year, the landlord must provide a written notice of at least sixty full days in advance...",
+            chinese: "法律援助律师说明：根据加州租客保护法案，租住超过一年的房客，房东涨租金必须提前至少整整60天书面通知（at least sixty full days），30天通知属于无效通知。",
+            vocab: "Tenant Protection Act (租客保护法案), take effect (生效), legally invalid (法律上无效), allowable increase (允许涨幅), capped at (上限为)"
+          },
+          {
+            id: "q8_5",
+            category: "Public Transit Fare Assistance",
+            title: "Listen to a transit ambassador explaining the Clipper START low-income fare card.",
+            audio: "Good morning transit riders, this is your VTA and Caltrain customer service ambassador with helpful tips on utilizing the Clipper START discount transit program. Clipper START provides eligible adults aged nineteen to sixty-four whose household income is under two hundred percent of the federal poverty level with a fifty percent discount on single-ride fares across all twenty-four Bay Area transit operators. When using Clipper START on Caltrain or Sonoma-Marin Area Rail Transit, remember that you must tap your card at the platform card reader before boarding the train to tag on, and tap again at the reader upon arrival at your destination station to tag off. If you forget to tag off when you exit, the system will automatically charge your card the maximum full distance fare. Keep your card balance above two dollars at all times. Safe travels.",
+            question: "What happens if a Clipper START passenger forgets to tag off their card at the destination station on Caltrain?",
+            options: ["(A) The card is immediately confiscated by transit police", "(B) The system automatically charges the maximum full-distance fare", "(C) The passenger is banned from riding public transit for 30 days", "(D) A $100 penalty fee is mailed to the passenger's home"],
+            correct: "B",
+            clue: "If you forget to tag off when you exit, the system will automatically charge your card the maximum full distance fare.",
+            chinese: "交通局形象大使提醒：乘坐Caltrain轻轨火车时，下车时若忘记在读卡器上刷卡（tag off），系统将自动按该路线的最长全程扣取最高全额车费（maximum full distance fare）。",
+            vocab: "fare card (车费卡/交通卡), poverty level (贫困线), tag on (上车刷卡), tag off (下车刷卡), maximum full distance fare (最长全程最高车费)"
+          }
+        ],
+        reading: [
+          {
+            id: "q8_6",
+            category: "Government Identity Document Checklist",
+            title: "Read the California DMV REAL ID document verification requirements.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">CALIFORNIA DMV • REAL ID CHECKLIST §49</span><br><br>
+<strong class="text-white text-base">REQUIRED ORIGINAL DOCUMENTS (NO PHOTOCOPIES ACCEPTED):</strong><br>
+To obtain a California REAL ID driver license or identification card, applicants must physically present original documents in three distinct categories:<br><br>
+<div class="space-y-2 text-xs sm:text-sm text-slate-200">
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">1. Proof of Identity (ONE document):</strong><br>
+    Valid U.S. Passport, Certified U.S. Birth Certificate, Permanent Resident Card (Form I-551), or unexpired Foreign Passport with approved U.S. Visa and Form I-94.
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">2. Proof of Social Security Number (ONE document):</strong><br>
+    Official Social Security Card, Form W-2 showing full SSN, or SSA-1099 form.
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">3. Proof of California Residency (TWO DIFFERENT documents):</strong><br>
+    Residential lease agreement, home utility bill (gas, electric, water), cell phone bill, bank statement, or employment paystub dated within the last 90 days.
+  </div>
+</div>`,
+            question: "How many different documents are required to prove California residency for a REAL ID?",
+            options: ["(A) Only one utility bill", "(B) Two different residency documents dated within the last 90 days", "(C) Three letters from neighborhood friends", "(D) Four years of state income tax returns"],
+            correct: "B",
+            clue: "Proof of California Residency (TWO DIFFERENT documents)... dated within the last 90 days.",
+            chinese: "DMV办REAL ID清单规定：必须提供两份不同的加州居住证明（TWO DIFFERENT documents），例如90天内的水电费账单或银行对账单，且必须为原件。",
+            vocab: "photocopies (复印件), distinct categories (不同类别), Permanent Resident Card (绿卡), residency (居住地证明)"
+          },
+          {
+            id: "q8_7",
+            category: "Civic Voting Instructions",
+            title: "Read the official county registrar instructions for returning vote-by-mail ballots.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">SANTA CLARA COUNTY REGISTRAR OF VOTERS • OFFICIAL BALLOT GUIDE</span><br><br>
+<strong class="text-white text-base">THREE CONVENIENT WAYS TO RETURN YOUR SEALED BALLOT:</strong><br><br>
+<ul class="list-disc list-inside space-y-2 text-slate-200 text-xs sm:text-sm">
+  <li><strong>1. By United States Postal Mail:</strong> No postage stamp is needed. Your ballot must be <strong>postmarked on or before Election Day (8:00 PM)</strong> and received by the County Registrar within <strong>7 days</strong> following Election Day.</li>
+  <li><strong>2. At an Official County Drop Box:</strong> Deposit your sealed envelope into any of the 100+ secure outdoor drop boxes located at libraries, city halls, and adult schools. Drop boxes close strictly at <strong>8:00 PM on Election Night</strong>.</li>
+  <li><strong>3. At Any County Vote Center:</strong> Deliver your ballot in person or request an in-person electronic ballot between 7:00 AM and 8:00 PM on Election Day.</li>
+</ul><br>
+<div class="p-3 bg-amber-950/40 border border-amber-800 rounded-xl text-xs text-amber-200">
+  <strong>CRITICAL REMINDER:</strong> You must sign and date the back of the return envelope in your own handwriting. If the signature does not match your voter registration record, your ballot cannot be counted.
+</div>`,
+            question: "If returning a ballot by mail, by when must the envelope be postmarked?",
+            options: ["(A) One week before Election Day", "(B) On or before Election Day by 8:00 PM", "(C) Within 7 days after Election Day", "(D) Any time during the month of November"],
+            correct: "B",
+            clue: "Your ballot must be postmarked on or before Election Day (8:00 PM)...",
+            chinese: "选民指南规定：邮寄选票免贴邮票，但必须在选举日当天晚8:00或之前盖上邮戳（postmarked on or before Election Day），并在7天内寄达选民登记处。",
+            vocab: "postmarked (盖邮戳), ballot drop box (选票投递箱), sealed envelope (密封信封), voter registration (选民登记), handwriting (笔迹)"
+          },
+          {
+            id: "q8_8",
+            category: "Municipal Water Conservation Policy",
+            title: "Read the city mandatory lawn watering and drought ordinance.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">CITY OF SAN JOSE • MANDATORY DROUGHT ORDINANCE §15</span><br><br>
+<strong class="text-white text-base">RESIDENTIAL OUTDOOR IRRIGATION SCHEDULE:</strong><br>
+To conserve groundwater storage during drought conditions, residential landscape watering using sprinkler systems is limited to designated days and hours.<br><br>
+<table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-700">
+  <thead>
+    <tr class="bg-slate-800 text-white">
+      <th class="p-2 border border-slate-700">Street Address Type</th>
+      <th class="p-2 border border-slate-700">Permitted Watering Days</th>
+      <th class="p-2 border border-slate-700">Allowed Irrigation Hours</th>
+    </tr>
+  </thead>
+  <tbody class="text-slate-200">
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Odd Numbers (Ending in 1, 3, 5, 7, 9)</td>
+      <td class="p-2">Tuesdays & Saturdays only</td>
+      <td class="p-2">Before 9:00 AM OR after 6:00 PM (max 15 mins/station)</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Even Numbers (Ending in 0, 2, 4, 6, 8)</td>
+      <td class="p-2">Wednesdays & Sundays only</td>
+      <td class="p-2">Before 9:00 AM OR after 6:00 PM (max 15 mins/station)</td>
+    </tr>
+  </tbody>
+</table><br>
+<span class="text-xs text-rose-300">Enforcement Notice: Watering between 9:00 AM and 6:00 PM is strictly prohibited to minimize evaporation loss. First violation results in a written warning; second violation incurs a mandatory $100 municipal fine.</span>`,
+            question: "What days are residents with odd-numbered addresses permitted to water their lawns?",
+            options: ["(A) Mondays and Thursdays only", "(B) Tuesdays and Saturdays only", "(C) Wednesdays and Sundays only", "(D) Any weekday between 12:00 PM and 3:00 PM"],
+            correct: "B",
+            clue: "Odd Numbers (Ending in 1, 3, 5, 7, 9): Tuesdays & Saturdays only.",
+            chinese: "节水法令规定：门牌号为单数（Odd numbers）的住宅，仅允许在周二和周六（Tuesdays & Saturdays only）的上午9点前或晚6点后进行草坪灌溉浇水。",
+            vocab: "drought ordinance (抗旱节水法令), irrigation (灌溉), odd numbers (奇数/单数), evaporation loss (蒸发损失), municipal fine (市政罚款)"
+          },
+          {
+            id: "q8_9",
+            category: "Judicial & Civic Jury Summons",
+            title: "Read the Superior Court jury summons instructions and postponement policy.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">SUPERIOR COURT OF CALIFORNIA • OFFICIAL JUROR SUMMONS</span><br><br>
+<strong class="text-white text-base">JUROR QUALIFICATION & ATTENDANCE NOTICE:</strong><br>
+You have been randomly summoned for prospective trial jury service during the term beginning Monday, December 1st. Jury duty is a mandatory civic obligation under state law.<br><br>
+<div class="p-3 bg-slate-900 border border-slate-750 rounded-xl space-y-1.5 text-xs sm:text-sm text-slate-200">
+  <span class="font-bold text-sky-300">CRITICAL ACTION REQUIREMENTS:</span><br>
+  • <strong>Online Portal Registration:</strong> You must log into the Juror Portal at www.sc-juryduty.ca.gov within <strong>10 days</strong> of receiving this notice to complete your juror affidavit.<br>
+  • <strong>Postponement Requests:</strong> Prospective jurors may request <strong>one automatic postponement of up to 90 days</strong> for educational, medical, or business scheduling conflicts without penalty.<br>
+  • <strong>Non-Citizenship Exemption:</strong> If you are not a United States citizen, check box 3 on the affidavit and return it immediately. Non-citizens are legally excused from jury service.
+</div>`,
+            question: "How long of a postponement can prospective jurors request for scheduling conflicts?",
+            options: ["(A) Up to 10 days", "(B) Up to 30 days", "(C) One automatic postponement of up to 90 days", "(D) Permanent lifetime postponement"],
+            correct: "C",
+            clue: "Prospective jurors may request one automatic postponement of up to 90 days for educational, medical, or business scheduling conflicts...",
+            chinese: "加州法院陪审团传票规定：公民因工作、学业等冲突，可在线申请一次长达最多90天的自动延期（automatic postponement of up to 90 days）；非美国公民可依法豁免。",
+            vocab: "jury summons (陪审员传票), civic obligation (公民义务), postponement (延期), affidavit (誓书/资格登记表), legally excused (依法免除)"
+          },
+          {
+            id: "q8_10",
+            category: "Affordable Housing Program Packet",
+            title: "Read the Section 8 housing choice voucher annual income re-examination packet.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">SANTA CLARA COUNTY HOUSING AUTHORITY • SECTION 8 ANNUAL REVIEW</span><br><br>
+<strong class="text-white text-base">MANDATORY ANNUAL RE-CERTIFICATION OF ELIGIBILITY:</strong><br>
+Federal regulations require the Housing Authority to re-examine the family income, composition, and tenant rent share of all Section 8 voucher holders once every twelve months.<br><br>
+<div class="p-3 bg-amber-950/40 border border-amber-800 rounded-xl space-y-1 text-xs sm:text-sm text-amber-200">
+  <span class="font-bold text-amber-300">REQUIRED VERIFICATION DOCUMENTS TO SUBMIT:</span><br>
+  1. Complete and signed Application for Continued Occupancy (enclosed).<br>
+  2. Proof of income for all adult household members aged 18+: three most recent consecutive paystubs, SSI benefit letters, or child support documentation.<br>
+  3. Last two months of statements for all checking, savings, and retirement accounts.<br>
+  4. <strong>Deadline:</strong> All completed documentation must be received by your assigned Housing Specialist by <strong>Friday, November 28th at 5:00 PM</strong>. Failure to submit required paperwork will result in termination of rental subsidy assistance.
+</div>`,
+            question: "What is the penalty for failing to submit the required Section 8 re-certification paperwork by the deadline?",
+            options: ["(A) A $50 late administrative fee on next month's rent", "(B) Termination of rental subsidy assistance", "(C) A mandatory move to a different apartment building", "(D) An inspection of personal household furniture"],
+            correct: "B",
+            clue: "Failure to submit required paperwork will result in termination of rental subsidy assistance.",
+            chinese: "住房管理局年审通知指出：未能在截止日期前提交收入及家庭成员年度资格重审文件，将导致政府住房租金补贴被终止（termination of rental subsidy assistance）。",
+            vocab: "re-certification (重新认证/年审), housing choice voucher (房屋代金券/第8条住房补助), tenant rent share (房客自付租金份额), consecutive paystubs (连续工资单), termination of subsidy (终止补贴)"
+          }
+        ]
+      },
+
+      // ==========================================
+      // Quiz #9: Employment Contracts, Ergonomics & OSHA Laws
+      // ==========================================
+      quiz9: {
+        title: "Quiz #9: Employment Contracts, Ergonomics & OSHA Laws",
+        listening: [
+          {
+            id: "q9_1",
+            category: "Workplace Performance & Merit Increases",
+            title: "Listen to the Human Resources director explaining the annual performance review process.",
+            audio: "Good afternoon team members, this is HR Director Michael Chang with an important briefing on our upcoming 2026 annual performance evaluation cycle. Starting next Monday, our online evaluation portal will open for self-assessments. Every employee must complete their self-evaluation rubric by Friday, December 5th at 5:00 PM. Following submission, your department supervisor will schedule a one-on-one conference to discuss your key performance milestones and professional goals. This year, merit salary increases are tied directly to your overall rating score: employees who receive a 'Meets Expectations' rating will earn a three percent cost-of-living raise, while those receiving an 'Exceeds Expectations' rating will receive a five percent salary increase effective January 1st. Please take time to document your project contributions thoroughly. Thank you for your hard work.",
+            question: "What salary increase will employees receive if their performance rating 'Exceeds Expectations'?",
+            options: ["(A) A two percent bonus check", "(B) A three percent cost-of-living raise", "(C) A five percent salary increase", "(D) A ten percent stock grant"],
+            correct: "C",
+            clue: "...while those receiving an 'Exceeds Expectations' rating will receive a five percent salary increase effective January 1st.",
+            chinese: "人事总监明确说明：年度绩效评估获得“超出预期”（Exceeds Expectations）评级的员工，将于1月1日起获得5%的加薪幅度（five percent salary increase）。",
+            vocab: "performance evaluation (绩效考评), self-assessment (自我评估), rubric (评估细则/标准), merit salary increase (绩效加薪), effective (生效)"
+          },
+          {
+            id: "q9_2",
+            category: "Industrial Safety & OSHA Regulations",
+            title: "Listen to a warehouse logistics manager conducting a safety briefing.",
+            audio: "Attention all shipping and receiving personnel, this is Logistics Manager Henderson following up on our monthly OSHA safety audit. During our facility walkthrough yesterday, inspectors noted several critical safety infractions that must be corrected immediately. Under federal OSHA regulations, all primary warehouse walkways must maintain a minimum clear width of four feet at all times; no wooden pallets or shrink-wrapped boxes may be left in yellow-striped pedestrian lanes. Furthermore, federal electrical codes strictly require thirty-six inches of completely unobstructed clearance in front of all main circuit breaker panels and emergency eyewash stations. If our floor supervisor identifies any items blocking these critical emergency stations, the offending department will receive an immediate formal violation notice. Let us work together to keep our facility accident-free.",
+            question: "How many inches of clear space must be maintained in front of circuit breaker panels and eyewash stations?",
+            options: ["(A) Twelve inches", "(B) Twenty-four inches", "(C) Thirty-six inches", "(D) Forty-eight inches"],
+            correct: "C",
+            clue: "Furthermore, federal electrical codes strictly require thirty-six inches of completely unobstructed clearance in front of all main circuit breaker panels and emergency eyewash stations.",
+            chinese: "物流主管强调联邦安全规范（OSHA）：所有主电闸箱和紧急洗眼台前方，必须保持整整36英寸（thirty-six inches）完全畅通无阻的净空，严禁堆放物品。",
+            vocab: "OSHA (美国职业安全健康署), safety audit (安全审计), clear width (净宽), circuit breaker panels (电路跳闸箱/配电箱), unobstructed (无遮挡的/通畅的)"
+          },
+          {
+            id: "q9_3",
+            category: "Commercial Food Safety & Health Inspection",
+            title: "Listen to a restaurant executive chef training new kitchen staff on food safety standards.",
+            audio: "Welcome to the culinary team, everyone. I am Chef Anthony, and I want to emphasize our strict adherence to California Food Code temperature regulations. Every morning at 7:00 AM and every evening at 10:00 PM, the prep supervisor must record temperatures in our digital HACCP sanitation log. All commercial walk-in refrigeration units must maintain internal air temperatures at forty-one degrees Fahrenheit or colder at all times to prevent bacterial growth. In addition, raw poultry and eggs must strictly be stored on the bottom shelf of our walk-in cooler, below whole cuts of beef, pork, and prepared salads. This vertical storage arrangement completely prevents raw chicken juices from dripping onto foods that are served without further cooking. If any refrigeration unit reads above forty-five degrees, notify management immediately so food can be transferred. Let us uphold the highest safety standards.",
+            question: "Where must raw poultry and eggs be stored inside the walk-in refrigerator?",
+            options: ["(A) On the top shelf next to fresh vegetables", "(B) On the bottom shelf below beef, pork, and prepared salads", "(C) On the door storage racks", "(D) In the dry pantry closet"],
+            correct: "B",
+            clue: "In addition, raw poultry and eggs must strictly be stored on the bottom shelf of our walk-in cooler, below whole cuts of beef, pork, and prepared salads.",
+            chinese: "餐饮主厨指导食品卫生：生禽肉和鸡蛋必须严格储存在冰库最底层搁架上（on the bottom shelf），置于牛肉、猪肉和熟食沙拉下方，防止生鸡肉汁滴落造成交叉感染。",
+            vocab: "culinary team (餐饮烹饪团队), adherence (遵守/依从), HACCP (食品安全危害分析与关键控制点), walk-in cooler (步入式冷库), raw poultry (生禽肉)"
+          },
+          {
+            id: "q9_4",
+            category: "Manufacturing Lockout/Tagout (LOTO) Procedures",
+            title: "Listen to a factory safety engineer instructing machine operators on equipment isolation.",
+            audio: "Good morning machine operators, this is Lead Safety Engineer Tom Vance. I want to review our mandatory Lockout/Tagout protocol before our packaging lines restart. If any conveyer belt jams or requires mechanical cleaning, under no circumstances should any operator place their hands into moving machine parts while the power is connected. Before performing any maintenance, you must perform three steps: first, press the local stop button and turn off the main electrical disconnect switch. Second, attach your personal red padlock through the locking hasp and pocket your individual key. Third, write your name, employee ID, and time on the high-visibility yellow danger tag. Only the technician whose name appears on that tag is legally permitted to remove the lock. Never attempt to remove another worker's safety lock. Safety is non-negotiable.",
+            question: "Who is legally permitted to remove a personal safety padlock from a locked-out machine?",
+            options: ["(A) Any machine operator on the shift", "(B) The maintenance intern on duty", "(C) Only the technician whose name appears on the tag", "(D) The building security guard"],
+            correct: "C",
+            clue: "Only the technician whose name appears on that tag is legally permitted to remove the lock.",
+            chinese: "工厂设备停机上锁挂牌（LOTO）安全规范：只有挂牌上署名的该名技术员本人（Only the technician whose name appears on that tag），依法才有权拆卸个人安全锁具。",
+            vocab: "Lockout/Tagout (上锁挂牌安全程序), conveyer belt (传送带), mechanical cleaning (机械清理), padlock (挂锁), non-negotiable (不可妥协的)"
+          },
+          {
+            id: "q9_5",
+            category: "Workplace Ergonomics & Health Services",
+            title: "Listen to a facilities coordinator explaining ergonomic workstation evaluations.",
+            audio: "Hello staff, this is Lisa from Workplace Facilities. As part of our ongoing commitment to occupational health and employee comfort, we are partnering with a certified ergonomist to conduct free workstation assessments throughout December. If you experience chronic neck stiffness, lower back tension, or wrist soreness from computer work, you can submit an ergonomic request ticket through our internal IT helpdesk portal. An ergonomic specialist will visit your workspace to adjust your chair height, lumbar support, and monitor distance to ensure your elbows and knees rest at proper ninety-degree angles. If specialized equipment is recommended—such as dual adjustable monitor arms, vertical optical mice, or motorized sit-stand desks—our facilities department will order and install the equipment at zero cost to your department. Take care of your posture.",
+            question: "How can employees request an ergonomic assessment of their workstation?",
+            options: ["(A) By calling the building landlord directly", "(B) By submitting an ergonomic request ticket through the internal IT helpdesk portal", "(C) By visiting the local emergency room", "(D) By writing a physical letter to the CEO"],
+            correct: "B",
+            clue: "...you can submit an ergonomic request ticket through our internal IT helpdesk portal.",
+            chinese: "设施部协调员说明：如员工伏案工作感到颈椎、手腕酸痛，可通过公司内部IT工单系统提交工位人体工学评估申请（submitting a ticket through the IT portal），免费配备专业设备。",
+            vocab: "ergonomic workstation (符合人体工学的工位), certified ergonomist (持证人体工学专家), lumbar support (腰部支撑), sit-stand desk (升降电脑桌), posture (坐姿/体态)"
+          }
+        ],
+        reading: [
+          {
+            id: "q9_6",
+            category: "Employment Recruitment & Qualifications",
+            title: "Read the job announcement for a Senior Facilities Maintenance Technician.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">CITY OF MOUNTAIN VIEW • CAREER OPPORTUNITY #2026-F08</span><br><br>
+<strong class="text-white text-base">SENIOR FACILITIES MAINTENANCE TECHNICIAN:</strong><br>
+Full-Time Regular • Salary: $38.50 – $47.25 / hour • Generous CalPERS Pension & Benefits<br><br>
+<div class="p-3.5 bg-slate-900 border border-slate-750 rounded-xl space-y-2 text-xs sm:text-sm text-slate-200">
+  <span class="font-bold text-sky-300 text-sm">MINIMUM EMPLOYMENT QUALIFICATIONS:</span><br>
+  • <strong>Experience:</strong> At least three (3) years of journey-level experience in commercial HVAC, plumbing, and electrical building maintenance.<br>
+  • <strong>Certifications:</strong> Must possess a valid <strong>EPA Section 608 Universal Refrigerant Handling Certification</strong> at time of application.<br>
+  • <strong>Driver License:</strong> Valid California Class C driver license with a clean DMV driving record.<br>
+  • <strong>Physical Requirement:</strong> Ability to safely climb ladders and lift 50-pound motors.<br>
+  • <strong>Application Deadline:</strong> Complete online application and resume must be submitted by <strong>Friday, December 12th at 5:00 PM</strong>.
+</div>`,
+            question: "Which certification must applicants hold at the time of application?",
+            options: ["(A) Commercial Truck Driver Class A License", "(B) EPA Section 608 Universal Refrigerant Certification", "(C) California Registered Nursing License", "(D) Certified Public Accountant (CPA) credential"],
+            correct: "B",
+            clue: "Must possess a valid EPA Section 608 Universal Refrigerant Handling Certification at time of application.",
+            chinese: "招聘公告显示：应聘高级物业维护技师岗位，报名时必须持有有效的美国环保署（EPA）Section 608通用制冷剂操作认证证书。",
+            vocab: "facilities maintenance (物业维护/设施维修), journey-level (熟练工/达到行家水平的), universal refrigerant (通用制冷剂), driving record (驾驶记录)"
+          },
+          {
+            id: "q9_7",
+            category: "Chemical Safety Data Sheet (SDS)",
+            title: "Read Sections 8 and 9 of the Safety Data Sheet for an industrial cleaning chemical.",
+            doc: `<span class="text-amber-300 font-extrabold text-lg">SAFETY DATA SHEET (SDS) • SOLV-CLEAN INDUSTRIAL DEGREASER</span><br><br>
+<table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-700">
+  <thead>
+    <tr class="bg-slate-800 text-white">
+      <th class="p-2 border border-slate-700">Section</th>
+      <th class="p-2 border border-slate-700">Safety Specifications & Parameters</th>
+    </tr>
+  </thead>
+  <tbody class="text-slate-200">
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Section 8: Exposure Controls & PPE</td>
+      <td class="p-2">
+        • OSHA Permissible Exposure Limit (PEL): 50 parts per million (ppm) 8-hour TWA.<br>
+        • <strong>Respiratory:</strong> Use organic vapor respirator if ventilation is poor.<br>
+        • <strong>Hand Protection:</strong> Wear <strong>heavy nitrile or butyl rubber gloves</strong> (latex is prohibited).<br>
+        • <strong>Eye Protection:</strong> Chemical splash goggles with side shields.
+      </td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Section 9: Physical & Chemical Properties</td>
+      <td class="p-2">
+        • Appearance: Clear, amber liquid with mild citrus solvent odor.<br>
+        • <strong>Flash Point:</strong> 142°F (61.1°C) Closed Cup.<br>
+        • Boiling Point: 345°F (173.8°C) • Specific Gravity: 0.86.
+      </td>
+    </tr>
+  </tbody>
+</table><br>
+<span class="text-xs text-rose-300">Handling Alert: Flammable liquid. Keep away from heat, sparks, open flames, and hot surfaces. Use only in well-ventilated areas.</span>`,
+            question: "Which type of gloves is explicitly prohibited when handling this industrial solvent?",
+            options: ["(A) Heavy nitrile gloves", "(B) Butyl rubber gloves", "(C) Latex gloves", "(D) Neoprene elbow-length gloves"],
+            correct: "C",
+            clue: "Wear heavy nitrile or butyl rubber gloves (latex is prohibited).",
+            chinese: "化学品安全技术说明书（SDS）第8节明确规定：操作该工业脱脂溶剂时，必须佩戴丁腈或丁基橡胶手套，乳胶手套（latex）是被严格明令禁止的。",
+            vocab: "Safety Data Sheet (化学品安全说明书), degreaser (除油脱脂剂), nitrile gloves (丁腈手套), latex (乳胶), flash point (闪点)"
+          },
+          {
+            id: "q9_8",
+            category: "Workers' Compensation Law & Benefits",
+            title: "Read the employee guide to reporting work-related injuries under California Workers' Comp.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">CALIFORNIA DEPT OF INDUSTRIAL RELATIONS • WORKERS' COMP GUIDE</span><br><br>
+<strong class="text-white text-base">WHAT TO DO IF YOU ARE INJURED ON THE JOB:</strong><br><br>
+<div class="space-y-2 text-xs sm:text-sm text-slate-200">
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-amber-300">1. Immediate 24-Hour Notice:</strong><br>
+    Report every work-related injury or occupational illness to your supervisor immediately, and no later than <strong>24 hours after the incident</strong>. Early notification ensures legal eligibility.
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-amber-300">2. Official Claim Form (DWC-1):</strong><br>
+    Your employer is legally required to give or mail you a Workers' Compensation Claim Form (DWC-1) within one working day of learning about your injury.
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-amber-300">3. Temporary Disability (TD) Wage Replacement:</strong><br>
+    If your doctor certifies that you cannot work for more than 3 days, you are eligible for tax-free payments equal to <strong>two-thirds of your average gross weekly wage</strong>, up to the statutory state maximum.
+  </div>
+</div>`,
+            question: "What fraction of an employee's average weekly wage does California Temporary Disability pay?",
+            options: ["(A) One-fourth (25%)", "(B) One-half (50%)", "(C) Two-thirds (approx 66.7%)", "(D) One hundred percent (100%)"],
+            correct: "C",
+            clue: "...you are eligible for tax-free payments equal to two-thirds of your average gross weekly wage...",
+            chinese: "工伤赔偿法（Workers' Comp）指南说明：因工伤导致医生证明无法工作超过3天的，可领取临时伤残津贴，金额相当于平均周薪的三分之二（two-thirds of average gross weekly wage）。",
+            vocab: "work-related injury (工伤事故), occupational illness (职业病), DWC-1 (工伤索赔申报表), temporary disability (暂时伤残津贴), statutory (法定的)"
+          },
+          {
+            id: "q9_9",
+            category: "Corporate Technology & Cybersecurity",
+            title: "Read the company electronic communications and acceptable use agreement.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">GLOBAL TECH LOGISTICS • IT SECURITY AGREEMENT §6</span><br><br>
+<strong class="text-white text-base">ACCEPTABLE USE OF CORPORATE SYSTEMS & COMPUTERS:</strong><br>
+All computer equipment, network connections, corporate email accounts, and mobile communication devices provided by the company are property of Global Tech Logistics.<br><br>
+<div class="p-3 bg-slate-900 border border-slate-750 rounded-xl space-y-1.5 text-xs sm:text-sm text-slate-200">
+  <span class="font-bold text-sky-300">POLICY ENFORCEMENT & MONITORING DISCLOSURE:</span><br>
+  • <strong>No Expectation of Privacy:</strong> Employees have no reasonable expectation of privacy when using corporate electronic systems. The company reserves the absolute right to monitor, log, review, and disclose all internet browsing, emails, and file transfers without prior notice.<br>
+  • <strong>Prohibited Actions:</strong> Downloading unauthorized third-party executable software (.exe, .bat), disabling corporate antivirus firewalls, or connecting personal unencrypted USB flash drives to company computers is <strong>strictly prohibited</strong> and grounds for immediate termination.
+</div>`,
+            question: "What does the policy state regarding employee privacy when using company computer systems?",
+            options: ["(A) Employees have total legal privacy for personal emails sent during lunchtime", "(B) The company can only inspect computers with a court warrant", "(C) Employees have no expectation of privacy and all network activity may be monitored", "(D) Personal browsing histories are automatically erased by IT daily"],
+            correct: "C",
+            clue: "Employees have no reasonable expectation of privacy when using corporate electronic systems. The company reserves the absolute right to monitor, log, review, and disclose all internet browsing...",
+            chinese: "网络安全协议声明：员工使用公司电脑系统没有任何隐私权（no expectation of privacy），公司保留未经通知随时监控、记录和审核全部上网记录与邮件的权利。",
+            vocab: "acceptable use (合理使用规范), expectation of privacy (隐私期待), monitor (监控), unencrypted (未加密的), grounds for termination (解雇理由)"
+          },
+          {
+            id: "q9_10",
+            category: "Employee Educational Benefits",
+            title: "Read the employee tuition assistance and career development program guidelines.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">PACIFIC CREST HEALTHCARE • TUITION ASSISTANCE POLICY</span><br><br>
+<strong class="text-white text-base">ANNUAL HIGHER EDUCATION REIMBURSEMENT BENEFIT:</strong><br>
+To foster career advancement, full-time regular employees with at least one year of continuous service may receive financial reimbursement for approved academic coursework.<br><br>
+<div class="p-3.5 bg-slate-900 border border-slate-750 rounded-xl space-y-2 text-xs sm:text-sm text-slate-200">
+  <span class="font-bold text-sky-300">PROGRAM REQUIREMENTS & LIMITS:</span><br>
+  • <strong>Maximum Benefit:</strong> Up to <strong>$3,000 per calendar year</strong> covering accredited college tuition, mandatory campus fees, and textbooks.<br>
+  • <strong>Academic Grade Standard:</strong> Employees must achieve a final grade of <strong>'B' (3.0 GPA) or higher</strong> in graded courses, or a 'Pass' in pass/fail classes.<br>
+  • <strong>Employment Commitment:</strong> Employees agree to remain with the company for at least <strong>12 months following completion of the course</strong>; voluntary resignation prior to 12 months requires full repayment of reimbursed funds.
+</div>`,
+            question: "What minimum course grade is required to qualify for tuition reimbursement?",
+            options: ["(A) Grade of 'D' or higher", "(B) Grade of 'C' or higher", "(C) Grade of 'B' (3.0 GPA) or higher", "(D) Perfect score of 100%"],
+            correct: "C",
+            clue: "Employees must achieve a final grade of 'B' (3.0 GPA) or higher in graded courses...",
+            chinese: "学费报销政策规定：员工修读大学或技术进修课程，最终成绩必须达到B等级（GPA 3.0）或更高（Grade of 'B' or higher），且报销后须继续留职至少12个月。",
+            vocab: "tuition assistance (学费资助), reimbursement (报销), continuous service (连续工龄), accredited college (认证大学), voluntary resignation (自愿离职)"
+          }
+        ]
+      },
+
+      // ==========================================
+      // Quiz #10: Housing Leases, Tenant Rights & Contractor Estimates
+      // ==========================================
+      quiz10: {
+        title: "Quiz #10: Housing Leases, Tenant Rights & Contractor Estimates",
+        listening: [
+          {
+            id: "q10_1",
+            category: "Residential Property Management",
+            title: "Listen to an apartment property manager leaving an annual safety inspection voicemail.",
+            audio: "Good morning resident, this is Karen, General Manager at Willow Glen Apartments. I am calling to inform all tenants in Building C that our mandatory annual safety and fire compliance inspection is scheduled for this Thursday, November 20th. Our licensed maintenance technicians and a city fire marshal will be entering every apartment unit between 10:00 AM and 4:00 PM to test smoke alarms, replace backup lithium batteries, inspect carbon monoxide detectors, and verify that fire sprinkler heads are unobstructed. Under California Civil Code Section 1954, this voicemail and the written notice posted on your front door serve as official forty-eight hour legal notice of entry. If you have indoor pets, please ensure they are safely crated or secured in a bathroom during inspection hours. You do not need to be home for the inspection to take place. Thank you for your cooperation.",
+            question: "What will inspectors be testing during the Thursday apartment inspection?",
+            options: ["(A) Cable television internet signal speeds", "(B) Smoke alarms, carbon monoxide detectors, and sprinkler heads", "(C) Balcony patio furniture weight limits", "(D) Kitchen cabinet paint colors"],
+            correct: "B",
+            clue: "...entering every apartment unit... to test smoke alarms, replace backup lithium batteries, inspect carbon monoxide detectors, and verify that fire sprinkler heads are unobstructed.",
+            chinese: "公寓物业经理电话通知：周四上门检查将测试烟雾报警器、更换电池、检查一氧化碳探测器以及确认消防喷淋头无遮挡（smoke alarms, carbon monoxide detectors, and sprinkler heads）。",
+            vocab: "property manager (物业经理), fire compliance (消防合规), carbon monoxide detector (一氧化碳探测器), unobstructed (无遮挡的), crated (关入宠物航空箱)"
+          },
+          {
+            id: "q10_2",
+            category: "Housing Leases & Renewal Options",
+            title: "Listen to a leasing agent explaining options for an expiring residential lease.",
+            audio: "Hello Mr. and Mrs. Tanaka, this is Marcus from the Sunset Ridge Leasing Office. Your current one-year apartment lease is scheduled to expire on December 31st, and we would love to have you continue residing with us. We have prepared two lease renewal options for your consideration. Option one is a new twelve-month fixed-term lease renewal at two thousand one hundred dollars per month, which represents a modest three percent increase. Option two is to transition to a month-to-month tenancy at two thousand three hundred fifty dollars per month, which includes our standard two hundred fifty dollar month-to-month flexibility premium. Please review the digital renewal agreement sent to your email and select your preferred option before December 1st. If you decide not to renew, remember that our lease requires a full thirty-day written notice to vacate. Have a great day.",
+            question: "What is the monthly rent if the tenants choose the new twelve-month fixed lease renewal?",
+            options: ["(A) $1,800 per month", "(B) $2,100 per month", "(C) $2,350 per month", "(D) $2,500 per month"],
+            correct: "B",
+            clue: "Option one is a new twelve-month fixed-term lease renewal at two thousand one hundred dollars per month...",
+            chinese: "公寓招租办说明：租约到期提供两种方案——新签12个月固定租约月租为$2,100（$2,100 per month）；如转为按月灵活续约则月租为$2,350。",
+            vocab: "lease renewal (租约续期), fixed-term (固定期限的), month-to-month tenancy (按月随退租约), flexibility premium (灵活性附加费), notice to vacate (退租搬离通知)"
+          },
+          {
+            id: "q10_3",
+            category: "Home Contractor Services & Energy Rebates",
+            title: "Listen to an HVAC contractor leaving an estimate message for heat pump replacement.",
+            audio: "Hi Robert, this is Dave from Bay Climate Heating and Air Conditioning following up on our site assessment at your house yesterday. To replace your old, inefficient gas furnace and broken central air conditioner, we recommend a high-efficiency Daikin three-ton variable speed heat pump system. The total cost for equipment, copper line set replacement, electrical subpanel hookup, and city permit fees comes to nine thousand six hundred dollars. The exciting news is that this specific unit qualifies for both a two thousand dollar federal Energy Star tax credit and a two thousand dollar instant rebate from the California Clean Energy program, which reduces your net out-of-pocket cost to five thousand six hundred dollars. Furthermore, this system includes a comprehensive ten-year parts and compressor manufacturer warranty. Please call me back at 408-555-0177 if you would like to schedule installation next week.",
+            question: "What is the net out-of-pocket cost for the new heat pump system after tax credits and rebates?",
+            options: ["(A) $3,600", "(B) $5,600", "(C) $7,600", "(D) $9,600"],
+            correct: "B",
+            clue: "...qualifies for both a two thousand dollar federal Energy Star tax credit and a two thousand dollar instant rebate... which reduces your net out-of-pocket cost to five thousand six hundred dollars.",
+            chinese: "冷暖气承包商报价：热泵总价$9,600，扣除$2,000联邦抵税额和$2,000加州清洁能源即时退税补贴后，车主实际净自付费用为$5,600（five thousand six hundred dollars）。",
+            vocab: "HVAC (暖通空调系统), heat pump (热泵冷暖系统), permit fees (许可证规费), instant rebate (即时返现/补贴), compressor warranty (压缩机保修)"
+          },
+          {
+            id: "q10_4",
+            category: "Municipal Building Permits & Code Enforcement",
+            title: "Listen to a city building department permit specialist explaining permit requirements.",
+            audio: "Good afternoon homeowner, this is Officer Sanchez from the City of Santa Clara Building Inspection Division returning your inquiry about home remodeling permits. Under California Building Standards Code, residential property owners must pull official permits prior to commencing specific mechanical, plumbing, or structural construction. You will definitely need building and plumbing permits for replacing your gas water heater or upgrading your main electrical panel to two hundred amps. However, you do not need a municipal building permit for cosmetic non-structural interior renovations, such as installing new laminate flooring, hanging new interior doors, or repainting interior walls. For permitted projects, you can submit architectural diagrams and pay fees through our online citizen access portal. Always ensure licensed contractors verify permit sign-offs before making final payments. Have a good afternoon.",
+            question: "Which home renovation project does NOT require a city building permit?",
+            options: ["(A) Replacing a gas water heater", "(B) Upgrading the main electrical panel to 200 amps", "(C) Installing new laminate interior flooring", "(D) Adding a new attached bedroom addition"],
+            correct: "C",
+            clue: "However, you do not need a municipal building permit for cosmetic non-structural interior renovations, such as installing new laminate flooring, hanging new interior doors, or repainting interior walls.",
+            chinese: "市政建规官员说明：更换燃气热水器和升级电表箱必须申请报建许可；但非结构性的局部室内装修，例如铺设新复合地板（installing new laminate flooring）或粉刷墙面，无需申请许可证。",
+            vocab: "building permit (建筑许可证), mechanical and plumbing (暖通管道与水暖), non-structural (非结构性的), laminate flooring (复合地板), licensed contractor (持牌承包商)"
+          },
+          {
+            id: "q10_5",
+            category: "Consumer Moving & Relocation Contracts",
+            title: "Listen to a moving company representative explaining estimate contracts.",
+            audio: "Hello Mrs. Wallace, this is Brian from California Van Lines calling regarding your upcoming household move from Cupertino to Sacramento on the 28th. I want to explain the difference between our two estimate structures. We have issued you a Binding Not-to-Exceed estimate of one thousand eight hundred fifty dollars based on our visual inventory of sixty boxes and major furniture pieces. Under California Public Utilities Commission regulations, a Binding Not-to-Exceed estimate guarantees that even if the moving truck encounters traffic delays or the total shipment weighs slightly more than estimated, you will never be charged more than the agreed one thousand eight hundred fifty dollar ceiling. However, if on moving day your inventory contains additional large appliances or thirty extra unlisted boxes, our crew foreman will issue a revised written addendum before loading the truck. Please sign the contract online by Friday. Thank you.",
+            question: "What is the primary guarantee of a 'Binding Not-to-Exceed' moving estimate?",
+            options: ["(A) All moving boxes will be unpacked within two hours", "(B) The customer will never be charged more than the agreed ceiling price for the listed inventory", "(C) The moving company will replace any lost items with brand new ones", "(D) The truck will travel only on toll-free highways"],
+            correct: "B",
+            clue: "...guarantees that even if the moving truck encounters traffic delays or the total shipment weighs slightly more... you will never be charged more than the agreed one thousand eight hundred fifty dollar ceiling.",
+            chinese: "搬家公司协调员说明：加州公用事业委员会规范下的“不得超过约束性报价”（Binding Not-to-Exceed），保证只要清单物品一致，最终结算绝不会超过约定的上限金额（ceiling price）。",
+            vocab: "moving estimate (搬家估价单), Binding Not-to-Exceed (上限约束性报价), ceiling (封顶金额/最高限额), visual inventory (清点盘点清单), addendum (补充协议/附录)"
+          }
+        ],
+        reading: [
+          {
+            id: "q10_6",
+            category: "Residential Lease Agreement",
+            title: "Read Section 14 (Subletting & Guest Policy) of a standard California residential lease.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">CALIFORNIA APARTMENT ASSOCIATION • STANDARD LEASE §14</span><br><br>
+<strong class="text-white text-base">SECTION 14: ASSIGNMENT, SUBLETTING & GUEST REGULATIONS:</strong><br>
+Tenant shall not assign this Agreement, sublet any portion of the Premises, nor list the Premises on short-term vacation rental platforms (including Airbnb or VRBO) without Landlord's prior express written consent.<br><br>
+<div class="p-3 bg-slate-900 border border-slate-750 rounded-xl space-y-1.5 text-xs sm:text-sm text-slate-200">
+  <span class="font-bold text-amber-300">GUEST OCCUPANCY LIMITS:</span><br>
+  • Any individual who is not listed as an authorized occupant on this Lease who stays overnight for more than <strong>fourteen (14) consecutive days</strong>, or more than twenty-one (21) total days within a single calendar year, shall be legally classified as an unauthorized occupant.<br>
+  • Permitting unauthorized occupants to reside on the Premises constitutes a substantial lease violation and will result in service of a <strong>3-Day Notice to Cure or Quit</strong>.
+</div>`,
+            question: "How many consecutive overnight days may an unlisted guest stay before being classified as an unauthorized occupant?",
+            options: ["(A) Three consecutive days", "(B) Seven consecutive days", "(C) More than fourteen (14) consecutive days", "(D) Sixty consecutive days"],
+            correct: "C",
+            clue: "Any individual who is not listed as an authorized occupant... who stays overnight for more than fourteen (14) consecutive days...",
+            chinese: "加州标准租房合约第14条规定：非租约上的访客若连续留宿超过14天（more than 14 consecutive days）或全年累计留宿超21天，将被视作未授权入住者，房东有权发三天纠正或迁出通知。",
+            vocab: "sublet (转租/分租), express written consent (明确书面同意), consecutive days (连续天数), unauthorized occupant (未经许可入住者), 3-Day Notice to Cure or Quit (3天纠正违约或迁出通知)"
+          },
+          {
+            id: "q10_7",
+            category: "Tenant Security Deposit Accounting",
+            title: "Read the itemized security deposit deduction statement from the landlord.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">BAY RIDGE PROPERTIES • SECURITY DEPOSIT DISPOSITION</span><br>
+<span class="text-xs text-slate-400">California Civil Code §1950.5 Compliance Statement</span><br><br>
+<table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-700">
+  <thead>
+    <tr class="bg-slate-800 text-white">
+      <th class="p-2 border border-slate-700">Item Description</th>
+      <th class="p-2 border border-slate-700">Vendor / Notes</th>
+      <th class="p-2 border border-slate-700">Amount</th>
+    </tr>
+  </thead>
+  <tbody class="text-slate-200">
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Original Security Deposit Held</td>
+      <td class="p-2">Received Aug 1, 2025 at lease inception</td>
+      <td class="p-2 font-bold text-emerald-300">$2,000.00</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2">Professional Carpet Steam Cleaning</td>
+      <td class="p-2">Eco-Clean Carpet Co (Receipt #4102 attached)</td>
+      <td class="p-2 text-rose-300">-$180.00</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2">Drywall Patch & Paint (Living Room Hole)</td>
+      <td class="p-2">Quick Fix Handyman LLC (Receipt #883 attached)</td>
+      <td class="p-2 text-rose-300">-$120.00</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2">Replaced Missing Kitchen Drawer Track</td>
+      <td class="p-2">Materials & Labor</td>
+      <td class="p-2 text-rose-300">-$60.00</td>
+    </tr>
+    <tr class="bg-slate-900 font-bold text-white">
+      <td class="p-2">NET REFUND CHECK ENCLOSED</td>
+      <td class="p-2">Dispatched within statutory 21 calendar days</td>
+      <td class="p-2 text-emerald-400">$1,640.00</td>
+    </tr>
+  </tbody>
+</table><br>
+<span class="text-xs text-slate-300">Note: Under state law, landlords cannot deduct for normal wear-and-tear (such as minor scuff marks or faded carpet from sunlight). Copies of all invoices and contractor receipts are attached.</span>`,
+            question: "What is the net refund amount enclosed for the tenant after deductions?",
+            options: ["(A) $360.00", "(B) $1,640.00", "(C) $2,000.00", "(D) $2,360.00"],
+            correct: "B",
+            clue: "NET REFUND CHECK ENCLOSED: $1,640.00.",
+            chinese: "押金退还明细表显示：原始押金$2,000，扣除地毯清洗$180、墙面修补$120、抽屉导轨修复$60（扣除总计$360）后，退还给租客的净支票金额为$1,640.00（$1,640.00）。",
+            vocab: "deposit disposition (押金清算结算), itemized deduction (逐项扣减), normal wear-and-tear (正常磨损), statutory (法定的), net refund (净退款)"
+          },
+          {
+            id: "q10_8",
+            category: "Homeowners Association (HOA) Regulations",
+            title: "Read the community homeowners association architectural and parking rules.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">OAK CREEK MEADOWS HOA • COMMUNITY RULES §8</span><br><br>
+<strong class="text-white text-base">RESIDENTIAL MAINTENANCE & VISITOR PARKING RULES:</strong><br><br>
+<div class="space-y-2 text-xs sm:text-sm text-slate-200">
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">1. Refuse & Recycling Container Storage:</strong><br>
+    Trash and recycling bins may be placed at the curbside no earlier than 6:00 PM on the evening prior to collection day. Bins must be removed from the curb and stored completely out of public view (inside garages or behind side fences) no later than <strong>8:00 PM on collection day</strong>.
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">2. Designated Visitor Parking Stalls:</strong><br>
+    Unmarked parking bays are reserved strictly for temporary bona fide guests. Residents may not park their own vehicles in visitor spaces. Guest parking is limited to a maximum of <strong>72 continuous hours</strong>. Vehicles remaining beyond 72 hours without a temporary HOA permit are subject to immediate towing at the vehicle owner's expense.
+  </div>
+</div>`,
+            question: "By what time must trash and recycling bins be removed from the curb on collection day?",
+            options: ["(A) 12:00 PM noon", "(B) 5:00 PM", "(C) No later than 8:00 PM on collection day", "(D) The following morning at 8:00 AM"],
+            correct: "C",
+            clue: "Bins must be removed from the curb and stored completely out of public view... no later than 8:00 PM on collection day.",
+            chinese: "小区业主委员会（HOA）规定：垃圾桶和回收桶在收垃圾当天最晚不得超过晚间8:00（no later than 8:00 PM on collection day）移回车库或院内，不得在路边过夜。",
+            vocab: "homeowners association (业主委员会/物业委员会), curbside (路边), out of public view (不在公共视线内), visitor stalls (访客车位), towing (拖车)"
+          },
+          {
+            id: "q10_9",
+            category: "Contractor Bids & Payment Milestones",
+            title: "Read the formal bid and payment schedule for a residential sewer repair project.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">APEX TRENCHLESS PLUMBING • CONTRACT PROPOSAL #519</span><br><br>
+<strong class="text-white text-base">SCOPE OF WORK: TRENCHLESS SEWER LATERAL REPLACEMENT:</strong><br>
+Installation of 60 linear feet of 4-inch epoxy resin sewer pipe lining from main house cleanout to city sewer main connection.<br><br>
+<div class="p-3.5 bg-slate-900 border border-slate-750 rounded-xl space-y-1.5 text-xs sm:text-sm text-slate-200">
+  <span class="font-bold text-sky-300">TOTAL CONTRACT PRICE: $5,400.00 • PAYMENT MILESTONES:</span><br>
+  • <strong>Deposit:</strong> $1,000.00 upon formal contract signing and permit acquisition (Maximum initial deposit capped at $1,000 under California Business & Professions Code §7159).<br>
+  • <strong>Progress Payment:</strong> $2,400.00 upon completion of hydro-jet hydro-cleaning and resin liner insertion.<br>
+  • <strong>Final Balance:</strong> $2,000.00 due strictly <strong>upon passing final city plumbing inspection</strong> and submission of HD video inspection camera footage.
+</div>`,
+            question: "When is the final payment balance of $2,000.00 due to the contractor?",
+            options: ["(A) On the day the contractor parks their truck at the home", "(B) Upon passing final city plumbing inspection and submission of video inspection footage", "(C) Exactly thirty days after signing the initial agreement", "(D) Whenever the homeowner decides to sell the property"],
+            correct: "B",
+            clue: "Final Balance: $2,000.00 due strictly upon passing final city plumbing inspection and submission of HD video inspection camera footage.",
+            chinese: "水管工程施工合同规定：最后尾款$2,000必须在项目通过市政最终水管检验并提供高清管道录像后（upon passing final city inspection）才需付清，保障业主权益。",
+            vocab: "trenchless sewer (非开挖下水道修复), progress payment (进度款), payment milestones (付款里程碑节点), final inspection (最终市政验收), epoxy resin (环氧树脂)"
+          },
+          {
+            id: "q10_10",
+            category: "Federal Lead Safety Disclosure",
+            title: "Read the federal lead-based paint hazard disclosure notice for older rental housing.",
+            doc: `<span class="text-amber-300 font-extrabold text-lg">U.S. EPA & HUD • LEAD-BASED PAINT DISCLOSURE NOTICE</span><br><br>
+<strong class="text-white text-base">DISCLOSURE OF INFORMATION ON LEAD-BASED PAINT AND HAZARDS:</strong><br>
+Housing built prior to 1978 may contain lead-based paint. Lead from paint chips and dust poses severe health hazards if not managed properly, especially to pregnant women and young children under age six.<br><br>
+<div class="p-3 bg-slate-900 border border-slate-750 rounded-xl space-y-1.5 text-xs sm:text-sm text-slate-200">
+  <span class="font-bold text-sky-300">LANDLORD LEGAL DISCLOSURE MANDATE:</span><br>
+  1. Landlord must disclose the presence of known lead-based paint and provide all available lead records or test reports.<br>
+  2. Landlord must supply prospective tenants with the federal pamphlet titled <em>"Protect Your Family From Lead in Your Home."</em><br>
+  3. Prospective home buyers and renters are legally entitled to a <strong>10-day mutual window</strong> to conduct an independent certified risk assessment or lead inspection before becoming contractually obligated under the lease.
+</div>`,
+            question: "How long of a window are prospective buyers and tenants legally entitled to for conducting a lead risk inspection?",
+            options: ["(A) 24 hours", "(B) Three business days", "(C) A 10-day mutual window", "(D) Sixty calendar days"],
+            correct: "C",
+            clue: "Prospective home buyers and renters are legally entitled to a 10-day mutual window to conduct an independent certified risk assessment or lead inspection...",
+            chinese: "联邦环保署（EPA）含铅油漆披露令规定：对于1978年前建造的旧房屋，潜在租客/买家依法享有10天独立检测期（10-day mutual window）进行持证专业含铅安全评估。",
+            vocab: "lead-based paint (含铅油漆), hazard disclosure (安全隐患披露), prior to 1978 (1978年以前), paint chips (油漆脱落碎片), risk assessment (风险评估)"
+          }
+        ]
+      },
+
+      // ==========================================
+      // Quiz #11: Transportation, Travel Bookings & Emergency Safety
+      // ==========================================
+      quiz11: {
+        title: "Quiz #11: Transportation, Travel Bookings & Emergency Safety",
+        listening: [
+          {
+            id: "q11_1",
+            category: "Airport Travel & Boarding Announcements",
+            title: "Listen to an airport gate agent announcing a departure change and boarding order.",
+            audio: "Attention passengers on United Flight 842 with nonstop service to Chicago O'Hare. We have an operational gate change: this departure will no longer board at Gate B12; please proceed immediately to Gate C24 located at the end of the north concourse. Departure time remains on schedule at 4:35 PM. At this time, we invite passengers requiring special assistance, families traveling with small children under two, and active-duty military personnel in uniform to come forward for pre-boarding through the priority lane. Following pre-boarding, we will begin boarding Group 1, which includes Premier 1K members and first-class passengers. Please have your digital mobile boarding pass or printed ticket and a valid government photo ID ready for gate scanning. All carry-on rollaboard bags must fit inside the sizing metal rack at the entrance to the jet bridge. Thank you for flying with United.",
+            question: "Where should passengers on Flight 842 proceed for departure?",
+            options: ["(A) Gate B12 in the main lobby", "(B) Gate C24 at the end of the north concourse", "(C) The international customs baggage claim", "(D) The rental car shuttle terminal"],
+            correct: "B",
+            clue: "We have an operational gate change: this departure will no longer board at Gate B12; please proceed immediately to Gate C24 located at the end of the north concourse.",
+            chinese: "机场登机口广播通知：前往芝加哥的842号航班发生登机口变更，改在北连廊尽头的C24登机口（Gate C24 at the end of the north concourse）登机。",
+            vocab: "gate change (登机口变更), north concourse (北航站楼连廊), pre-boarding (优先预登机), active-duty military (现役军人), jet bridge (登机廊桥)"
+          },
+          {
+            id: "q11_2",
+            category: "Commuter Rail Transportation",
+            title: "Listen to a Caltrain conductor making an express service announcement.",
+            audio: "Good morning Caltrain riders, this is your onboard conductor on northbound train number 314, operating as a weekday Baby Bullet express service to San Francisco. Please take note of our express stopping pattern: this train will make station stops only at Mountain View, Palo Alto, and Millbrae Transit Center for direct BART airport connections, before terminating at San Francisco Fourth and King Street station. We will bypass all intermediate local stations, including San Antonio, California Avenue, and Belmont. If your final destination is an intermediate local station, please detrain at Mountain View and transfer across platform two to local train number 218, which is following ten minutes behind us. Remember to keep personal backpacks and bicycles off the seats and stored in the designated lower-level bike car. Have your Clipper card or electronic mobile app ticket ready for ticket inspection.",
+            question: "What should passengers do if their destination is an intermediate local station?",
+            options: ["(A) Stay on the train until arriving in San Francisco", "(B) Detrain at Mountain View and transfer across platform two to local train 218", "(C) Call a taxi from the Millbrae Transit Center", "(D) Pull the emergency passenger safety brake"],
+            correct: "B",
+            clue: "If your final destination is an intermediate local station, please detrain at Mountain View and transfer across platform two to local train number 218...",
+            chinese: "Caltrain特快列车广播：本趟为直达特快，跳过所有慢车站点；前往慢车站点的乘客请在山景城站（Mountain View）下车，并跨站台换乘218次慢车。",
+            vocab: "Baby Bullet (特快轻轨列车), stopping pattern (停站规律), intermediate stations (沿途慢车站/中间站点), detrain (下火车), transfer across platform (跨站台换乘)"
+          },
+          {
+            id: "q11_3",
+            category: "Vehicle Rental Terms & Fees",
+            title: "Listen to a car rental agent explaining optional insurance and toll transponders.",
+            audio: "Welcome to Hertz Car Rental, Mr. Davis. I have your reservation for a midsize SUV for five days. Before I print your rental agreement, I want to review two optional service choices. First is our Collision Damage Waiver, or CDW, which costs twenty-two dollars per day. Purchasing the CDW completely relieves you of financial responsibility for any physical vehicle damage, collision, or vandalism, with zero deductible. If you decline, any repair costs will be billed directly to your personal auto insurance policy or credit card. Second is our FasTrak automated electronic toll service. Our vehicles are equipped with a license plate transponder that charges an administrative convenience fee of five dollars and ninety-five cents per rental day, plus the actual cash tolls for crossing Bay Area bridges and express express lanes. You can decline this and pay tolls yourself through the FasTrak website within forty-eight hours. Which options would you prefer today?",
+            question: "What is the primary benefit of purchasing the optional Collision Damage Waiver (CDW)?",
+            options: ["(A) It provides free gasoline refills throughout the rental period", "(B) It completely relieves the driver of financial responsibility for vehicle damage with zero deductible", "(C) It allows the vehicle to be driven by unlicensed minors", "(D) It waives all airport parking fees"],
+            correct: "B",
+            clue: "Purchasing the CDW completely relieves you of financial responsibility for any physical vehicle damage, collision, or vandalism, with zero deductible.",
+            chinese: "租车行柜台说明：选购车损全免险（CDW）的最高价值在于免除租客对车辆意外刮擦碰撞的全部财务赔偿责任，且免赔额为零（zero deductible）。",
+            vocab: "Collision Damage Waiver (车损豁免险/碰撞全险), deductible (免赔额), vandalism (人为恶意破坏), toll transponder (电子收费感应器), convenience fee (便利服务费)"
+          },
+          {
+            id: "q11_4",
+            category: "Automotive Maintenance & Repairs",
+            title: "Listen to an auto mechanic calling with a brake inspection diagnosis and estimate.",
+            audio: "Hello Mrs. Taylor, this is Rick from Precision Auto Care calling regarding your Toyota Camry. We completed our comprehensive multi-point safety inspection this morning. While your engine oil and tires are in excellent condition, your front brake pads have worn down to approximately two millimeters of friction material remaining. The minimum legal safety threshold in California is three millimeters. If you continue driving without replacing them, the worn metal backing plates will grind into the brake rotors, causing extensive damage and reducing stopping power. We recommend installing new ceramic front brake pads and precision resurfacing both front rotors. The total estimate—including OEM ceramic parts, labor, and shop supplies—comes to three hundred sixty-five dollars plus tax. If you authorize the repair before 1:00 PM, we can have your car completed and ready for pickup by 5:00 PM today. Please call us at 408-555-0145.",
+            question: "Why does the mechanic recommend replacing the front brake pads immediately?",
+            options: ["(A) They are covered in motor oil from an engine leak", "(B) They have worn down to 2 millimeters, below the legal safety threshold", "(C) The vehicle was involved in an off-road accident", "(D) The tires failed to pass rotation alignment"],
+            correct: "B",
+            clue: "...your front brake pads have worn down to approximately two millimeters of friction material remaining. The minimum legal safety threshold in California is three millimeters.",
+            chinese: "汽车维修技师电话说明：前刹车皮厚度已磨损至仅剩2毫米，低于加州3毫米的法定安全红线（below the legal safety threshold），若不及时更换将磨损刹车盘。",
+            vocab: "multi-point safety inspection (多点全面安全检查), brake pads (刹车片), friction material (摩擦层材料), rotors (刹车盘/制动盘), resurfacing (机械打磨抛光)"
+          },
+          {
+            id: "q11_5",
+            category: "Emergency Weather Alert",
+            title: "Listen to an automated county emergency alert regarding an atmospheric river storm.",
+            audio: "This is an urgent emergency advisory broadcast from the Santa Clara County Office of Emergency Management. The National Weather Service has issued an Atmospheric River Flood Warning and High Wind Advisory for our county effective from 6:00 PM this evening through Thursday morning. Expect sustained heavy rainfall of up to four inches in urban valley areas, combined with wind gusts exceeding forty-five miles per hour. Saturated soils present severe risks of localized street flooding and falling tree limbs. Residents living along Guadalupe River and Coyote Creek are advised to monitor creek levels closely. Free self-serve sandbag filling stations have been established at five municipal maintenance yards, including the Valley Water depot on Winfield Boulevard; please bring your own shovel. Avoid all unnecessary highway travel and never drive through flooded roadways. Call 911 for life-threatening emergencies.",
+            question: "What must residents bring when visiting the free municipal sandbag filling stations?",
+            options: ["(A) A county water utility bill", "(B) Their own shovel", "(C) An official flood insurance policy", "(D) A certified emergency flashlight"],
+            correct: "B",
+            clue: "Free self-serve sandbag filling stations have been established at five municipal maintenance yards... please bring your own shovel.",
+            chinese: "县应急管理部门发布大气河流暴雨洪涝预警：水利局在5个市政维护站提供免费防洪沙袋供居民自行灌装，提醒前往装沙袋的居民请务必自带铁锹（bring your own shovel）。",
+            vocab: "atmospheric river (大气河流暴雨带), sustained rainfall (持续强降雨), saturated soil (过度饱和/松软泥土), sandbag filling stations (沙袋灌装点), shovel (铁锹)"
+          }
+        ],
+        reading: [
+          {
+            id: "q11_6",
+            category: "Aviation Baggage & Ticket Rules",
+            title: "Read the airline passenger ticket confirmation and baggage allowance summary.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">WEST COAST AIRWAYS • ELECTRONIC TICKET CONFIRMATION</span><br><br>
+<strong class="text-white text-base">BAGGAGE ALLOWANCES & CHECK-IN REGULATIONS:</strong><br><br>
+<div class="space-y-2 text-xs sm:text-sm text-slate-200">
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">1. Carry-on Luggage Allowance (FREE):</strong><br>
+    One personal item (purse, laptop bag) fitting under the seat in front of you, PLUS one standard carry-on bag not exceeding <strong>22 x 14 x 9 inches</strong> including wheels and handles.
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">2. Checked Baggage Fees:</strong><br>
+    • First checked bag: <strong>$35.00 each way</strong> (maximum weight 50 lbs / 23 kg).<br>
+    • Second checked bag: <strong>$45.00 each way</strong>.<br>
+    • Bags weighing between 51 lbs and 70 lbs incur an additional <strong>$100.00 heavy weight surcharge</strong>.
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">3. Airport Deadlines:</strong><br>
+    Checked baggage drop closes strictly <strong>45 minutes prior to scheduled domestic departure</strong>. Gate boarding doors close 15 minutes before takeoff.
+  </div>
+</div>`,
+            question: "What is the maximum weight for the first checked bag before incurring an overweight fee?",
+            options: ["(A) 22 pounds", "(B) 35 pounds", "(C) 50 pounds (23 kg)", "(D) 70 pounds"],
+            correct: "C",
+            clue: "First checked bag: $35.00 each way (maximum weight 50 lbs / 23 kg).",
+            chinese: "机票行程单托运行李细则规定：首件托运行李单程收费$35，限重最高为50磅（50 lbs / 23 kg），超过51磅将加收$100超重罚款。",
+            vocab: "carry-on luggage (随身手提行李), checked baggage (托运行李), overweight surcharge (超重附加费), domestic departure (国内航班起飞)"
+          },
+          {
+            id: "q11_7",
+            category: "Highway Safety & Winter Driving Regulations",
+            title: "Read the California Highway Patrol (CHP) winter tire chain control matrix.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">CALTRANS & CALIFORNIA HIGHWAY PATROL • CHAIN CONTROLS</span><br><br>
+<table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-700">
+  <thead>
+    <tr class="bg-slate-800 text-white">
+      <th class="p-2 border border-slate-700">Control Level</th>
+      <th class="p-2 border border-slate-700">Vehicles Permitted WITHOUT Tire Chains</th>
+      <th class="p-2 border border-slate-700">Maximum Speed Limit</th>
+    </tr>
+  </thead>
+  <tbody class="text-slate-200">
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Requirement 1 (R-1)</td>
+      <td class="p-2">Passenger vehicles & pickup trucks under 6,000 lbs with approved mud & snow (M+S) tires on drive wheels</td>
+      <td class="p-2 font-bold text-emerald-300">30 MPH</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Requirement 2 (R-2)</td>
+      <td class="p-2"><strong>Four-wheel-drive (4WD) or all-wheel-drive (AWD) vehicles</strong> with snow-tread tires on all four wheels</td>
+      <td class="p-2 font-bold text-emerald-300">25 MPH</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Requirement 3 (R-3)</td>
+      <td class="p-2"><strong>NONE.</strong> All motor vehicles whatsoever must have chains installed on drive tires (extremely rare; highway usually closes)</td>
+      <td class="p-2 font-bold text-emerald-300">20 MPH</td>
+    </tr>
+  </tbody>
+</table><br>
+<span class="text-xs text-amber-300">Legal Note: Even when driving a 4WD/AWD vehicle under R-2 conditions, California law strictly requires drivers to carry tire chains in the trunk for emergency checkpoints.</span>`,
+            question: "Under Chain Control Requirement 2 (R-2), which vehicles are exempt from installing tire chains?",
+            options: ["(A) Any regular two-wheel-drive sedan with summer tires", "(B) Four-wheel-drive (4WD) or AWD vehicles with snow tires on all four wheels", "(C) Delivery freight trucks carrying groceries", "(D) Commercial passenger buses without snow tires"],
+            correct: "B",
+            clue: "Requirement 2 (R-2): Four-wheel-drive (4WD) or all-wheel-drive (AWD) vehicles with snow-tread tires on all four wheels.",
+            chinese: "加州公路巡警（CHP）防滑链管制表：在R-2二级管制下，只有配备四轮专用雪地胎的四驱或全驱车（4WD/AWD with snow-tread tires on all four wheels）才可免挂防滑链，但车后备箱仍需携带备用链。",
+            vocab: "chain controls (防滑链管制), mud & snow tires (泥雪地胎), all-wheel-drive (全轮驱动/AWD), checkpoints (检查站), exempt (豁免)"
+          },
+          {
+            id: "q11_8",
+            category: "Consumer Auto Insurance Coverage",
+            title: "Read the declarations page summary from a California auto insurance policy.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">PACIFIC SAFEGUARD INSURANCE • POLICY DECLARATIONS</span><br><br>
+<table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-700">
+  <thead>
+    <tr class="bg-slate-800 text-white">
+      <th class="p-2 border border-slate-700">Coverage Type</th>
+      <th class="p-2 border border-slate-700">Limits of Liability</th>
+      <th class="p-2 border border-slate-700">Deductible</th>
+      <th class="p-2 border border-slate-700">6-Month Premium</th>
+    </tr>
+  </thead>
+  <tbody class="text-slate-200">
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Bodily Injury Liability</td>
+      <td class="p-2">$100,000 per person / $300,000 per accident</td>
+      <td class="p-2">None</td>
+      <td class="p-2">$285.00</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Property Damage Liability</td>
+      <td class="p-2">$50,000 per accident</td>
+      <td class="p-2">None</td>
+      <td class="p-2">$140.00</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Comprehensive (Fire, Theft, Glass)</td>
+      <td class="p-2">Actual Cash Value of Vehicle</td>
+      <td class="p-2 font-bold text-amber-300">$250.00</td>
+      <td class="p-2">$75.00</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Collision (Impact with car/object)</td>
+      <td class="p-2">Actual Cash Value of Vehicle</td>
+      <td class="p-2 font-bold text-amber-300">$500.00</td>
+      <td class="p-2">$190.00</td>
+    </tr>
+    <tr class="bg-slate-900 font-bold text-white">
+      <td class="p-2" colspan="3">TOTAL 6-MONTH PREMIUM (Includes 24/7 Roadside Towing)</td>
+      <td class="p-2 text-emerald-400">$690.00</td>
+    </tr>
+  </tbody>
+</table>`,
+            question: "What is the deductible for a collision claim on this policy?",
+            options: ["(A) Zero deductible", "(B) $250.00", "(C) $500.00", "(D) $1,000.00"],
+            correct: "C",
+            clue: "Collision (Impact with car/object): Deductible $500.00.",
+            chinese: "汽车保单声明页（Declarations Page）显示：车辆碰撞险（Collision）的自付免赔额为$500（$500.00），而综合意外险（Comprehensive）自付免赔额为$250。",
+            vocab: "declarations page (保单声明页), liability limits (责任限额), comprehensive coverage (综合意外险/动碰动全险), collision coverage (碰撞险), premium (保险费)"
+          },
+          {
+            id: "q11_9",
+            category: "Disaster Survival Preparedness",
+            title: "Read the American Red Cross and FEMA 72-hour emergency survival kit checklist.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">FEMA & AMERICAN RED CROSS • 72-HOUR SURVIVAL CHECKLIST</span><br><br>
+<strong class="text-white text-base">RECOMMENDED HOUSEHOLD EMERGENCY SUPPLIES:</strong><br>
+Be prepared to sustain your household independently without municipal electricity or running tap water for at least three full days (72 hours).<br><br>
+<div class="space-y-2 text-xs sm:text-sm text-slate-200">
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">1. Drinking Water:</strong><br>
+    Store a minimum of <strong>one gallon of potable water per person per day</strong> for at least three days (two quarts for drinking, two quarts for sanitation and food prep).
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">2. Non-Perishable Food:</strong><br>
+    Three-day supply of ready-to-eat canned meats, fruits, vegetables, protein bars, and a <strong>manual non-electric can opener</strong>.
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">3. Tools & First Aid:</strong><br>
+    Battery-powered or hand-crank emergency NOAA radio, high-lumen LED flashlight with spare batteries, comprehensive first aid kit, wrench to shut off main gas valves, and a 7-day supply of critical prescription medications.
+  </div>
+</div>`,
+            question: "How much drinking water should be stored per person per day according to FEMA guidelines?",
+            options: ["(A) One cup per day", "(B) One half-liter bottle per day", "(C) One gallon of water per person per day", "(D) Five gallons per person per day"],
+            correct: "C",
+            clue: "Store a minimum of one gallon of potable water per person per day for at least three days...",
+            chinese: "联邦应急署（FEMA）72小时灾难急救包指南：每人每天必须储备至少一加仑饮用水（one gallon of potable water per person per day），满足饮用与卫生所需。",
+            vocab: "survival checklist (生存急救清单), potable water (可饮用水), non-perishable (不易变质的/耐储存的), manual can opener (手动开罐器), hand-crank radio (手摇收音机)"
+          },
+          {
+            id: "q11_10",
+            category: "Clean Energy & EV Charging Regulations",
+            title: "Read the public electric vehicle DC fast-charging rate and idle fee schedule.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">ELECTRIFY CALIFORNIA • PUBLIC DC FAST CHARGING HUB</span><br><br>
+<strong class="text-white text-base">TIME-OF-USE ELECTRICITY PRICING & STATION POLICIES:</strong><br><br>
+<div class="space-y-2 text-xs sm:text-sm text-slate-200">
+  <table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-700">
+    <thead>
+      <tr class="bg-slate-800 text-white">
+        <th class="p-2 border border-slate-700">Time Window</th>
+        <th class="p-2 border border-slate-700">Tier Description</th>
+        <th class="p-2 border border-slate-700">Charging Rate</th>
+      </tr>
+    </thead>
+    <tbody class="text-slate-200">
+      <tr class="border-b border-slate-800">
+        <td class="p-2">12:00 AM – 8:00 AM</td>
+        <td class="p-2 text-emerald-300">Super Off-Peak</td>
+        <td class="p-2 font-bold text-emerald-400">$0.34 per kWh</td>
+      </tr>
+      <tr class="border-b border-slate-800">
+        <td class="p-2">8:00 AM – 4:00 PM & 9:00 PM – 12:00 AM</td>
+        <td class="p-2 text-sky-300">Standard Off-Peak</td>
+        <td class="p-2 font-bold text-sky-400">$0.45 per kWh</td>
+      </tr>
+      <tr class="border-b border-slate-800">
+        <td class="p-2">4:00 PM – 9:00 PM</td>
+        <td class="p-2 text-rose-300">On-Peak Hours</td>
+        <td class="p-2 font-bold text-rose-400">$0.58 per kWh</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="p-3 bg-amber-950/40 border border-amber-800 rounded-xl space-y-1 text-xs text-amber-200">
+    <strong class="text-amber-300 text-sm">MANDATORY IDLE OCCUPANCY FEE:</strong><br>
+    To ensure charger availability, drivers receive a <strong>10-minute courtesy grace period</strong> once their vehicle battery reaches the target charge limit. After 10 minutes, a fee of <strong>$0.50 per minute</strong> is billed to the payment card until the plug is disconnected and vehicle is moved.
+  </div>
+</div>`,
+            question: "What happens if an electric vehicle remains plugged in 15 minutes after its charging is complete?",
+            options: ["(A) The battery is automatically discharged by 20%", "(B) The vehicle is charged an idle fee of $0.50 per minute after the 10-minute grace period", "(C) The driver's account is permanently banned", "(D) The electricity price drops to zero"],
+            correct: "B",
+            clue: "...drivers receive a 10-minute courtesy grace period... After 10 minutes, a fee of $0.50 per minute is billed to the payment card...",
+            chinese: "公共直流快充桩资费表：充电完成后有10分钟免费宽限期，若充完15分钟仍占位，在宽限期过后将按每分钟$0.50美元计收超时占位费（idle fee）。",
+            vocab: "DC fast charging (直流快速充电), off-peak (非用电高峰期), idle occupancy fee (超时占位费), grace period (宽限期), disconnect (断开连接)"
+          }
+        ]
+      },
+
+      // ==========================================
+      // Quiz #12: Civic Engagement, Taxes & Higher Education Pathways
+      // ==========================================
+      quiz12: {
+        title: "Quiz #12: Civic Engagement, Taxes & Higher Education Pathways",
+        listening: [
+          {
+            id: "q12_1",
+            category: "Higher Education Transfer Counseling",
+            title: "Listen to a community college academic advisor explaining transfer degrees.",
+            audio: "Good afternoon adult learners, my name is Raymond, Academic Transfer Counselor at De Anza College. I want to explain an exceptional pathway called the Associate Degree for Transfer, or ADT, designed for students completing our adult education English and math coursework. When you earn an ADT in fields like Business Administration or Health Sciences, California state law guarantees you junior-standing admission into a California State University campus with sixty transferable semester units. This means you will only need to complete sixty additional upper-division units at the university to graduate with your four-year bachelor's degree. To maintain transfer eligibility, you must complete all major prerequisites and general education requirements with a cumulative grade point average of at least 2.0. Our college offers free counseling appointments to map your individual multi-semester educational plan. Come visit the Transfer Center in Building S.",
+            question: "What does an Associate Degree for Transfer (ADT) guarantee to qualifying students?",
+            options: ["(A) Free university student housing for four full years", "(B) Guaranteed junior-standing admission into a California State University campus", "(C) Automatic forgiveness of all federal student loan debts", "(D) An immediate job offer as a university professor"],
+            correct: "B",
+            clue: "...California state law guarantees you junior-standing admission into a California State University campus with sixty transferable semester units.",
+            chinese: "社区学院转学顾问说明：获得副学士转学学位（ADT）的合格学生，加州法律保证其直接以大三学籍（junior-standing admission）升入加州州立大学（CSU），只需再修60学分即可获学士学位。",
+            vocab: "Associate Degree for Transfer (副学士转学学位), junior-standing (大三学籍/准三年级生), transferable semester units (可转学期学分), prerequisites (先决先修课程), cumulative GPA (累计平均绩点)"
+          },
+          {
+            id: "q12_2",
+            category: "Federal Income Tax Regulations",
+            title: "Listen to an IRS telephone taxpayer advocate explaining tax forms.",
+            audio: "Thank you for holding, this is IRS Taxpayer Assistance Specialist Martinez. I can clarify the tax reporting distinctions between Form W-2 and Form 1099-NEC. If you work as a payroll employee, your employer withholds federal income taxes, Social Security, and Medicare taxes from every paycheck and issues you Form W-2 by January 31st. However, if you perform gig economy work—such as food delivery, rideshare driving, or freelance cleaning—you are legally classified as an independent contractor. Companies will issue you Form 1099-NEC if they paid you six hundred dollars or more in a calendar year, and no taxes are withheld upfront. As an independent contractor, you are personally responsible for paying both regular income tax and the fifteen point three percent self-employment tax. If you expect to owe more than one thousand dollars in annual tax, you must make quarterly estimated payments using Form 1040-ES to avoid underpayment penalties. Have a productive filing season.",
+            question: "What tax form is issued to independent gig-economy contractors who earn $600 or more?",
+            options: ["(A) Form W-4", "(B) Form 1099-NEC", "(C) Form I-9", "(D) Form SSA-1099"],
+            correct: "B",
+            clue: "Companies will issue you Form 1099-NEC if they paid you six hundred dollars or more in a calendar year, and no taxes are withheld upfront.",
+            chinese: "国税局（IRS）税务客服说明：如果是自由职业者或平台网约车/送餐零工，年收入达到或超过$600时，公司将发放1099-NEC表格（Form 1099-NEC），自雇者需自行缴纳自雇税。",
+            vocab: "taxpayer advocate (纳税人权益代表), independent contractor (独立合同工/自雇者), Form 1099-NEC (非雇员报酬税表), self-employment tax (自雇税), quarterly estimated payments (季度预缴税款)"
+          },
+          {
+            id: "q12_3",
+            category: "Local Government Civic Participation",
+            title: "Listen to a city clerk announcing public comment rules at a city council meeting.",
+            audio: "Good evening members of the public, this is City Clerk Patricia Hernandez. Welcome to tonight's regular public hearing of the Santa Clara City Council on proposed ordinance 2026-B, regarding inclusionary affordable housing zoning. We encourage community members to participate in local democratic governance. If you wish to address the Mayor and Council members regarding this agenda item, you must complete and submit a speaker card to the clerk's podium before discussion on this item formally begins. When your name is called, please approach the center microphone, clearly state your name and city of residence for the official public record, and deliver your remarks. Under our municipal council procedural rules, public testimony is strictly limited to three minutes per speaker. The digital countdown timer on the wall will display green for two minutes, yellow for thirty seconds, and sound a tone when your three minutes expire. Thank you for your civic engagement.",
+            question: "What is the maximum time limit for each public speaker at the council hearing?",
+            options: ["(A) One minute", "(B) Strictly limited to three minutes", "(C) Ten uninterrupted minutes", "(D) Unlimited time as long as council members listen"],
+            correct: "B",
+            clue: "...under our municipal council procedural rules, public testimony is strictly limited to three minutes per speaker.",
+            chinese: "市议会市政听证会规则：参与公众发言者必须提前提交发言卡，到麦克风前陈述，每位市民公开发言时间严格限制在3分钟以内（strictly limited to three minutes）。",
+            vocab: "public hearing (市政公开听证会), inclusionary zoning (包容性廉租房规划), speaker card (发言登记卡), public testimony (公众陈词), civic engagement (公民参与)"
+          },
+          {
+            id: "q12_4",
+            category: "Public Library Community Resources",
+            title: "Listen to a public librarian introducing community programs and device lending.",
+            audio: "Hello everyone, my name is Marcus, Adult Services Librarian at the Santa Clara City Library. Beyond books, your free public library card connects you to vital educational and digital literacy services. Every Tuesday and Thursday evening from 6:30 PM to 8:00 PM, we host informal ESL Conversation Cafes led by credentialed adult educators to help intermediate learners practice workplace and everyday spoken English. In addition, through our digital equity initiative, library cardholders with accounts in good standing can borrow a mobile Wi-Fi hotspot device or a Samsung Chromebook laptop for a three-week checkout period, with one optional renewal if there are no pending holds. We also provide free one-on-one computer help sessions every Saturday morning to assist with online job applications, building digital resumes, and navigating county social services. Visit our reference desk on the second floor to sign up.",
+            question: "How long is the checkout period for borrowing a library Chromebook laptop or mobile Wi-Fi hotspot?",
+            options: ["(A) 24 hours only", "(B) A three-week checkout period", "(C) Six months", "(D) Permanently until the student graduates"],
+            correct: "B",
+            clue: "...borrow a mobile Wi-Fi hotspot device or a Samsung Chromebook laptop for a three-week checkout period, with one optional renewal...",
+            chinese: "市公共图书馆馆员介绍：凭借图书借阅卡，读者可免费借用随身移动Wi-Fi发射器或笔记本电脑，借期为三周（a three-week checkout period），无人预约还可续借一次。",
+            vocab: "digital literacy (数字读写能力/电脑应用能力), conversation cafe (英语口语角), digital equity (数字普惠/公平), checkout period (外借期限), pending holds (排队预约)"
+          },
+          {
+            id: "q12_5",
+            category: "Legal Services & Notary Public",
+            title: "Listen to a California commissioned notary public explaining signature notarization.",
+            audio: "Good morning Mrs. Patterson, this is David, a California Commissioned Notary Public. I received your request to notarize a durable power of attorney and healthcare directive document for your elderly mother. Under California Government Code regulations, there are three mandatory legal requirements that must be met before I can affix my official notary stamp. First, the signer must physically appear before me in person; notarization cannot be performed over the telephone or through recorded video. Second, your mother must present a currently valid government-issued photo identification containing her physical description, photograph, and signature—such as an unexpired California ID card or passport. Third, I am required by law to independently verify that she is completely alert, understands the full nature of the power of attorney document, and is signing voluntarily without undue coercion. Please ensure she has her original ID ready for our home visit tomorrow.",
+            question: "What is one mandatory legal requirement for notarizing a signature in California?",
+            options: ["(A) The document must be written in cursive fountain pen", "(B) The signer must physically appear in person before the notary", "(C) The signer must pay a mandatory state court fee of $500", "(D) The notarization must take place inside a police precinct"],
+            correct: "B",
+            clue: "First, the signer must physically appear before me in person; notarization cannot be performed over the telephone or through recorded video.",
+            chinese: "加州公证员（Notary Public）说明法律要求：签署授权书时，签署人本人必须亲自到场（physically appear before me in person），并出示有效证件且意识清醒自愿签署，不可电话代办。",
+            vocab: "commissioned notary public (加州特派公证人), durable power of attorney (持久委托授权书), physically appear in person (本人亲自到场), official stamp (公证钢印/图章), coercion (胁迫/强迫)"
+          }
+        ],
+        reading: [
+          {
+            id: "q12_6",
+            category: "Taxation Form W-2 Reading",
+            title: "Read the explanatory guide for Form W-2 (Wage and Tax Statement).",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">INTERNAL REVENUE SERVICE • UNDERSTANDING YOUR FORM W-2</span><br><br>
+<strong class="text-white text-base">ANNUAL EMPLOYMENT EARNINGS & TAX WITHHOLDING BREAKDOWN:</strong><br><br>
+<div class="space-y-2 text-xs sm:text-sm text-slate-200">
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">Box 1: Wages, Tips, Other Compensation:</strong><br>
+    Reports your total taxable gross earnings for the calendar year subject to federal income tax (reduced by pre-tax healthcare premiums and 401(k) contributions).
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">Box 2: Federal Income Tax Withheld:</strong><br>
+    The cumulative total amount of federal income tax your employer deducted from your paychecks throughout the year and remitted to the IRS on your behalf.
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">Box 12 (Codes D, E, G):</strong><br>
+    Code <strong>D</strong> indicates elective pre-tax employee contributions to a section <strong>401(k) cash or deferred retirement savings plan</strong>.
+  </div>
+</div>`,
+            question: "What information is reported in Box 2 of Form W-2?",
+            options: ["(A) Total employee retirement pension contributions", "(B) The total federal income tax deducted from paychecks and sent to the IRS", "(C) The employee's net take-home salary after all living expenses", "(D) The total number of sick hours taken during the year"],
+            correct: "B",
+            clue: "Box 2: Federal Income Tax Withheld: The cumulative total amount of federal income tax your employer deducted from your paychecks throughout the year and remitted to the IRS on your behalf.",
+            chinese: "W-2税表解读：Box 2（Federal Income Tax Withheld）记录的是雇主全年在每期工资中代扣并代缴给国税局的联邦所得税总额（federal income tax deducted and remitted）。",
+            vocab: "Form W-2 (工资与预扣税金表), gross earnings (税前总收入), withheld (代扣/预扣), remitted (缴纳/汇付), pre-tax contributions (税前缴存额)"
+          },
+          {
+            id: "q12_7",
+            category: "Adult Career & Technical Education (CTE)",
+            title: "Read the vocational training catalog from the California Adult Education Consortium.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">SILICON VALLEY ADULT EDUCATION • CTE VOCATIONAL PATHWAYS</span><br><br>
+<strong class="text-white text-base">CAREER TRAINING PROGRAMS • TUITION-FREE FOR ADULT LEARNERS:</strong><br><br>
+<table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-700">
+  <thead>
+    <tr class="bg-slate-800 text-white">
+      <th class="p-2 border border-slate-700">Program Track</th>
+      <th class="p-2 border border-slate-700">Course Hours & Schedule</th>
+      <th class="p-2 border border-slate-700">Enrollment Prerequisites</th>
+    </tr>
+  </thead>
+  <tbody class="text-slate-200">
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Certified Nurse Assistant (CNA)</td>
+      <td class="p-2">160 hours (60 classroom + 100 clinical) • Mon–Thu 8 AM–1 PM</td>
+      <td class="p-2">Level 4 ESL score (CASAS 221+), background clearance, TB test</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Medical Administrative Specialist</td>
+      <td class="p-2">180 hours (hybrid online & lab) • Tue/Thu 6 PM–9 PM</td>
+      <td class="p-2">Level 4 ESL score (CASAS 221+), keyboarding test minimum 35 WPM</td>
+    </tr>
+    <tr class="border-b border-slate-800">
+      <td class="p-2 font-bold text-sky-300">Commercial HVAC/R Technician</td>
+      <td class="p-2">240 hours hands-on shop training • Mon/Wed 6 PM–9:30 PM</td>
+      <td class="p-2">High school diploma or GED, basic algebra proficiency</td>
+    </tr>
+  </tbody>
+</table>`,
+            question: "What is an enrollment prerequisite for the Medical Administrative Specialist training program?",
+            options: ["(A) A master's degree in healthcare economics", "(B) Level 4 ESL score (CASAS 221+) and typing at least 35 words per minute (WPM)", "(C) Prior experience as a commercial airline pilot", "(D) A minimum of five years of hospital emergency room work"],
+            correct: "B",
+            clue: "Medical Administrative Specialist Prerequisites: Level 4 ESL score (CASAS 221+), keyboarding test minimum 35 WPM.",
+            chinese: "成人职业技术教育（CTE）课程目录表明：报名医疗行政管理专员课程的先决要求为——达到Level 4英语水平（CASAS 221分以上）以及打字测试达到每分钟35个单词（35 WPM）。",
+            vocab: "vocational pathways (职业技能通道), Certified Nurse Assistant (注册护士助理/CNA), keyboarding test (打字打键速度测试), prerequisites (先决入学条件), WPM (每分钟单词数)"
+          },
+          {
+            id: "q12_8",
+            category: "Small Claims Judicial Court Procedure",
+            title: "Read the California Superior Court Small Claims filing guide.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">CALIFORNIA JUDICIAL COUNCIL • SMALL CLAIMS LITIGATION GUIDE</span><br><br>
+<strong class="text-white text-base">DISPUTE RESOLUTION FOR INDIVIDUALS & CONSUMERS:</strong><br>
+Small Claims Court provides an informal, low-cost legal forum to resolve monetary disputes without hiring an attorney.<br><br>
+<div class="space-y-2 text-xs sm:text-sm text-slate-200">
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">1. Maximum Dollar Claim Limits:</strong><br>
+    Individual natural persons may sue for up to a statutory maximum of <strong>$12,500.00</strong>. Corporations, LLCs, and business entities are limited to $6,250.00.
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">2. Prohibition on Legal Representation:</strong><br>
+    Attorneys are <strong>strictly barred from representing parties</strong> in Small Claims hearings. Both the plaintiff and defendant must present their own physical evidence, witnesses, and arguments.
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-sky-300">3. Proof of Service Deadline:</strong><br>
+    The defendant must be officially served with court claim papers at least <strong>15 days prior to the hearing</strong> if they reside within the same county, or 20 days prior if in another California county.
+  </div>
+</div>`,
+            question: "What is the maximum monetary amount an individual person can sue for in California Small Claims Court?",
+            options: ["(A) $2,500.00", "(B) $6,250.00", "(C) $12,500.00", "(D) $50,000.00"],
+            correct: "C",
+            clue: "Individual natural persons may sue for up to a statutory maximum of $12,500.00.",
+            chinese: "加州小额法庭指南明确规定：个人自然人起诉索赔的法定最高限额为$12,500美元（$12,500.00），且双方均不允许律师代理出庭，必须亲自举证辩论。",
+            vocab: "Small Claims Court (小额诉讼法庭), monetary disputes (金钱经济纠纷), statutory maximum (法定最高限额), barred from representing (禁止代理出庭), proof of service (送达传票证明)"
+          },
+          {
+            id: "q12_9",
+            category: "Public K-12 School Attendance & Truancy Law",
+            title: "Read the school district parent handbook on compulsory attendance and excused absences.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">SANTA CLARA UNIFIED SCHOOL DISTRICT • ATTENDANCE POLICY</span><br><br>
+<strong class="text-white text-base">COMPULSORY EDUCATION & TRUANCY CLASSIFICATION:</strong><br>
+Under California Education Code Section 48260, parents and legal guardians are legally responsible for ensuring that minors aged 6 to 18 attend school daily and punctually.<br><br>
+<div class="space-y-2 text-xs sm:text-sm text-slate-200">
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-emerald-300">Excused Absences (Permitted by Law):</strong><br>
+    Absences are legally excused ONLY for student illness, quarantine directed by county health officials, medical/dental appointments, bereavement for immediate family, or mandatory court appearances. A written doctor's note or signed parent excuse must be received within <strong>3 school days</strong> of returning.
+  </div>
+  <div class="p-3 bg-slate-900 border border-slate-750 rounded-xl">
+    <strong class="text-rose-300">Unexcused Absences & Truancy Definition:</strong><br>
+    Family vacations, missed alarms, or babysitting younger siblings are unexcused. Any pupil who is absent from school without a valid excuse for <strong>three (3) full days in a single school year</strong> is legally classified as a <strong>truant</strong>, triggering a formal referral to the School Attendance Review Board (SARB).
+  </div>
+</div>`,
+            question: "How many unexcused absences in a school year cause a student to be classified as truant under California law?",
+            options: ["(A) One single day", "(B) Three (3) full days", "(C) Ten consecutive days", "(D) Thirty days"],
+            correct: "B",
+            clue: "Any pupil who is absent from school without a valid excuse for three (3) full days in a single school year is legally classified as a truant...",
+            chinese: "加州教育法规定：在一个学年内，学生若无正当合规理由缺勤达到3个整天（three full days），将被依法定性为旷课/逃学（truant），并移交考勤审查委员会处理。",
+            vocab: "compulsory education (义务教育), truancy (旷课/逃学), excused absence (有正当理由的请假), bereavement (丧亲之痛/丧假), Attendance Review Board (学生考勤审查委员会)"
+          },
+          {
+            id: "q12_10",
+            category: "Consumer Credit Rights & FICO Scoring",
+            title: "Read the Consumer Financial Protection Bureau (CFPB) guide to credit scores and disputes.",
+            doc: `<span class="text-sky-300 font-extrabold text-lg">CFPB & FAIR CREDIT REPORTING ACT • CONSUMER CREDIT GUIDE</span><br><br>
+<strong class="text-white text-base">HOW YOUR FICO CREDIT SCORE (300 TO 850) IS CALCULATED:</strong><br><br>
+<div class="space-y-2 text-xs sm:text-sm text-slate-200">
+  <table class="w-full text-left text-xs sm:text-sm border-collapse border border-slate-700">
+    <thead>
+      <tr class="bg-slate-800 text-white">
+        <th class="p-2 border border-slate-700">Scoring Factor</th>
+        <th class="p-2 border border-slate-700">Weight</th>
+        <th class="p-2 border border-slate-700">Best Financial Practice</th>
+      </tr>
+    </thead>
+    <tbody class="text-slate-200">
+      <tr class="border-b border-slate-800">
+        <td class="p-2 font-bold text-sky-300">Payment History</td>
+        <td class="p-2 font-black text-emerald-400">35%</td>
+        <td class="p-2">Pay every bill on time; late payments past 30 days cause severe score drops</td>
+      </tr>
+      <tr class="border-b border-slate-800">
+        <td class="p-2 font-bold text-sky-300">Amounts Owed (Credit Utilization)</td>
+        <td class="p-2 font-black text-emerald-400">30%</td>
+        <td class="p-2">Keep revolving credit card balances below 30% (ideally below 10%) of total credit limit</td>
+      </tr>
+      <tr class="border-b border-slate-800">
+        <td class="p-2 font-bold text-sky-300">Length of Credit History</td>
+        <td class="p-2">15%</td>
+        <td class="p-2">Keep older credit card accounts open to maintain longer average credit age</td>
+      </tr>
+      <tr class="border-b border-slate-800">
+        <td class="p-2 font-bold text-sky-300">New Credit & Credit Mix</td>
+        <td class="p-2">20%</td>
+        <td class="p-2">Avoid opening too many new accounts in short periods; maintain a diverse mix of installment and revolving accounts</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="text-xs text-slate-300">Consumer Legal Right: Federal law entitles every American consumer to download one free credit report per week from each of the three major credit bureaus (Equifax, Experian, TransUnion) at www.annualcreditreport.com.</p>
+</div>`,
+            question: "Which single factor carries the heaviest weight (35%) in determining a consumer's credit score?",
+            options: ["(A) Annual gross household income", "(B) Payment history (paying bills on time)", "(C) The total balance in checking and savings accounts", "(D) The number of credit cards carried in a wallet"],
+            correct: "B",
+            clue: "Payment History: Weight 35% (Pay every bill on time; late payments past 30 days cause severe score drops).",
+            chinese: "消费者信用局（CFPB）信用分解析：决定FICO个人信用分的最重要单一权重因素是还款记录（Payment History），占比高达35%，按时足额还款是维持良好信用的核心。",
+            vocab: "credit score (信用评分), payment history (按期还款历史), credit utilization (信用额度使用率), revolving accounts (循环信用账户/信用卡), credit bureaus (三大征信机构)"
+          }
+        ]
       }
     };
 
@@ -1319,17 +3044,19 @@ Every registered California voter receives a vote-by-mail ballot. You have three
       quizAnswers = {};
 
       // Update Top Nav Styles
-      ['quiz1', 'quiz2', 'quiz3', 'quiz4', 'mistakes', 'plan'].forEach(id => {
+      ['quiz1', 'quiz2', 'quiz3', 'quiz4', 'quiz5', 'quiz6', 'quiz7', 'quiz8', 'quiz9', 'quiz10', 'quiz11', 'quiz12', 'mistakes', 'plan'].forEach(id => {
         const btn = document.getElementById('nav' + id.charAt(0).toUpperCase() + id.slice(1));
         if (!btn) return;
         if (id === quizId) {
-          btn.className = "px-4 py-2.5 text-sm sm:text-base font-bold rounded-xl bg-sky-600 text-white shadow-md transition";
+          btn.className = (id === 'mistakes' || id === 'plan') 
+            ? "px-3.5 py-1.5 text-xs sm:text-sm font-bold rounded-xl bg-sky-600 text-white shadow-md transition flex items-center gap-1.5"
+            : "py-2 px-1 text-center text-xs sm:text-sm font-bold rounded-xl bg-sky-600 text-white shadow-md transition";
         } else if (id === 'mistakes') {
-          btn.className = "px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-amber-300 hover:bg-amber-950/40 border border-amber-800/40 transition flex items-center gap-1.5";
+          btn.className = "px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-xl text-amber-300 hover:bg-amber-950/40 border border-amber-800/40 transition flex items-center gap-1.5";
         } else if (id === 'plan') {
-          btn.className = "px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-emerald-300 hover:bg-emerald-950/40 border border-emerald-800/40 transition ml-auto flex items-center gap-1.5";
+          btn.className = "px-3.5 py-1.5 text-xs sm:text-sm font-semibold rounded-xl text-emerald-300 hover:bg-emerald-950/40 border border-emerald-800/40 transition flex items-center gap-1.5";
         } else {
-          btn.className = "px-4 py-2.5 text-sm sm:text-base font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-transparent transition";
+          btn.className = "py-2 px-1 text-center text-xs sm:text-sm font-semibold rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition";
         }
       });
 
@@ -1723,7 +3450,7 @@ Every registered California voter receives a vote-by-mail ballot. You have three
                 <span class="text-xs sm:text-sm px-2.5 py-1 rounded-lg bg-emerald-900 text-emerald-200 font-bold">CASAS 219–224</span>
               </div>
               <ul class="list-disc list-inside text-slate-200 space-y-1.5 text-sm">
-                <li><strong>Quizzes:</strong> Quizzes #5 through #8 (40 questions).</li>
+                <li><strong>Quizzes:</strong> Quizzes #5, #6, #7, and #8 (40 questions live on website).</li>
                 <li><strong>Ventures 3 Units:</strong> Unit 6 (Work & Jobs), Unit 7 (Workplace Safety & Shifts).</li>
                 <li><strong>Focus:</strong> Negative constraints: <em>except, unless, prior to, eligible, unauthorized, differential</em>.</li>
               </ul>
@@ -1736,7 +3463,7 @@ Every registered California voter receives a vote-by-mail ballot. You have three
                 <span class="text-xs sm:text-sm px-2.5 py-1 rounded-lg bg-amber-900 text-amber-200 font-bold">CASAS 225–230</span>
               </div>
               <ul class="list-disc list-inside text-slate-200 space-y-1.5 text-sm">
-                <li><strong>Quizzes:</strong> Quizzes #9 through #12 (40 questions).</li>
+                <li><strong>Quizzes:</strong> Quizzes #9, #10, #11, and #12 (40 questions live on website).</li>
                 <li><strong>Ventures 3 Units:</strong> Unit 8 (Daily Living & Consumer Bills), Unit 10 (Community & Government Services).</li>
                 <li><strong>Focus:</strong> 1.0x natural American speaking rate, complex tables, and multi-speaker dialogues.</li>
               </ul>
